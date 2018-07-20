@@ -8,8 +8,11 @@ class loginController extends Controller {
     }
 
     public function index() {
+        // ARCHIVOS ADJUNTOS
         $this->_view->setJsPlugin(array("validate"));
         $this->_view->setJs(array("validacionLogin"));   
+        $this->_view->setCss(array("login"));
+
         if (Session::get("autenticado")) $this->redireccionar();
         $this->_view->assign("titulo","Login");
         if ($this->getInt('enviar') == 1) {

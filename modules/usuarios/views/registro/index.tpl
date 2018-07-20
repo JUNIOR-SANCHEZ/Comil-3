@@ -1,80 +1,50 @@
+
 <style>
-    .form-register {
-  width: 95%;
-  max-width: 500px;
-  margin: auto;
-{*  margin-top: 20px;*}
-  background-color: cornflowerblue;
-  border-radius: 7px;
-}
 
-.form-titulo {
-  background-color: darkblue;
-  color: white;
-  padding: 20px;
-  text-align: center;
-  font-weight: 100;
-  font-size: 30px;
-  border-top-left-radius: 7px;
-  border-top-right-radius: 7px;
-  border-bottom: 5px solid crimson;
-  justify-content: space-between;
-}
-
-input {
-  margin-bottom: 15px;
-  padding: 15px;
-  font-size: 16px;
-  border-radius: 3px;
-  border: 1px solid darkgray;
-}
-
-.registra-inputs {
-  padding: 10px 30px;
-  display: flex;
-  flex-wrap: wrap;
-}
-
-.input-100 {
-  width: 100%;
-}
-
-.btn-enviar {
-  background-color: crimson;
-  color: white;
-  margin: auto;
-  padding: 10px 40px;
-  cursor: pointer;
-}
-
-.form-link {
-  width: 100%;
-  margin: 7px;
-  font-size: 14px;
-  text-align: center;
-}
-
-@media screen and (max-width:800px) {
-  .form-register {
-    margin-top: 70px;
-  }
-}
 </style>
 
 
-<form method="POST" action="{$_layoutParams.root}usuarios/registro" id="formRegister" class="form-register" enctype="multipart/form-data">
-    <input type="hidden" name="enviar" value="1"/>
-    <h2 class="form-titulo">CREAR UNA CUENTA</h2>
-    <div class="registra-inputs">
-        <input class="input-100" type="text" name="name"  placeholder="Nombre"  value="{$datos.name|default:""}">
-        <input class="input-100" type="text" name="user"  placeholder="Usuario" value="{$datos.user|default:""}">
-        <input class="input-100" type="email" name="email"  placeholder="email"  value="{$datos.email|default:""}" >
-        <input class="input-100" type="password" name="password" id="password" placeholder="Contraseña" value="{$datos.password|default:""}">
-        <input class="input-100" type="password" name="password2"  placeholder="Confirmar Contraseña"  value="{$datos.password2|default:""}" >
-        <input class="input-100" type="file" name="image"/>
-        <input type="submit" value="Registrar" class="btn-enviar" />
-
-        <p class="form-link">¿YA TIENES UNA CUENTA? &nbsp; <a href="{$_layoutParams.root}usuarios/login"> INGRESAR</a></p>
-    </div>
-
-</form>
+<div class="my-content" >
+        <div class="container" > 
+            <div class="row">
+                <div class="col-sm-12" >
+                  <h1><strong>Comil</strong> Formulario de Registro</h1>
+                  <div class="mydescription">
+                    <p> </p>
+                  </div>
+                </div>
+            </div>
+            <div class="row">
+              <div class="col-sm-6 offset-sm-3 myform-cont" >
+                    <div class="myform-top">
+                        <div class="myform-top-left">
+                          <h3>Regístro de Usuarios .</h3>
+                            <p>Por favor ingresar los datos:</p>
+                        </div>
+                        <div class="myform-top-right">
+                          <i class="fa fa-user"></i>
+                        </div>
+                    </div>
+                    <div class="myform-bottom">
+                      <form role="form" action="{$_layoutParams.root}usuarios/registro" method="post" class="">
+                      <input type="hidden" name="registro" value="1">
+                        <div class="form-group">
+                            <input type="text" name="user" class="form-control" id="inputUser" placeholder="Ingrese el Usuario" value="{$datos.user|default:""}">
+                        </div>
+                        <div class="form-group">
+                            <input type="email" name="email" class="form-control" id="inputEmail" aria-describedby="emailHelp" placeholder="Ingrese el email"  value="{$datos.email|default:""}">
+                        </div>
+                        <div class="form-group">
+                            <input type="password" name="password" class="form-control" id="inputPassword" placeholder="Ingrese una contraseña" value="{$datos.password|default:""}">
+                        </div>
+                        <div class="form-group">
+                            <input type="password" name="confirmPassword" class="form-control" id="inputConfirmPassword" placeholder="Confirme la contraseña" value="{$datos.confirmPassword|default:""}">
+                        </div>
+                        <input type="submit" class="mybtn " value="Registrar">
+                      </form>
+                    </div>
+              </div>
+            </div>
+           
+        </div>
+      </div>

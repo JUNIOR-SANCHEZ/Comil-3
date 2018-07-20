@@ -27,18 +27,15 @@ class registroModel extends Model {
 
         return false;
     }
-
-    public function addUser($name, $user, $pass, $email, $imagen) {
-        $statement = $this->_db->prepare("CALL agregarUsuario(:name,:user,:imagen,:pass,:email);");
+    //FUNCIÓN QUE PERMITE LA INSERCIÓN DE NUEVOS USUARIOS A LA PÁGINA
+    public function addUser($user, $password, $email, $image) {
+    
+        $statement = $this->_db->prepare("CALL addUser(:user,:email,:password,:image);");
         $clave = Cifrado::getHash("sha1", $pass, HASH_KEY);
-        $statement->bindParam(":name", $name, PDO::PARAM_STR);
         $statement->bindParam(":user", $user, PDO::PARAM_STR);
-        $statement->bindParam(":pass", $clave, PDO::PARAM_STR);
+        $statement->bindParam(":password", $clave, PDO::PARAM_STR);
         $statement->bindParam(":email", $email, PDO::PARAM_STR);
-        $statement->bindParam(":email", $email, PDO::PARAM_STR);
-        $statement->bindParam(":imagen", $imagen, PDO::PARAM_STR);
-
-
+        $statement->bindParam(":image", $image, PDO::PARAM_STR);
         $statement->execute();
     }
 

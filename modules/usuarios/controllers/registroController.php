@@ -10,24 +10,20 @@ class registroController extends Controller {
     }
 
     public function index() {
-        if (Session::get('autenticado')) {
-            $this->redireccionar();
-        }
+        
         $this->_view->setJsPlugin(array("validate"));
         $this->_view->setJs(array("validacionRegistro"));
         $this->_view->assign("titulo", "Registro");
-        if ($this->getInt("enviar") == 1) {
+        $this->_view->setCss(array("registro"));
+        
+        if ($this->getInt("registro") == 1) {
             $this->_view->assign("datos", $_POST);
-            if (!$this->getSql("name")) {
-                $this->_view->assign("_error", "Debe introducir  su nombre");
-                $this->_view->renderizar("index", "registro");
-                exit;
-            }
             if (!$this->getPostParam("user")) {
                 $this->_view->assign("_error", "Debe introducir  el usuario");
                 $this->_view->renderizar("index", "registro");
                 exit;
             }
+            // print_r($_POST);exit;
             if ($this->_sqlUser->checkUser($this->getPostParam("user"))) {
                 $this->_view->assign("_error", "El usuario " . $this->getPostParam("txt_usuario") . " ya exite.");
                 $this->_view->renderizar("index", "registro");
@@ -40,7 +36,7 @@ class registroController extends Controller {
                 exit;
             }
 
-            if ($this->_sqlUser->checkEmail($this->getPostParam("emaio"))) {
+            if ($this->_sqlUser->checkEmail($this->getPostParam("email"))) {
                 $this->_view->assign("_error", "El correo " . $this->getPostParam("email") . " ya exite");
                 $this->_view->renderizar("index", "registro");
                 exit;
@@ -50,12 +46,12 @@ class registroController extends Controller {
                 $this->_view->renderizar("index", "registro");
                 exit;
             }
-            if ($this->getPostParam("password") != $this->getPostParam("password2")) {
+            if ($this->getPostParam("password") != $this->getPostParam("confirmPassword")) {
                 $this->_view->assign("_error", "Las contraseñas no coinciden");
                 $this->_view->renderizar("index", "registro");
                 exit;
             }
-            $imagen = "upl_5acda05f64a84.png";
+            $imagen = "user.png";
 
             if ($_FILES['image']['name']) {
                 $ruta = $this->getRutaCarpetaImagen("user");
@@ -80,7 +76,7 @@ class registroController extends Controller {
             }
 
             $this->_sqlUser->addUser(
-                    $this->getSql("name"), $this->getAlphaNum("user"), $this->getPostParam("password"), $this->getPostParam("email"), $imagen
+                    $this->getAlphaNum("user"), $this->getPostParam("password"), $this->getPostParam("email"), $imagen
             );
 
             if (!$this->_sqlUser->checkUser($this->getPostParam("user"))) {
@@ -90,7 +86,7 @@ class registroController extends Controller {
             }
             $this->_view->assign("datos", array());
             $this->_view->assign("mensaje", "El usuario se registro con exito.");
-            $this->redireccionar("usuarios/login");
+            $this->redireccionar("usuarios/registro");
             exit;
         }
 

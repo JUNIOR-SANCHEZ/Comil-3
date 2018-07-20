@@ -6,6 +6,7 @@ class View extends Smarty {
 
     private $_request;
     private $_js;
+    private $_css;
     private $_template;
     private $_acl;
     private $_rutas;
@@ -17,6 +18,7 @@ class View extends Smarty {
         parent::__construct();
         $this->_request = $peticion;
         $this->_js = array();
+        $this->_css = array();
         $this->_template = DEFAULT_LAYOUT;
         $this->_acl = $_acl;
         $this->_rutas = array();
@@ -28,9 +30,11 @@ class View extends Smarty {
         if ($modulo) {
             $this->_rutas["view"] = ROOT . "modules" . DS . $modulo . DS . "views" . DS . $controlador . DS;
             $this->_rutas["js"] = BASE_URL . "modules/" . $modulo . "/views/" . $controlador . '/js/';
+            $this->_rutas["css"] = BASE_URL . "modules/" . $modulo . "/views/" . $controlador . '/css/';
         } else {
             $this->_rutas["view"] = ROOT . "views" . DS . $controlador . DS;
             $this->_rutas["js"] = BASE_URL . "/views/" . $controlador . '/js/';
+            $this->_rutas["css"] = BASE_URL . "/views/" . $controlador . '/css/';
         }
     }
 
@@ -50,11 +54,16 @@ class View extends Smarty {
         if (count($this->_js)) {
             $js = $this->_js;
         }
+        $css = array();
+        if(count($this->_css)){
+            $css = $this->_css;
+        }
         $params = array(
             'ruta_css' => BASE_URL . 'views/layout/' . $this->_template . '/css/',
             'ruta_img' => BASE_URL . 'views/layout/' . $this->_template . '/img/',
             'ruta_js' => BASE_URL . 'views/layout/' . $this->_template . '/js/',
             'js' => $js,
+            'css'=> $css,
             'jsPlugin' => $this->_jsPlugin,
             'root' => BASE_URL,
             'configs' => array(
@@ -82,15 +91,28 @@ class View extends Smarty {
         $this->display("template.tpl");
     }
 
-    public function setJs(array $js) {
+    public function setJs($js) {
 
         if (is_array($js) && count($js)) {
             for ($i = 0; $i < count($js); $i++) {
                 $this->_js[] = $this->_rutas["js"] . $js[$i] . '.js';
             }
         } else {
-            throw new Exception("Error js");
+            throw new Exception("Error el parametro enviado no es un array");
         }
+    }
+
+    public function setCss( $css) {
+        
+        if (is_array($css) && count($css)) {
+            for ($i = 0; $i < count($css); $i++) {
+                $this->_css[] = $this->_rutas["css"] . $css[$i] . '.css';
+            }
+        } else {
+            throw new Exception("Error el parametro enviado no es un array");
+            exit;
+        }
+       
     }
 
     public function setTemplate($template) {

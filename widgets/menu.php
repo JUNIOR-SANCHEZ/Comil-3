@@ -1,11 +1,5 @@
 <?php
 
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
 class menuWidget extends Widget{
     
     private $modelo;
@@ -20,21 +14,24 @@ class menuWidget extends Widget{
     }
     
     public function getConfigs($menu){
+
+        //CONFIGURACION DE MENU QUE SE MUESTRA EN TODA LA APLICACION 
+        $menus["top"] = array(
+            "position"=>"top",
+            "show"=>"all",
+           "hide"=>array("index","registro","login")
+        );
+
+        //OTROS MENUS NO ESTA EN USO
         $menus["sidebar"] = array(
             "position"=>"sidebar",
             "show"=>array("acl","test","tarjetas","usuarios"),
            "hide"=>array("index"),
         );
-        
-        $menus["top"] = array(
-            "position"=>"top",
-            "show"=>"all",
-           "hide"=>array("index")
-        );
         $menus["top_default"] = array(
             "position"=>"top_default",
             "show"=>"all",
-           "hide"=>array("index"),
+           "hide"=>array("index","registro"),
         );
         return $menus[$menu];
     }

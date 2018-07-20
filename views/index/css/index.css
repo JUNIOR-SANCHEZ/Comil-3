@@ -1,0 +1,133 @@
+@media (max-width: 740px) {
+
+    .img-circle-d{
+      width: 150px !important;
+      height: 150px !important;
+    }
+    .img-noticias-t{
+      width: 510px !important;
+      height: 340px !important;
+    }
+  }
+  @media (min-width: 800px) and (max-width: 850px) {
+  
+    .img-circle-d{
+      width: 150px !important;
+      height: 150px !important;
+    }
+    .img-noticias-t{
+      width: 330px !important;
+      height: 220px !important;
+    }
+  }
+  
+  .btn .fa {
+    margin-left: 3px;
+  }
+  
+  .top-nav-collapse {
+    background-color: #ffeb3b !important;
+    color: #212121 !important;
+  }
+  
+  .navbar:not(.top-nav-collapse) {
+    background: transparent !important;
+  }
+  
+  @media (max-width: 991px) {
+    .navbar:not(.top-nav-collapse) {
+      background: #ffeb3b !important;
+    }
+  }
+  
+  .btn-white {
+    color: black !important;
+  }
+  
+  h6 {
+    line-height: 1.7;
+  }
+  
+  /* .rgba-gradient {
+    background: -moz-linear-gradient(45deg, rgba(42, 27, 161, 0.7), rgba(29, 210, 177, 0.7) 100%);
+    background: -webkit-linear-gradient(45deg, rgba(42, 27, 161, 0.7), rgba(29, 210, 177, 0.7) 100%);
+    background: -webkit-gradient(linear, 45deg, from(rgba(42, 27, 161, 0.7)), to(rgba(29, 210, 177, 0.7)));
+    background: -o-linear-gradient(45deg, rgba(42, 27, 161, 0.7), rgba(29, 210, 177, 0.7) 100%);
+    background: linear-gradient(to 45deg, rgba(42, 27, 161, 0.7), rgba(29, 210, 177, 0.7) 100%);
+  } */
+  
+  .feactures{
+    width: 300px;
+    height: 400px;
+  }
+  .slider-left{
+    width: 400px;
+    height: 450px;
+  }
+  .uniforme{
+    width: 200px;
+    height: 200px;
+  }
+  .btn-amarillo{
+    background-color: #ffeb3b !important;
+    text-transform: none;
+    font-weight: bold;
+  }
+  .icon-yellow{
+    color:#ffeb3b;
+  }
+  .bg-amarillo{
+    background-color: #ffeb3b !important;
+  }
+  
+  .bg-gris{
+    background-color: #ffeb3b !important ;
+  }
+  .bg-gris>a:hover{
+    background-color: #AEB6BF!important ;
+  }
+  
+  .btn-circle.btn-xl {
+    width: 60px;
+    height: 60px;
+    padding: 6px 12px;
+    border-radius: 35px;
+    font-size: 24px;
+    line-height: 1.33;
+  }
+  
+  .btn-circle {
+    width: 30px;
+    height: 30px;
+    padding: 6px 0px;
+    border-radius: 15px;
+    text-align: center;
+    font-size: 12px;
+    line-height: 1.42857;
+  }
+  
+  .img-circle-d{
+    width: 150px !important;
+    height: 150px !important;
+  }
+  
+  .espacio{
+    height: 100px;
+    margin:  20px 0px;
+  }
+  
+  .top-50{
+      margin-top: 50px;
+  }
+  .bottom-50{
+    margin-bottom: 50px;
+  }
+  .linea-vertical{
+    border-right: 1px solid rgba(0,0,0,.1);
+    border-left: 1px solid rgba(0,0,0,.1);
+  }
+  .linea-horizontal{
+    border-top: 1px solid rgba(0,0,0,.1);
+    border-bottom: 1px solid rgba(0,0,0,.1);
+    height: 4px;
+  }
