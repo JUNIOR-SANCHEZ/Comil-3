@@ -2,6 +2,7 @@
 <html lang="en">
     <head>
          <meta charset="utf-8">
+         <link rel="icon" type="image/png" href="{$_layoutParams.root}public/img/images/escudo.png" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
         <title>{$titulo|default:""}</title>
@@ -15,7 +16,7 @@
 
         <link href="https://fonts.googleapis.com/css?family=Song+Myung" rel="stylesheet">
         <!-- Your custom styles (optional) -->
-        <!--<link href="{$_layoutParams.root}public/css/style.css" rel="stylesheet">-->
+        <link href="{$_layoutParams.root}public/css/style.css" rel="stylesheet">
 
         <!-- RUTAS AUTOMATICAS -->
         {if isset($_layoutParams.css) && count($_layoutParams.css)}

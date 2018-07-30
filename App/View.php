@@ -11,6 +11,7 @@ class View extends Smarty {
     private $_acl;
     private $_rutas;
     private $_jsPlugin;
+    private $_cssPlugin;
     private static $_item;
     private $_widget;
 
@@ -23,6 +24,7 @@ class View extends Smarty {
         $this->_acl = $_acl;
         $this->_rutas = array();
         $this->_jsPlugin = array();
+        $this->_cssPlugin = array();
         self::$_item = "";
 
         $modulo = $this->_request->getModulo();
@@ -65,6 +67,7 @@ class View extends Smarty {
             'js' => $js,
             'css'=> $css,
             'jsPlugin' => $this->_jsPlugin,
+            'cssPlugin' => $this->_cssPlugin,
             'root' => BASE_URL,
             'configs' => array(
                 'app_name' => APP_NAME,
@@ -127,6 +130,16 @@ class View extends Smarty {
             }
         } else {
             throw new Exception("Error de js plugin");
+        }
+    }
+
+    public function setCssPlugin(array $css) {
+        if (is_array($css) && count($css)) {
+            for ($i = 0; $i < count($css); $i++) {
+                $this->_cssPlugin[] = BASE_URL . "public/css/" . $js[$i] . ".css";
+            }
+        } else {
+            throw new Exception("El dato enviado no es un array");
         }
     }
 

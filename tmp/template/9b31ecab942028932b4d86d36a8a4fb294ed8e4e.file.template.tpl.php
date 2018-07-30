@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.8, created on 2018-07-20 14:59:47
+<?php /* Smarty version Smarty-3.1.8, created on 2018-07-30 04:08:35
          compiled from "C:\xampp\htdocs\Comil-3\views\layout\default\template.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:6620270685b44e058077307-20935005%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '9b31ecab942028932b4d86d36a8a4fb294ed8e4e' => 
     array (
       0 => 'C:\\xampp\\htdocs\\Comil-3\\views\\layout\\default\\template.tpl',
-      1 => 1532091585,
+      1 => 1532916512,
       2 => 'file',
     ),
   ),
@@ -19,8 +19,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'unifunc' => 'content_5b44e058220988_59198136',
   'variables' => 
   array (
-    'titulo' => 0,
     '_layoutParams' => 0,
+    'titulo' => 0,
     'css' => 0,
     'widgets' => 0,
     'tp' => 0,
@@ -35,6 +35,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 <html lang="en">
     <head>
          <meta charset="utf-8">
+         <link rel="icon" type="image/png" href="<?php echo $_smarty_tpl->tpl_vars['_layoutParams']->value['root'];?>
+public/img/images/escudo.png" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
         <title><?php echo (($tmp = @$_smarty_tpl->tpl_vars['titulo']->value)===null||$tmp==='' ? '' : $tmp);?>
@@ -51,8 +53,8 @@ public/css/mdb.min.css" rel="stylesheet">
 
         <link href="https://fonts.googleapis.com/css?family=Song+Myung" rel="stylesheet">
         <!-- Your custom styles (optional) -->
-        <!--<link href="<?php echo $_smarty_tpl->tpl_vars['_layoutParams']->value['root'];?>
-public/css/style.css" rel="stylesheet">-->
+        <link href="<?php echo $_smarty_tpl->tpl_vars['_layoutParams']->value['root'];?>
+public/css/style.css" rel="stylesheet">
 
         <!-- RUTAS AUTOMATICAS -->
         <?php if (isset($_smarty_tpl->tpl_vars['_layoutParams']->value['css'])&&count($_smarty_tpl->tpl_vars['_layoutParams']->value['css'])){?>

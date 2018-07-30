@@ -58,7 +58,7 @@
           <h6 class="text-uppercase font-weight-bold">Unidad Educativa Comil</h6>
           <!-- <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;"> -->
           <div class="embed-responsive embed-responsive-21by9">
-            <iframe class="embed-responsive-item" src="https://www.youtube.com/watch?v=J5pBlepCt1g" allowfullscreen></iframe>
+            <iframe class="embed-responsive-item" src="https://youtu.be/jyy4oFc7zLg" allowfullscreen></iframe>
           </div>
 
         </div>

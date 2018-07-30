@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.8, created on 2018-07-16 16:23:17
+<?php /* Smarty version Smarty-3.1.8, created on 2018-07-29 07:12:46
          compiled from "C:\xampp\htdocs\Comil-3\views\galeria\index.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:4622883635b4caa55a5b312-68432381%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '7d10b4f4a98c4f9d35f62b5b0f74c2f9fa108c5d' => 
     array (
       0 => 'C:\\xampp\\htdocs\\Comil-3\\views\\galeria\\index.tpl',
-      1 => 1523483599,
+      1 => 1532832565,
       2 => 'file',
     ),
   ),
@@ -15,6 +15,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'function' => 
   array (
   ),
+  'version' => 'Smarty-3.1.8',
+  'unifunc' => 'content_5b4caa55b7c5d5_70685282',
   'variables' => 
   array (
     '_acl' => 0,
@@ -24,8 +26,6 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'gl' => 0,
   ),
   'has_nocache_code' => false,
-  'version' => 'Smarty-3.1.8',
-  'unifunc' => 'content_5b4caa55b7c5d5_70685282',
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_5b4caa55b7c5d5_70685282')) {function content_5b4caa55b7c5d5_70685282($_smarty_tpl) {?><br/><br/>
 <div class="container">

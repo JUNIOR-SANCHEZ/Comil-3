@@ -1,8 +1,33 @@
+.fondo{
+    background: url(../img/images/images.jpg);
+    height: 100vh;
+    background-position: center;
+    background-size: cover;
+}
 
+  .top{
+    margin-top: 70px;
+  }
 
-
-
-
-/* FORMULARIO */
-
-/* LOGIN */
+  .top-nav-collapse {
+    background-color: #ffeb3b !important;
+    color: #212121 !important;
+  }
+  
+  .navbar:not(.top-nav-collapse) {
+    background: #212121 !important;
+    color: #ffffff;
+  }
+  
+  @media (max-width: 991px) {
+    
+  }
+  
+  .btn-white {
+    color: #ffffff !important;
+  }
+  
+  h6 {
+    line-height: 1.7;
+  }
+  

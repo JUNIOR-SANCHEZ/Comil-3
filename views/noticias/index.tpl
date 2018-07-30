@@ -1,6 +1,6 @@
 <!--row-->
  
-    <div class="container top-50 bottom-50">
+    <div class="container top">
         <div class="row  ">
             <div class="offset-lg-2 col-lg-6  col-md-6 linea-vertical">
                 <div class="linea-horizontal"></div>

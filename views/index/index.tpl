@@ -1,78 +1,16 @@
-<!-- Main navigation -->
-<header class="">
-  <!--Navbar-->
-  <nav class="navbar navbar-expand-lg navbar-dark  fixed-top scrolling-navbar ">
-    <div class="container">
-      <a class="navbar-brand text-dark" href="{$_layoutParams.root}">
-        <strong>COMIL-3</strong>
-      </a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent-7" aria-controls="navbarSupportedContent-7" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent-7">
-        <ul class="navbar-nav ml-auto">
-          <li class="nav-item ">
-            <a class="nav-link text-dark" href="#">Inicio
-              <span class="sr-only">(current)</span>
-            </a>
-          </li>
-          <li class="nav-item active">
-            <a class="nav-link text-dark" href="{$_layoutParams.root}Noticias">Noticias</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link text-dark" href="#">Galeria</a>
-          </li>
-          <li class="nav-item dropdown ">
-            <a class="nav-link text-dark dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Otros</a>
-            <div class="dropdown-menu bg-gris" aria-labelledby="navbarDropdown">
-              <a class="dropdown-item " href="https://loja.ecuahosting.net:2096/?_task=login" target="_black">Correo Institucional</a>
-              <a class="dropdown-item" href="http://ecuanotas.net/ecuanotas/index.php" target="_black">Sistema Académico</a>
-            </div>
-          </li>
-        </ul>
-        
-      </div>
-    </div>
-  </nav>
 
-   <!-- Carrusel -->
-  <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-  <ol class="carousel-indicators">
-    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-  </ol>
-  <div class="carousel-inner">
-    <div class="carousel-item active ">
-      <img class="d-block w-100" src="{$_layoutParams.root}public/img/images/images.jpg" alt="First slide">
-      <div class="carousel-caption d-none d-md-block">
-        <h5>Third slide label</h5>
-        <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
-      </div>
-    </div>
-    <div class="carousel-item">
-      <img class="d-block w-100" src="{$_layoutParams.root}public/img/images/images.jpg" alt="Second slide">
-    </div>
-    <div class="carousel-item">
-      <img class="d-block w-100" src="{$_layoutParams.root}public/img/images/images.jpg" alt="Third slide">
-    </div>
+
+<div class="container-fluid fondo">
+  <div class="container d-flex flex-column justify-content-center h-100 align-items-end text-white ">
+    <h1 class="w-50 text-center">U.E.FF.A COMIL 3</h1>
+    <p class="w-50 text-justify">Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots
+     in a piece of classical Latin literature from 45 BC, making it over 2000 years old.
+     Richard McClintock,a Latin professor at Hampden-Sydney College in Virginia, looked
+     up one of </p>
   </div>
-  <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-    <button class= "btn indigo lighten-5 btn-circle btn-xl" aria-hidden="true"><i class= "fa fa-angle-left fa-2x text-dark"></i></button>
-    <span class="sr-only">Previous</span>
-  </a>
-  <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-    <button class= "btn indigo lighten-5 btn-circle btn-xl" aria-hidden="true"><i class= "fa fa-angle-right fa-2x text-dark"></i></button>
-    <span class="sr-only">Next</span>
-  </a>
 </div>
-<!-- Carrusel -->
-</header>
-<!-- Main navigation -->
-
 
 <!-- Section: Autoridades -->
-<div class="">
 <section class="team-section text-center pb-5  container">
   <!-- Section heading -->
   <h2 class="h1-responsive font-weight-bold py-5">PRINCIPALES AUTORIDADES DE LA INSTITUCIÓN</h2>
@@ -124,11 +62,7 @@
     <!-- Grid column -->
   </div>
   <!-- Grid row -->
-</section>
-</div>
-<!-- Section: Autoridades -->
-
-
+</section><!-- Section: Autoridades -->
 
 <!-- Section: Comunicados -->
 <div class="py-3  amber  lighten-5">
@@ -164,24 +98,17 @@
         <!--Grid row-->
     </div>
 </div>
-</div>
-<!-- Section: Comunicados -->
-
-
+</div><!-- Section: Comunicados -->
 
 <!-- Section: Noticias -->
 <section class="text-center my-5 container">
-
   <!-- Section heading -->
   <h2 class="h1-responsive font-weight-bold my-5">Noticias Recientes</h2>
   <!-- Section description -->
-
   <!-- Grid row -->
   <div class="row">
-
     <!-- Grid column -->
     <div class="col-lg-4 col-md-6 mb-0">
-
       <!-- Featured image -->
       <div class="view overlay rounded z-depth-2 mb-4">
         <img class="img-fluid img-noticias-t" src="{$_layoutParams.root}public/img/inicio/foto2.gif" alt="Sample image">
@@ -189,9 +116,8 @@
           <div class="mask rgba-white-slight"></div>
         </a>
       </div>
-
       <!-- Category -->
-      <a href="#!" class="blue-text"><h6 class="font-weight-bold mb-3"><i class="fa fa-fire pr-2"></i>Actividades</h6></a>
+      <!--<a href="#!" class="blue-text"><h6 class="font-weight-bold mb-3"><i class="fa fa-fire pr-2"></i>Actividades</h6></a>-->
       <!-- Post title -->
       <h4 class="font-weight-bold mb-3"><strong>CADETE DE ACERO</strong></h4>
       <!-- Post data -->
@@ -216,9 +142,8 @@
           <div class="mask rgba-white-slight"></div>
         </a>
       </div>
-
       <!-- Category -->
-      <a href="#!" class="pink-text"><h6 class="font-weight-bold mb-3"><i class="fa fa-map pr-2"></i> Actividades</h6></a>
+      <!--<a href="#!" class="pink-text"><h6 class="font-weight-bold mb-3"><i class="fa fa-map pr-2"></i> Actividades</h6></a>-->
       <!-- Post title -->
       <h4 class="font-weight-bold mb-3"><strong>SESIÓN SOLEMNE, MISA Y COLOCACIÓN DE OFRENDA FLORAL</strong></h4>
       <!-- Post data -->
@@ -227,13 +152,10 @@
       <p class="dark-grey-text">La Unidad Educativa de Fuerzas Armadas Colegio Militar Nº3 “Héroes del 41” por motivo de cumplir el Vigésimo Sexto Aniversario de Creación al servicio de la educación machaleña y orense.</p>
       <!-- Read more button -->
       <a class="btn btn-pink btn-rounded btn-md">Read more</a>
-
     </div>
     <!-- Grid column -->
-
     <!-- Grid column -->
     <div class="col-lg-4 col-md-6 mb-md-0 mb-4">
-
       <!-- Featured image -->
       <div class="view overlay rounded z-depth-2 mb-4">
         <img class="img-fluid img-noticias-t" src="{$_layoutParams.root}public/img/diseño/presidenteconsej.gif" alt="Sample image">
@@ -241,9 +163,8 @@
           <div class="mask rgba-white-slight"></div>
         </a>
       </div>
-
       <!-- Category -->
-      <a href="#!" class="deep-orange-text"><h6 class="font-weight-bold mb-3"><i class="fa fa-graduation-cap pr-2"></i>Education</h6></a>
+      <!--<a href="#!" class="deep-orange-text"><h6 class="font-weight-bold mb-3"><i class="fa fa-graduation-cap pr-2"></i>Education</h6></a>-->
       <!-- Post title -->
       <h4 class="font-weight-bold mb-3"><strong>POSESIÓN DEL CONSEJO ESTUDIANTIL</strong></h4>
       <!-- Post data -->

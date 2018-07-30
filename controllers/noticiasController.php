@@ -6,7 +6,7 @@ class noticiasController extends Controller
     }
 
     public function index(){
-        $this->_view->assign("titulo","FUNDACION");
+        $this->_view->assign("titulo","Noticias");
         $this->_view->renderizar('index',"noticias");
     }
 }

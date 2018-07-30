@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.8, created on 2018-07-18 16:41:24
+<?php /* Smarty version Smarty-3.1.8, created on 2018-07-30 03:26:46
          compiled from "C:\xampp\htdocs\Comil-3\views\noticias\index.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:3419778685b4c9a5d464573-90635898%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'e1c4f2a56b8cfb4d805f1ce2cedb505afdc258c5' => 
     array (
       0 => 'C:\\xampp\\htdocs\\Comil-3\\views\\noticias\\index.tpl',
-      1 => 1531924882,
+      1 => 1532914000,
       2 => 'file',
     ),
   ),
@@ -21,7 +21,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_5b4c9a5d56c2f1_43766779')) {function content_5b4c9a5d56c2f1_43766779($_smarty_tpl) {?><!--row-->
  
-    <div class="container top-50 bottom-50">
+    <div class="container top">
         <div class="row  ">
             <div class="offset-lg-2 col-lg-6  col-md-6 linea-vertical">
                 <div class="linea-horizontal"></div>

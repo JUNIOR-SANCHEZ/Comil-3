@@ -19,7 +19,7 @@ class menuWidget extends Widget{
         $menus["top"] = array(
             "position"=>"top",
             "show"=>"all",
-           "hide"=>array("index","registro","login")
+           "hide"=>array("registro","login")
         );
 
         //OTROS MENUS NO ESTA EN USO
