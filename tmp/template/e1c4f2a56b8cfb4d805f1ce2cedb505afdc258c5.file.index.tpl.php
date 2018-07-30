@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.8, created on 2018-07-30 03:26:46
+<?php /* Smarty version Smarty-3.1.8, created on 2018-07-30 20:48:09
          compiled from "C:\xampp\htdocs\Comil-3\views\noticias\index.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:3419778685b4c9a5d464573-90635898%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'e1c4f2a56b8cfb4d805f1ce2cedb505afdc258c5' => 
     array (
       0 => 'C:\\xampp\\htdocs\\Comil-3\\views\\noticias\\index.tpl',
-      1 => 1532914000,
+      1 => 1532976423,
       2 => 'file',
     ),
   ),
