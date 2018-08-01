@@ -8,7 +8,6 @@
 
     <!-- Optional theme -->
     <link rel="stylesheet" href="{$_layoutParams.root}public/css/bootstrap.css" />
-    <link rel="stylesheet" href="{$_layoutParams.ruta_css}miestilo.css" />
 
 </head>
 <body>
