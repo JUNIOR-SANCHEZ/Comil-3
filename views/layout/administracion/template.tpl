@@ -8,6 +8,11 @@
 
     <!-- Optional theme -->
     <link rel="stylesheet" href="{$_layoutParams.root}public/css/bootstrap.css" />
+    {if isset($_layoutParams.css) && count($_layoutParams.css)}
+            {foreach item=css from=$_layoutParams.css}
+                <link href="{$css}" rel="stylesheet">
+            {/foreach}
+    {/if}
 
 </head>
 <body>

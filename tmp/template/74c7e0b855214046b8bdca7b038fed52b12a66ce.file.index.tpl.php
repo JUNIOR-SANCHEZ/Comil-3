@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.8, created on 2018-07-31 05:49:58
+<?php /* Smarty version Smarty-3.1.8, created on 2018-08-03 16:48:28
          compiled from "C:\xampp\htdocs\Comil-3\modules\usuarios\views\login\index.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:17122069545b4cab43324056-42281717%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '74c7e0b855214046b8bdca7b038fed52b12a66ce' => 
     array (
       0 => 'C:\\xampp\\htdocs\\Comil-3\\modules\\usuarios\\views\\login\\index.tpl',
-      1 => 1532832565,
+      1 => 1533307703,
       2 => 'file',
     ),
   ),
@@ -20,6 +20,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'variables' => 
   array (
     '_layoutParams' => 0,
+    'datos' => 0,
   ),
   'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
@@ -34,12 +35,16 @@ public/img/face.png">
       </div>
       
       <div class="col-12 form-input">
-          <form>
+          <form method="post" action="<?php echo $_smarty_tpl->tpl_vars['_layoutParams']->value['root'];?>
+usuarios/login">
+              <input type="hidden" name="login" value="1">
               <div class="form-group">
-                  <input type="text" class="form-control" placeholder="Ingresar Usuario o email">
+                  <input type="text" class="form-control" name="user" placeholder="Ingresar Usuario o email" value="<?php echo (($tmp = @$_smarty_tpl->tpl_vars['datos']->value['user'])===null||$tmp==='' ? '' : $tmp);?>
+">
               </div>
               <div class="form-group">
-                  <input type="password" class="form-control" placeholder="Ingresar Contraseña">
+                  <input type="password" class="form-control" name="password" placeholder="Ingresar Contraseña" value="<?php echo (($tmp = @$_smarty_tpl->tpl_vars['datos']->value['password'])===null||$tmp==='' ? '' : $tmp);?>
+">
               </div>
               <button type="submit" class="btn btn-success" >Login</button>
           </form>

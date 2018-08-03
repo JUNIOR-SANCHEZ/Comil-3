@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.8, created on 2018-07-30 20:48:00
+<?php /* Smarty version Smarty-3.1.8, created on 2018-08-01 15:21:40
          compiled from "C:\xampp\htdocs\Comil-3\views\layout\default\template.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:6620270685b44e058077307-20935005%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '9b31ecab942028932b4d86d36a8a4fb294ed8e4e' => 
     array (
       0 => 'C:\\xampp\\htdocs\\Comil-3\\views\\layout\\default\\template.tpl',
-      1 => 1532976423,
+      1 => 1533129617,
       2 => 'file',
     ),
   ),
@@ -73,7 +73,7 @@ $_smarty_tpl->tpl_vars['css']->_loop = true;
     <body class="">
 
 <!-- MENU DE NAVEGACION -->        
-               <?php if (isset($_smarty_tpl->tpl_vars['widgets']->value['top'])){?>
+               <?php if (isset($_smarty_tpl->tpl_vars['widgets']->value['top'])){?>  
                     <?php  $_smarty_tpl->tpl_vars['tp'] = new Smarty_Variable; $_smarty_tpl->tpl_vars['tp']->_loop = false;
  $_from = $_smarty_tpl->tpl_vars['widgets']->value['top']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
 foreach ($_from as $_smarty_tpl->tpl_vars['tp']->key => $_smarty_tpl->tpl_vars['tp']->value){

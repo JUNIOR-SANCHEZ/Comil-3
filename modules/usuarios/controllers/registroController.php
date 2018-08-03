@@ -53,27 +53,27 @@ class registroController extends Controller {
             }
             $imagen = "user.png";
 
-            if ($_FILES['image']['name']) {
-                $ruta = $this->getRutaCarpetaImagen("user");
-                $upload = new upload($_FILES['image'], 'es_Es');
-                $upload->allowed = array('image/*');
-                $upload->file_new_name_body = 'upl_' . uniqid();
-                $upload->process($ruta);
+            // if ($_FILES['image']['name']) {
+            //     $ruta = $this->getRutaCarpetaImagen("user");
+            //     $upload = new upload($_FILES['image'], 'es_Es');
+            //     $upload->allowed = array('image/*');
+            //     $upload->file_new_name_body = 'upl_' . uniqid();
+            //     $upload->process($ruta);
 
-                if ($upload->processed) {
-                    $imagen = $upload->file_dst_name;
-                    $thumb = new upload($upload->file_dst_pathname);
-                    $thumb->image_resize = true;
-                    $thumb->image_x = 800;
-                    $thumb->image_y = 600;
-                    $thumb->file_name_body_pre = 'thumb_';
-                    $thumb->process($ruta . 'thumb' . DS);
-                } else {
-                    $this->_view->assign('_error', $upload->error);
-                    $this->_view->renderizar('index', 'blog');
-                    exit;
-                }
-            }
+            //     if ($upload->processed) {
+            //         $imagen = $upload->file_dst_name;
+            //         $thumb = new upload($upload->file_dst_pathname);
+            //         $thumb->image_resize = true;
+            //         $thumb->image_x = 800;
+            //         $thumb->image_y = 600;
+            //         $thumb->file_name_body_pre = 'thumb_';
+            //         $thumb->process($ruta . 'thumb' . DS);
+            //     } else {
+            //         $this->_view->assign('_error', $upload->error);
+            //         $this->_view->renderizar('index', 'blog');
+            //         exit;
+            //     }
+            // }
 
             $this->_sqlUser->addUser(
                     $this->getAlphaNum("user"), $this->getPostParam("password"), $this->getPostParam("email"), $imagen

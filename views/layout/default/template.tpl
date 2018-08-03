@@ -30,7 +30,7 @@
     <body class="">
 
 <!-- MENU DE NAVEGACION -->        
-               {if isset($widgets.top)}
+               {if isset($widgets.top)}  
                     {foreach item=tp from=$widgets.top}
                         {$tp}
                     {/foreach}

@@ -8,12 +8,13 @@
       </div>
       
       <div class="col-12 form-input">
-          <form>
+          <form method="post" action="{$_layoutParams.root}usuarios/login">
+              <input type="hidden" name="login" value="1">
               <div class="form-group">
-                  <input type="text" class="form-control" placeholder="Ingresar Usuario o email">
+                  <input type="text" class="form-control" name="user" placeholder="Ingresar Usuario o email" value="{$datos.user|default:""}">
               </div>
               <div class="form-group">
-                  <input type="password" class="form-control" placeholder="Ingresar Contraseña">
+                  <input type="password" class="form-control" name="password" placeholder="Ingresar Contraseña" value="{$datos.password|default:""}">
               </div>
               <button type="submit" class="btn btn-success" >Login</button>
           </form>

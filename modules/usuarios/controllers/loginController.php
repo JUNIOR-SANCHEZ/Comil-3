@@ -4,6 +4,7 @@ class loginController extends Controller {
     private $_login;
     public function __construct() {
         parent::__construct();
+        
         $this->_login = $this->loadModel('login');
     }
 
@@ -12,10 +13,11 @@ class loginController extends Controller {
         $this->_view->setJsPlugin(array("validate"));
         $this->_view->setJs(array("validacionLogin"));   
         $this->_view->setCss(array("login"));
-
-        if (Session::get("autenticado")) $this->redireccionar();
         $this->_view->assign("titulo","Login");
-        if ($this->getInt('enviar') == 1) {
+        if (Session::get("autenticado")) $this->redireccionar();
+
+        
+        if ($this->getInt('login') == 1) {
             $this->_view->assign("datos",$_POST);
             if(!$this->getAlphaNum('user')){
                  $this->_view->assign("_error","Escriba el nombre de usuario");
@@ -44,8 +46,9 @@ class loginController extends Controller {
             Session::set('usuario', $row['usuario']);
             Session::set('tiempo', time());
             
-            $this->redireccionar();
+            $this->redireccionar("administracion");
         }
+        
         $this->_view->renderizar('index', 'login');
     }
 

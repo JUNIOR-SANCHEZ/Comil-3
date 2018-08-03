@@ -5,7 +5,7 @@ class registroModel extends Model {
     public function __construct() {
         parent::__construct();
     }
-
+    //FUNCION QUE PERMITE VERIFICAR SI EL EMAIL YA EXISTE
     public function checkEmail($email) {
         $result = $this->_db->prepare("SELECT * FROM usuarios WHERE email = :email;");
         $result->bindParam(":email", $email, PDO::PARAM_STR);
@@ -16,7 +16,7 @@ class registroModel extends Model {
 
         return false;
     }
-
+    //FUNCION QUE PERMITE VERIFICAR SI EL NOMBRE DE USUARIO YA EXISTE
     public function checkUser($user) {
         $result = $this->_db->prepare("SELECT * FROM usuarios WHERE usuario = :user;");
         $result->bindParam(":user", $user, PDO::PARAM_STR);
@@ -31,7 +31,7 @@ class registroModel extends Model {
     public function addUser($user, $password, $email, $image) {
     
         $statement = $this->_db->prepare("CALL addUser(:user,:email,:password,:image);");
-        $clave = Cifrado::getHash("sha1", $pass, HASH_KEY);
+        $clave = Cifrado::getHash("sha1", $password, HASH_KEY);
         $statement->bindParam(":user", $user, PDO::PARAM_STR);
         $statement->bindParam(":password", $clave, PDO::PARAM_STR);
         $statement->bindParam(":email", $email, PDO::PARAM_STR);
@@ -43,7 +43,6 @@ class registroModel extends Model {
         if (!$id) {
             $id = Session::get("id");
         }
-        // echo $estado;exit;
         $statement = $this->_db->prepare("CALL modificarUsuario(:img,:name,:user,:email,:phone,:sexo,:estadoCivil,:ocupacion,:id);");
         $statement->bindParam(":name", $name, PDO::PARAM_STR);
         $statement->bindParam(":user", $user, PDO::PARAM_STR);

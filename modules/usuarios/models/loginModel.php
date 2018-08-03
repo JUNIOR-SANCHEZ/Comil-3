@@ -4,7 +4,7 @@ class loginModel extends Model{
     public function __construct() {
         parent::__construct();
     }
-    
+    //FUNCION DE ACCESO A LA APLICACION (LOGIN)
     public function getUser($user,$pass){
         $pass = Cifrado::getHash("sha1", $pass, HASH_KEY);
         $rows = $this->_db->prepare("SELECT * FROM usuarios WHERE usuario=:user AND pass=:pass;");
