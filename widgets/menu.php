@@ -22,16 +22,16 @@ class menuWidget extends Widget{
            "hide"=>array("registro","login")
         );
 
-        //OTROS MENUS NO ESTA EN USO
         $menus["sidebar"] = array(
             "position"=>"sidebar",
-            "show"=>array("acl","test","tarjetas","usuarios"),
+            "show"=>array("acl","usuarios"),
            "hide"=>array("index"),
         );
+
         $menus["top_default"] = array(
             "position"=>"top_default",
             "show"=>"all",
-           "hide"=>array("index","registro"),
+           "hide"=>array(),
         );
         return $menus[$menu];
     }

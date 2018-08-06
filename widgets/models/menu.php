@@ -22,17 +22,12 @@ class menuModelWidget extends Model{
                 "id"=>"acl",
                 "titulo"=>"Lista de control de acceso",
                 "enlace"=>BASE_URL."acl"
-            ),
-            array(
-                "id"=>"test",
-                "titulo"=>"test",
-                "enlace"=>BASE_URL."test"
             )
-                      
+                   
         );
        
        
-       $menus["top"]= array(
+       $menus["top_default"]= array(
             array(
                 'id' => 'inicio',
                 'titulo' => 'Inicio',
@@ -55,12 +50,18 @@ class menuModelWidget extends Model{
         );
        
        if($this->_acl->permiso("admin_access")){
-          $menus["top"][] = array(
+          $menus["top_default"][] = array(
                 "id"=>"usuarios",
                 "titulo"=>"Usuarios",
                 "enlace"=>BASE_URL."Usuarios"
             );
        }
+       $menus["top"][]= array(
+            'id' => 'inicio',
+            'titulo' => 'Inicio',
+            'class'=>'icon-home',
+            'enlace' => BASE_URL
+        );
         return $menus[$menu];
     }
 }

@@ -13,7 +13,7 @@ class footerWidget extends Widget{
         $footer["footer"] = array(
             "position"=>"footer",
             "show"=>"all",
-            "hide"=>array("registro","login")
+            "hide"=>array("registro","login","usuarios")
         );
         return $footer[$menu];
     }

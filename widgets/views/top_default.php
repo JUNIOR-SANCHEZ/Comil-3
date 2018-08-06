@@ -1,38 +1,34 @@
-
-
-
-
-
-
-
-<nav class="navbar  navbar-default">
-    <div class="container-fluid">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="#">
-                <img alt="Logo" height="25px" width="25px" src="<?=BASE_URL.'public/img/logo.png'?>">
-            </a>
-        </div>
-        
-        <?php if(isset($menu) && sizeof($menu) > 0 ) : ?>
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul class="nav navbar-nav">
-                <?php foreach ($menu as $item):?>
-                <?php 
-                    $_item_style = "";
-                    if(View::getViewId() && $item["id"] == View::getViewId()){
-                        $_item_style = "active";
-                    }
-                ?>
-                <li class="<?=$_item_style?>"><a href="<?=$item["enlace"]?>"><?=$item["titulo"]?> <span class="sr-only">(current)</span></a></li>
-                <?php endforeach; ?>
-            </ul>
-        </div>
+<!-- Main navigation -->
+<header>
+  <!--Navbar-->
+  <nav class="navbar navbar-expand-lg navbar-dark  fixed-top scrolling-navbar ">
+    <div class="container">
+      <a class="navbar-brand" href="<?=BASE_URL ?>">
+        <strong>COMIL-3</strong>
+      </a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent-7" aria-controls="navbarSupportedContent-7" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent-7">
+      <?php if (isset($menu) && sizeof($menu) > 0) : ?>
+        <ul class="navbar-nav ml-auto">
+      <?php foreach ($menu as $item): ?>
+          <li class="nav-item <?=$_item_style?> ">
+            <a class="nav-link" href="<?=$item["enlace"]?>"><?=$item["titulo"]?></a>
+          </li>
+        <?php endforeach; ?>
+          <li class="nav-item dropdown ">
+            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Otros</a>
+            <div class="dropdown-menu bg-gris" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item " href="https://loja.ecuahosting.net:2096/?_task=login" target="_black">Correo Institucional</a>
+              <a class="dropdown-item" href="http://ecuanotas.net/ecuanotas/index.php" target="_black">Sistema Académico</a>
+            </div>
+          </li>
+        </ul>
         <?php endif; ?>
-    </div> 
-</nav>
+          
+      </div>
+    </div>
+  </nav>
+
+</header><!-- Main navigation -->

@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.8, created on 2018-08-01 15:10:38
+<?php /* Smarty version Smarty-3.1.8, created on 2018-08-06 21:06:11
          compiled from "C:\xampp\htdocs\Comil-3\views\layout\administracion\template.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:16192277815b5fe2819daff1-75521546%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'cf67add2ab87b2c0045393200775fbb8a0f81971' => 
     array (
       0 => 'C:\\xampp\\htdocs\\Comil-3\\views\\layout\\administracion\\template.tpl',
-      1 => 1533129036,
+      1 => 1533582220,
       2 => 'file',
     ),
   ),
@@ -36,8 +36,10 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     <meta name="description" content="">
     <meta name="author" content="">
     <!-- Latest compiled and minified CSS -->
-
+    <link href="<?php echo $_smarty_tpl->tpl_vars['_layoutParams']->value['root'];?>
+public/css/bootstrap.min.css" rel="stylesheet">
     <!-- Optional theme -->
+
     <link rel="stylesheet" href="<?php echo $_smarty_tpl->tpl_vars['_layoutParams']->value['root'];?>
 public/css/bootstrap.css" />
     <?php if (isset($_smarty_tpl->tpl_vars['_layoutParams']->value['css'])&&count($_smarty_tpl->tpl_vars['_layoutParams']->value['css'])){?>

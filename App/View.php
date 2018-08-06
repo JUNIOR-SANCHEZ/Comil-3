@@ -189,7 +189,7 @@ class View extends Smarty {
             ),
             "menu-top-default" => array(
                 "config" => $this->widget("menu", "getConfigs",array("top_default")),
-                "content" => array("menu", "getMenu",array("top","top_default"))
+                "content" => array("menu", "getMenu",array("top_default","top_default"))
             ),
             "footer" => array(
                 "config" => $this->widget("footer", "getConfigs",array("footer")),

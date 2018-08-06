@@ -7,10 +7,12 @@ class indexController extends usuariosController
     public function __construct() 
     {
         parent::__construct();
+        $this->_view->setTemplate("administracion");
         $this->_usuarios = $this->loadModel('index');
         if(!$this->_acl->permiso("admin_access")){
             $this->redireccionar();
         }
+
     }
     
     public function index()

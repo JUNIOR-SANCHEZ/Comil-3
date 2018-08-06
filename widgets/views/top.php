@@ -1,7 +1,7 @@
 <!-- Main navigation -->
-<header>
+<!-- <header> -->
   <!--Navbar-->
-  <nav class="navbar navbar-expand-lg navbar-dark  fixed-top scrolling-navbar ">
+  <!-- <nav class="navbar navbar-expand-lg navbar-dark  fixed-top scrolling-navbar ">
     <div class="container">
       <a class="navbar-brand" href="<?=BASE_URL ?>">
         <strong>COMIL-3</strong>
@@ -31,4 +31,4 @@
     </div>
   </nav>
 
-</header><!-- Main navigation -->
+</header>Main navigation -->

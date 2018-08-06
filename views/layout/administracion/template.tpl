@@ -5,8 +5,9 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <!-- Latest compiled and minified CSS -->
-
+    <link href="{$_layoutParams.root}public/css/bootstrap.min.css" rel="stylesheet">
     <!-- Optional theme -->
+
     <link rel="stylesheet" href="{$_layoutParams.root}public/css/bootstrap.css" />
     {if isset($_layoutParams.css) && count($_layoutParams.css)}
             {foreach item=css from=$_layoutParams.css}

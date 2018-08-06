@@ -38,7 +38,7 @@ class registroModel extends Model {
         $statement->bindParam(":image", $image, PDO::PARAM_STR);
         $statement->execute();
     }
-
+    //FUNCIÓN QUE PERMITE EDITAR LOS USUARIOS REGISTRADOS EN LA PÁGINA
     public function editUser($img,$name, $user, $email, $phone, $sexo, $estado,$ocupacion, $id = false) {
         if (!$id) {
             $id = Session::get("id");
@@ -57,9 +57,8 @@ class registroModel extends Model {
 
         $statement->execute();
     }
-
+    //FUNCIÓN QUE PERMITE OBTENER LOS REGISTROS DE UN USUARIO A TRAVES DE UN ID
     public function getUserById($id) {
-
         $strt = $this->_db->prepare("SELECT * FROM usuarios WHERE id = :id");
         $strt->bindParam(":id", $id, PDO::PARAM_STR);
         $strt->execute();

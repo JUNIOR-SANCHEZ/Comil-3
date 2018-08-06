@@ -1,13 +1,17 @@
+
+<div class="navbarfalse"></div>
+<div class="container">
 <div class="row">
     <div class="col-md-4">
         <h2>Usuarios</h2>
     </div>
-    <div class=" col-md-8" >
-        <form class="navbar-form navbar-right"  action="{$_layoutParams.root}usuarios" method="POST" role="search">
+    <div class=" col-md-8 my-4" >
+        <form class="form-inline"  action="{$_layoutParams.root}usuarios" method="POST" role="search">
             <div class="form-group">
               <input type="text" class="form-control" placeholder="Buscar por usuario" name="share" id="share">
             </div>
-            <button type="submit" class="btn btn-default">BUSCAR</button>
+            
+            <input type="submit" class="btn btn-default" value="Buscar">
         </form>
     </div>
     
@@ -42,3 +46,4 @@
         {/foreach}
     </table>
 {/if}
+</div>
