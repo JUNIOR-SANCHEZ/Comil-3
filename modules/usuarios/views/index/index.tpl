@@ -1,18 +1,13 @@
-<div class="container">
-    
-            <h2>Usuarios</h2>
-        <div class="row">
-        <div class="col-12 my-4">
-            <form class="form-inline justify-content-center" action="{$_layoutParams.root}usuarios" method="POST" role="search">
-                <div class="form-group mr-3">
-                    <input type="text" class="form-control" placeholder="Buscar por usuario" name="share" id="share">
-                </div>
-
-                <input type="submit" class="btn btn-danger" value="Buscar">
-            </form>
-        </div>
+<h2>Usuarios</h2>
+<form class="form-inline justify-content-center" action="{$_layoutParams.root}usuarios" method="POST" role="search">
+    <div class="form-group mr-3">
+        <input type="text" class="form-control" placeholder="Buscar por usuario" name="share" id="search">
     </div>
-    {if isset($usuarios) && count($usuarios)}
+
+    <input type="submit" class="btn btn-danger" value="Buscar">
+</form>
+{if isset($usuarios) && count($usuarios)}
+<div class="table-responsive">
     <table class="table table-bordered table-striped table-condensed">
         <tr>
             <th>ID</th>
@@ -38,5 +33,5 @@
         </tr>
         {/foreach}
     </table>
-    {/if}
 </div>
+{/if}

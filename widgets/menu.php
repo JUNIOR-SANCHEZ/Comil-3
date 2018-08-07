@@ -31,7 +31,7 @@ class menuWidget extends Widget{
         $menus["top_default"] = array(
             "position"=>"top_default",
             "show"=>"all",
-           "hide"=>array("usuarios")
+           "hide"=>array("usuarios","login")
         );
         return $menus[$menu];
     }

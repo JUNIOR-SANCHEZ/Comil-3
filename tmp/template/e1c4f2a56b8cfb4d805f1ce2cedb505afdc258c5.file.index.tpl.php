@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.8, created on 2018-08-07 00:59:13
+<?php /* Smarty version Smarty-3.1.8, created on 2018-08-07 22:38:26
          compiled from "C:\xampp\htdocs\Comil-3\views\noticias\index.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:3419778685b4c9a5d464573-90635898%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'e1c4f2a56b8cfb4d805f1ce2cedb505afdc258c5' => 
     array (
       0 => 'C:\\xampp\\htdocs\\Comil-3\\views\\noticias\\index.tpl',
-      1 => 1533596332,
+      1 => 1533673220,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
 <?php if ($_valid && !is_callable('content_5b4c9a5d56c2f1_43766779')) {function content_5b4c9a5d56c2f1_43766779($_smarty_tpl) {?>    <!-- slider -->
-    <div class="container-fluid slider d-flex flex-column justify-content-center align-items-center">
+    <!-- <div class="container-fluid slider d-flex flex-column justify-content-center align-items-center">
         <div class="text-center text-white">
             <h3>Lorem ipsum dolor sit amet.</h3>
             <h1 class="display">Lorem, ipsum dolor.</h1>
@@ -34,12 +34,12 @@ $_valid = $_smarty_tpl->decodeProperties(array (
                 <button type="submit" class="btn btn-danger">Enviar</button>
             </div>
         </form>
-    </div>
+    </div> -->
     <!-- slider -->
     <!-- mai -->
-    <div class="container">
-        <h3>Lorem, ipsum dolor.</h3>
-        <p class="lead">Lorem ipsum dolor sit amet consectetur adipisicing.</p>
+    <div class="container" style="margin-top: 80px;">
+        <h3>Noticias</h3>
+        <p class="lead">Unidad educativa de fuerzas armadas colegio militar n° 3 “héroes del 41”</p>
         <hr>
         <div class="row">
             <!-- articulos -->
@@ -200,5 +200,4 @@ $_valid = $_smarty_tpl->decodeProperties(array (
             </div>
             <!-- aside -->
         </div>
-    </div>
-<?php }} ?>
+    </div><?php }} ?>

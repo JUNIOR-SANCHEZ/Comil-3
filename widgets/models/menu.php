@@ -59,24 +59,11 @@ class menuModelWidget extends Model{
 
        $menus["top"]= array(
         array(
-            'id' => 'inicio',
-            'titulo' => 'Inicio',
-            'class'=>'icon-home',
-            'enlace' => BASE_URL
-        ),
-       array(
             'id' => 'noticias',
             'titulo' => 'Noticias',
-            'class'=>'icon-target',
-            'enlace' => BASE_URL.'noticias'
-        ),
-       array(
-            'id' => 'galeria',
-            'titulo' => 'Galeria',
-            'class'=>'icon-target',
-            'enlace' => BASE_URL."galeria"
+            'class'=>'icon-home',
+            'enlace' => BASE_URL.'administracion/noticias'
         )
-       
     );
    
    if($this->_acl->permiso("admin_access")){

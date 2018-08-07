@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.8, created on 2018-08-07 06:31:05
+<?php /* Smarty version Smarty-3.1.8, created on 2018-08-07 22:08:14
          compiled from "C:\xampp\htdocs\Comil-3\modules\usuarios\views\index\index.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:17979304815b6897507ae5a9-99536197%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '1c9dcc414d3d03fe6c7440f7dab389254122f0b9' => 
     array (
       0 => 'C:\\xampp\\htdocs\\Comil-3\\modules\\usuarios\\views\\index\\index.tpl',
-      1 => 1533616257,
+      1 => 1533672492,
       2 => 'file',
     ),
   ),
@@ -25,22 +25,17 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   ),
   'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_5b689750f0b1d3_32951378')) {function content_5b689750f0b1d3_32951378($_smarty_tpl) {?><div class="container">
-    
-            <h2>Usuarios</h2>
-        <div class="row">
-        <div class="col-12 my-4">
-            <form class="form-inline justify-content-center" action="<?php echo $_smarty_tpl->tpl_vars['_layoutParams']->value['root'];?>
+<?php if ($_valid && !is_callable('content_5b689750f0b1d3_32951378')) {function content_5b689750f0b1d3_32951378($_smarty_tpl) {?><h2>Usuarios</h2>
+<form class="form-inline justify-content-center" action="<?php echo $_smarty_tpl->tpl_vars['_layoutParams']->value['root'];?>
 usuarios" method="POST" role="search">
-                <div class="form-group mr-3">
-                    <input type="text" class="form-control" placeholder="Buscar por usuario" name="share" id="share">
-                </div>
-
-                <input type="submit" class="btn btn-danger" value="Buscar">
-            </form>
-        </div>
+    <div class="form-group mr-3">
+        <input type="text" class="form-control" placeholder="Buscar por usuario" name="share" id="search">
     </div>
-    <?php if (isset($_smarty_tpl->tpl_vars['usuarios']->value)&&count($_smarty_tpl->tpl_vars['usuarios']->value)){?>
+
+    <input type="submit" class="btn btn-danger" value="Buscar">
+</form>
+<?php if (isset($_smarty_tpl->tpl_vars['usuarios']->value)&&count($_smarty_tpl->tpl_vars['usuarios']->value)){?>
+<div class="table-responsive">
     <table class="table table-bordered table-striped table-condensed">
         <tr>
             <th>ID</th>
@@ -77,5 +72,5 @@ usuarios/index/eliminarUsuario/<?php echo Cifrado::encryption($_smarty_tpl->tpl_
         </tr>
         <?php } ?>
     </table>
-    <?php }?>
-</div><?php }} ?>
+</div>
+<?php }?><?php }} ?>
