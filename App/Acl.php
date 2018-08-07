@@ -1,5 +1,4 @@
 <?php
-
 class ACL
 {
     //DECLARACION DE ATRIBUTOS DE LA CLASE ACL 
@@ -65,15 +64,11 @@ class ACL
                 "select permiso from permisos_role " .
                 "where role = '{$this->_role}'"
                 );
-                
         $ids = $ids->fetchAll(PDO::FETCH_ASSOC);
-        
         $id = array();
-        
         for($i = 0; $i < count($ids); $i++){
             $id[] = $ids[$i]['permiso'];
         }
-        
         return $id;
     }
     //ESTA FUNCION DEVOLVERA LOS PERMISO DEL ROL YA PROCESADOS MEDIANTE UN ARREGLO  
@@ -190,7 +185,6 @@ class ACL
         if(isset($this->_permisos) && count($this->_permisos))
             return $this->_permisos;
     }
-    
     public function permiso($key)
     {
         if(array_key_exists($key, $this->_permisos)){
@@ -198,20 +192,16 @@ class ACL
                 return true;
             }
         }
-        
         return false;
     }
-    
     public function acceso($key)
     {   
         if($this->permiso($key)){
             Session::tiempo();
             return;
         }
-        
         header("location:" . BASE_URL . "error/access/5050");
         exit;
     }
 }
-
 ?>

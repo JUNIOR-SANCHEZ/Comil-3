@@ -56,12 +56,36 @@ class menuModelWidget extends Model{
                 "enlace"=>BASE_URL."Usuarios"
             );
        }
-       $menus["top"][]= array(
+
+       $menus["top"]= array(
+        array(
             'id' => 'inicio',
             'titulo' => 'Inicio',
             'class'=>'icon-home',
             'enlace' => BASE_URL
+        ),
+       array(
+            'id' => 'noticias',
+            'titulo' => 'Noticias',
+            'class'=>'icon-target',
+            'enlace' => BASE_URL.'noticias'
+        ),
+       array(
+            'id' => 'galeria',
+            'titulo' => 'Galeria',
+            'class'=>'icon-target',
+            'enlace' => BASE_URL."galeria"
+        )
+       
+    );
+   
+   if($this->_acl->permiso("admin_access")){
+      $menus["top"][] = array(
+            "id"=>"usuarios",
+            "titulo"=>"Usuarios",
+            "enlace"=>BASE_URL."Usuarios"
         );
+   }
         return $menus[$menu];
     }
 }
