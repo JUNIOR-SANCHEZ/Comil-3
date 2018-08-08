@@ -6,6 +6,7 @@ function get_layout_positions(){
         "top"=>array(),
         "top_default"=> array(),
         "sidebar"=>array(),
-        "footer"=>array()
+        "footer"=>array(),
+        "administracion"=>array()
     );
 }

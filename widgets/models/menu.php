@@ -73,6 +73,30 @@ class menuModelWidget extends Model{
             "enlace"=>BASE_URL."Usuarios"
         );
    }
+
+   $menus["talentohumano"]= array(
+    array(
+        'id' => 'inicio',
+        'titulo' => 'Inicio',
+        'class'=>'icon-home',
+        'enlace' => BASE_URL
+    ),
+   array(
+        'id' => 'noticias',
+        'titulo' => 'Noticias',
+        'class'=>'icon-target',
+        'enlace' => BASE_URL.'noticias'
+    ),
+   array(
+        'id' => 'galeria',
+        'titulo' => 'Galeria',
+        'class'=>'icon-target',
+        'enlace' => BASE_URL."galeria"
+    )
+   
+);
+
+
         return $menus[$menu];
     }
 }

@@ -64,6 +64,7 @@ class View extends Smarty {
             'ruta_css' => BASE_URL . 'views/layout/' . $this->_template . '/css/',
             'ruta_img' => BASE_URL . 'views/layout/' . $this->_template . '/img/',
             'ruta_js' => BASE_URL . 'views/layout/' . $this->_template . '/js/',
+            'ruta_icon' => BASE_URL . 'views/layout/' . $this->_template . '/icon/',
             'js' => $js,
             'css'=> $css,
             'jsPlugin' => $this->_jsPlugin,
@@ -172,6 +173,7 @@ class View extends Smarty {
     public function getLayoutPosition() {
         if (is_readable(ROOT . "views" . DS . "layout" . DS . $this->_template . DS . "configs.php")) {
             include_once ROOT . "views" . DS . "layout" . DS . $this->_template . DS . "configs.php";
+            print_r(get_layout_positions());
             return get_layout_positions();
         }
         throw new Exception("Error configuracion layout");
@@ -191,6 +193,10 @@ class View extends Smarty {
                 "config" => $this->widget("menu", "getConfigs",array("top_default")),
                 "content" => array("menu", "getMenu",array("top_default","top_default"))
             ),
+            "menu-administracion" => array(
+                "config" => $this->widget("menu", "getConfigs",array("administracion")),
+                "content" => array("menu", "getMenu",array("talentohumano","administracion"))
+            ),
             "footer" => array(
                 "config" => $this->widget("footer", "getConfigs",array("footer")),
                 "content" => array("footer", "getFooter",array(array(),"footer"))
@@ -198,7 +204,7 @@ class View extends Smarty {
         );
         $position = $this->getLayoutPosition();
         $keys = array_keys($widgets);
-
+        // print_r($keys);exit;
         foreach ($keys as $k) {
             if (isset($position[$widgets[$k]["config"]["position"]])) {
                 if (!isset($widgets[$k]["config"]["hide"]) || !in_array(self::$_item, $widgets[$k]["config"]["hide"])) {

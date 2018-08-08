@@ -33,6 +33,11 @@ class menuWidget extends Widget{
             "show"=>"all",
            "hide"=>array("usuarios","login")
         );
+        $menus["administracion"] = array(
+            "position"=>"administracion",
+            "show"=>array("dptoTalentoHumano"),
+           "hide"=>"all"
+        );
         return $menus[$menu];
     }
 }

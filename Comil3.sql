@@ -16,6 +16,32 @@ CREATE DATABASE /*!32312 IF NOT EXISTS*/`comil3` /*!40100 DEFAULT CHARACTER SET 
 
 USE `comil3`;
 
+/*Table structure for table `contacincaseofemergency` */
+
+DROP TABLE IF EXISTS `contacincaseofemergency`;
+
+CREATE TABLE `contacincaseofemergency` (
+  `id_contacincaseofemergency` int(11) NOT NULL AUTO_INCREMENT,
+  `nameandlast` varchar(100) COLLATE utf8_spanish2_ci NOT NULL,
+  `phonenumber` varchar(11) COLLATE utf8_spanish2_ci NOT NULL,
+  PRIMARY KEY (`id_contacincaseofemergency`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
+
+/*Data for the table `contacincaseofemergency` */
+
+/*Table structure for table `familywithdisabilities` */
+
+DROP TABLE IF EXISTS `familywithdisabilities`;
+
+CREATE TABLE `familywithdisabilities` (
+  `id_familywithdisabilities` int(11) NOT NULL AUTO_INCREMENT,
+  `nameandlast` varchar(100) COLLATE utf8_spanish2_ci NOT NULL,
+  `disability` varchar(150) COLLATE utf8_spanish2_ci NOT NULL,
+  PRIMARY KEY (`id_familywithdisabilities`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
+
+/*Data for the table `familywithdisabilities` */
+
 /*Table structure for table `galeria` */
 
 DROP TABLE IF EXISTS `galeria`;
@@ -74,13 +100,14 @@ CREATE TABLE `permisos_role` (
   `role` int(11) NOT NULL,
   `permiso` int(11) NOT NULL,
   `valor` tinyint(4) NOT NULL,
+  PRIMARY KEY (`role`,`permiso`),
   KEY `role` (`role`),
   KEY `permiso` (`permiso`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
 
 /*Data for the table `permisos_role` */
 
-insert  into `permisos_role`(`role`,`permiso`,`valor`) values (1,1,1),(1,2,1),(1,3,1),(1,4,1);
+insert  into `permisos_role`(`role`,`permiso`,`valor`) values (1,1,1),(1,2,1),(1,3,1),(1,4,1),(2,2,1),(2,3,1),(2,4,1),(3,2,1),(3,3,1);
 
 /*Table structure for table `permisos_usuario` */
 
@@ -90,11 +117,38 @@ CREATE TABLE `permisos_usuario` (
   `usuario` int(11) NOT NULL,
   `permiso` int(11) NOT NULL,
   `valor` tinyint(4) DEFAULT NULL,
+  PRIMARY KEY (`usuario`,`permiso`),
   KEY `permiso` (`permiso`),
   KEY `permisos_usuario_ibfk_2` (`usuario`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
 
 /*Data for the table `permisos_usuario` */
+
+/*Table structure for table `personal` */
+
+DROP TABLE IF EXISTS `personal`;
+
+CREATE TABLE `personal` (
+  `id_personal` int(11) NOT NULL AUTO_INCREMENT,
+  `nameandlast` varchar(100) COLLATE utf8_spanish2_ci NOT NULL,
+  `placeofbirth` varchar(150) COLLATE utf8_spanish2_ci NOT NULL,
+  `identificationcard` varchar(11) COLLATE utf8_spanish2_ci NOT NULL,
+  `homeaddress` varchar(150) COLLATE utf8_spanish2_ci NOT NULL,
+  `email` varchar(50) COLLATE utf8_spanish2_ci NOT NULL,
+  `institutionalemail` varchar(50) COLLATE utf8_spanish2_ci NOT NULL,
+  `phonenumber` varchar(11) COLLATE utf8_spanish2_ci NOT NULL,
+  `dateofadmission` date NOT NULL,
+  `spousename` varchar(100) COLLATE utf8_spanish2_ci DEFAULT NULL,
+  `numberofchildren` int(11) DEFAULT NULL,
+  `bloodtype` int(11) DEFAULT NULL,
+  `gender` int(11) DEFAULT NULL,
+  `religion` int(11) DEFAULT NULL,
+  `civilstatus` int(11) DEFAULT NULL,
+  `academictitle` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id_personal`,`nameandlast`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
+
+/*Data for the table `personal` */
 
 /*Table structure for table `roles` */
 
@@ -129,11 +183,11 @@ CREATE TABLE `usuarios` (
   `codigo` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `role` (`role`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
 
 /*Data for the table `usuarios` */
 
-insert  into `usuarios`(`id`,`nombre`,`imagen`,`usuario`,`pass`,`email`,`phone`,`ocupacion`,`role`,`estado`,`fecha`,`codigo`) values (1,NULL,'user.png','Comil3','8fdd0861d01495aa8881a49ae7c73ddd1c6da2a4','comil@comil.edu.ec',NULL,NULL,2,NULL,'2018-07-24',NULL);
+insert  into `usuarios`(`id`,`nombre`,`imagen`,`usuario`,`pass`,`email`,`phone`,`ocupacion`,`role`,`estado`,`fecha`,`codigo`) values (1,'comil3.ed','user.png','admin','5bae17944cfa8bd5587a430e4a48c9ec0ce68219','comil@comil.edu.ec',NULL,NULL,1,1,'2018-08-03',NULL),(2,'comil3.ed','user.png','gestor','5bae17944cfa8bd5587a430e4a48c9ec0ce68219','comil@comil.com',NULL,NULL,2,1,'2018-08-06',NULL),(3,'comil3.ed','user.png','editor','5bae17944cfa8bd5587a430e4a48c9ec0ce68219','comi3l@comil.edu.ec',NULL,NULL,3,1,'2018-08-06',NULL);
 
 /* Trigger structure for table `news` */
 
@@ -164,8 +218,9 @@ DELIMITER $$
     )
 BEGIN
     
-    insert into usuarios (usuarios.`usuario`,usuarios.`email`,usuarios.`pass`,usuarios.`fecha`,usuarios.`role`,usuarios.`imagen`)
-     values (user_u,email_u,pass_u,now(),2,image_u);
+    insert into usuarios 
+    (usuarios.`usuario`,usuarios.`email`,usuarios.`pass`,usuarios.`fecha`,usuarios.`role`,usuarios.`imagen`,usuarios.`estado`)
+     values (user_u,email_u,pass_u,now(),1,image_u,1);
     END */$$
 DELIMITER ;
 
