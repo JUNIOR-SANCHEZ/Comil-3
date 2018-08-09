@@ -166,19 +166,18 @@ class View extends Smarty {
             }
             throw new Exception("Error metodo widget");
         }
-
         throw new Exception("Error de widget");
     }
-
+    //OBTENEMOS EL ARCHIVO DONDE SE ENCUENTRA LA CONFIGURACION DE LOS LAYOUT E INCLUIREMOS
+    //ESTE ARCHIVO PARA OCUPARLA EN LA CLASE
     public function getLayoutPosition() {
         if (is_readable(ROOT . "views" . DS . "layout" . DS . $this->_template . DS . "configs.php")) {
             include_once ROOT . "views" . DS . "layout" . DS . $this->_template . DS . "configs.php";
-            print_r(get_layout_positions());
             return get_layout_positions();
         }
         throw new Exception("Error configuracion layout");
     }
-
+    //DEVOLVERA LOS WIDGES CONFIGURADOS
     public function getWidgets() {
         $widgets = array(
             "menu-sidebar" => array(
@@ -193,23 +192,30 @@ class View extends Smarty {
                 "config" => $this->widget("menu", "getConfigs",array("top_default")),
                 "content" => array("menu", "getMenu",array("top_default","top_default"))
             ),
-            "menu-administracion" => array(
-                "config" => $this->widget("menu", "getConfigs",array("administracion")),
-                "content" => array("menu", "getMenu",array("talentohumano","administracion"))
+            "menu-departamentos" => array(
+                "config" => $this->widget("menu", "getConfigs",array("departamentos")),
+                "content" => array("menu", "getMenu",array("departamentos","departamentos"))
+            ),
+            "nav" => array(
+                "config" => $this->widget("nav", "getConfigs",array("nav")),
+                "content" => array("nav", "getNav",array(array(),"nav"))
             ),
             "footer" => array(
                 "config" => $this->widget("footer", "getConfigs",array("footer")),
                 "content" => array("footer", "getFooter",array(array(),"footer"))
             )
         );
+ 
         $position = $this->getLayoutPosition();
         $keys = array_keys($widgets);
-        // print_r($keys);exit;
         foreach ($keys as $k) {
+            // VRTIFICAR SI LA POSICION DEL WIDGET ESTA PRESENTE
             if (isset($position[$widgets[$k]["config"]["position"]])) {
+                //VERIFICAR SI ESTA HABILITADO PARA LA VISTA
                 if (!isset($widgets[$k]["config"]["hide"]) || !in_array(self::$_item, $widgets[$k]["config"]["hide"])) {
-                    if ($widgets[$k]["config"]["show"] == "all" || in_array(self::$_item, $widgets[$k]["config"]["show"])) {
-                        
+                    //VERIFICAR SI ESTA HABILITADO A LA VISTA
+                    if ($widgets[$k]["config"]["show"] === "all" || in_array(self::$_item, $widgets[$k]["config"]["show"])) {
+                        //LLENA LA POSICION DEL LAYOUT
                         if(isset($this->_widget[$k])){
                             $widgets[$k]["content"][2]= $this->_widget[$k];
                         }
@@ -221,7 +227,7 @@ class View extends Smarty {
         }
         return $position;
     }
-
+    //VERIFICA SI SE ESTA ENVIANDO EL WIDGET Y EL METODO
     public function getWidgetConent(array $content) {
         if (!isset($content[0]) || !isset($content[1])) {
             throw new Exception("Error contenido widget");

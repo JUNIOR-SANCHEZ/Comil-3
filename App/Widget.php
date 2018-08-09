@@ -29,7 +29,6 @@ abstract class Widget {
             include ROOT . "widgets" . DS . "views" . DS . $view . ".".$ext;
             $content = ob_get_contents();
             ob_end_clean();
-            
             return $content;
         }else{
             throw new Exception("Error vista widget");

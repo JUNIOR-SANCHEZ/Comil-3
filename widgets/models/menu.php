@@ -4,7 +4,6 @@ class menuModelWidget extends Model{
    
     private $_registry;
     private $_acl;
-    
     public function __construct() {
         parent::__construct();
         $this->_registry = Registry::getInstancia();
@@ -25,7 +24,6 @@ class menuModelWidget extends Model{
             )
                    
         );
-       
        
        $menus["top_default"]= array(
             array(
@@ -74,29 +72,28 @@ class menuModelWidget extends Model{
         );
    }
 
-   $menus["talentohumano"]= array(
+
+
+   $menus["departamentos"]= array();
+
+
+   if($this->_acl->permiso("admin_dptoCenCom")){
+   $menus["departamentos"]= array(
     array(
-        'id' => 'inicio',
-        'titulo' => 'Inicio',
-        'class'=>'icon-home',
-        'enlace' => BASE_URL
-    ),
-   array(
-        'id' => 'noticias',
-        'titulo' => 'Noticias',
-        'class'=>'icon-target',
-        'enlace' => BASE_URL.'noticias'
-    ),
-   array(
-        'id' => 'galeria',
-        'titulo' => 'Galeria',
-        'class'=>'icon-target',
-        'enlace' => BASE_URL."galeria"
+        'id' => 'cphoja_vida_equipo',
+        'titulo' => 'Hoja de Vida',
+        'icon'=>'fa-folder',
+        'sub'=>array(
+            array(
+                'id' => 'cpsub_nuevo',
+                'titulo' => 'Nuevo',
+                'icon'=>'fa-folder',
+                'enlace' => BASE_URL.'noticias'
+            )
+        )
     )
-   
-);
-
-
+    );
+   }
         return $menus[$menu];
     }
 }

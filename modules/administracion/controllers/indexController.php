@@ -8,7 +8,7 @@ class indexController extends administracionController{
     }
 
     public function index(){
-        $this->_view->assign("mensaje","hola desde el controlador de admministracion");
+        $this->_view->assign("mensaje","");
         $this->_view->renderizar("index");
     }
 }

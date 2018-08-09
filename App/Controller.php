@@ -13,6 +13,7 @@ abstract class Controller {
         $this->_acl = $this->_registry->_acl;
         $this->_request = $this->_registry->_request;
         $this->_view = new View($this->_request, $this->_acl);
+        
     }
 
     abstract public function index();

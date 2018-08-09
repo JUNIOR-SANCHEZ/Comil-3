@@ -33,7 +33,6 @@ class loginController extends Controller {
                     $this->getAlphaNum('user'),
                     $this->getSql('password')
                     );
-            
             if(!$row){
                 $this->_view->assign("_error","Usuario y/o contraseña incorrecta");
                  $this->_view->renderizar('index', 'login');
@@ -42,20 +41,29 @@ class loginController extends Controller {
             $this->_view->datos="Session";
             Session::set('autenticado', true);
             Session::set('level', $row['role']);
+            Session::set('rol_name', $row['nombre_role']);
             Session::set("id", $row["id"]);
             Session::set('usuario', $row['usuario']);
             Session::set('tiempo', time());
-            
-            $this->redireccionar("administracion");
+            switch(Session::get("rol_name")){
+                case "TalentoHumano":
+                $this->redireccionar("dptoTalentoHumano");
+                break;
+                case "CentroDeComputo":
+                $this->redireccionar("dptoCentroDeComputo");
+                break;
+                default:
+                $this->redireccionar("usuarios/login/cerrar");
+            }
+           
         }
-        
         $this->_view->renderizar('index', 'login');
     }
 
 
     public function cerrar() {
         Session::destroy();
-        $this->redireccionar();
+        $this->redireccionar("usuarios/login");
     }
 
 }

@@ -26,7 +26,7 @@ class ACL
         // ENTONCE EL ATRIBUTO _id PERMANECERA EN 0 LA CUAL SIGNIFICA QUE EL ACCESO
         // ESTARA RESTRINGIDO
             else{
-                $this->_id = 1;
+                $this->_id = 0;
             }
         }
         // INICIALIZAMOS EL RESTO DE LOS ATRIBUTOS

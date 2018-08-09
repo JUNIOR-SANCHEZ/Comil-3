@@ -3,8 +3,13 @@
 class menuWidget extends Widget{
     
     private $modelo;
+    
     public function __construct() {
+        
+        
         $this->modelo= $this->loadModel("menu");
+        
+        
     }
 
     public function getMenu($menu,$view,$invers = null){
@@ -25,7 +30,7 @@ class menuWidget extends Widget{
         $menus["sidebar"] = array(
             "position"=>"sidebar",
             "show"=>array("acl","usuarios"),
-           "hide"=>array("index"),
+            "hide"=>array("index"),
         );
 
         $menus["top_default"] = array(
@@ -33,10 +38,10 @@ class menuWidget extends Widget{
             "show"=>"all",
            "hide"=>array("usuarios","login")
         );
-        $menus["administracion"] = array(
-            "position"=>"administracion",
-            "show"=>array("dptoTalentoHumano"),
-           "hide"=>"all"
+        $menus["departamentos"] = array(
+            "position"=>"departamentos",
+            "show"=>array("dptoTalentoHumano","centrodecomputo"),
+           "hide"=>array()
         );
         return $menus[$menu];
     }
