@@ -1,7 +1,7 @@
 <!-- navBar -->
 <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
 
-    <a class="navbar-brand mr-1" href="<?=BASE_URL.$controlador?>">
+    <a id="dptoname" class="navbar-brand mr-1" href="<?=BASE_URL.$controlador?>">
         <?php 
             $nav="";
                 switch ($controlador) {

@@ -1,0 +1,32 @@
+#fondo {
+    background: url("../../../../public/img/images/02.png");
+    height: 80vh;
+    background-position: center;
+    background-size: cover;
+}
+
+#dptoname {
+    font-size: 1rem;
+}
+
+/* Small devices (landscape phones, 576px and up) */
+
+@media (min-width: 576px) {
+    
+}
+
+/* Medium devices (tablets, 768px and up) */
+
+@media (min-width: 768px) {
+    #dptoname {
+        font-size: 1.5rem;
+    }
+}
+
+/* Large devices (desktops, 992px and up) */
+
+@media (min-width: 992px) {}
+
+/* Extra large devices (large desktops, 1200px and up) */
+
+@media (min-width: 1200px) {}

@@ -40,7 +40,7 @@ class menuWidget extends Widget{
         );
         $menus["departamentos"] = array(
             "position"=>"departamentos",
-            "show"=>array("dptoTalentoHumano","centrodecomputo"),
+            "show"=>array("dptoTalentoHumano","dptoCentroDeComputo"),
            "hide"=>array()
         );
         return $menus[$menu];

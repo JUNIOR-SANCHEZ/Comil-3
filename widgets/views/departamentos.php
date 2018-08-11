@@ -3,7 +3,6 @@
 <ul class="sidebar navbar-nav">
     <?php if (isset($menu) && !empty($menu) && sizeof($menu) > 0) : ?>
     <?php foreach ($menu as $index): ?>
-
     <?php  if (isset($index['sub']) && sizeof($index['sub']) > 0) : ?>
     <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
@@ -14,7 +13,7 @@
         <div class="dropdown-menu" aria-labelledby="pagesDropdown">
             <h6 class="dropdown-header">Opciones:</h6>
             <?php foreach ($index['sub'] as $subindex): ?>
-            <a class="dropdown-item" href="login.html"><?=$subindex['titulo']?></a>
+            <a class="dropdown-item" href="<?=$subindex['enlace']?>"><?=$subindex['titulo']?></a>
             <?php endforeach; ?>
             
         </div>

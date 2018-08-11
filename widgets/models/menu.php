@@ -87,11 +87,23 @@ class menuModelWidget extends Model{
             array(
                 'id' => 'cpsub_nuevo',
                 'titulo' => 'Nuevo',
-                'icon'=>'fa-folder',
-                'enlace' => BASE_URL.'noticias'
+                'enlace' => BASE_URL.'DptoCentroDeComputo/registro/'
             )
         )
-    )
+            ),
+            array(
+                'id' => 'cpreporte',
+                'titulo' => 'Reportes',
+                'icon'=>'fa-folder',
+                'sub'=>array(
+                    array(
+                        'id' => 'cpsub_reporte_hoja_vida',
+                        'titulo' => 'Reporte HV CP',
+                        'icon'=>'fa-folder',
+                        'enlace' => BASE_URL.'noticias'
+                    )
+                )
+            )
     );
    }
         return $menus[$menu];
