@@ -24,9 +24,11 @@ CREATE TABLE `cargos_funciones` (
   `id_cargos_funciones` int(11) NOT NULL AUTO_INCREMENT,
   `nombre` varchar(100) COLLATE utf8_spanish2_ci NOT NULL,
   PRIMARY KEY (`id_cargos_funciones`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
 
 /*Data for the table `cargos_funciones` */
+
+insert  into `cargos_funciones`(`id_cargos_funciones`,`nombre`) values (1,'responsable de laboratorio de ingles');
 
 /*Table structure for table `contacincaseofemergency` */
 
@@ -49,9 +51,11 @@ CREATE TABLE `dependencias` (
   `id_dependencias` int(11) NOT NULL AUTO_INCREMENT,
   `nombre` varchar(100) COLLATE utf8_spanish2_ci NOT NULL,
   PRIMARY KEY (`id_dependencias`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
 
 /*Data for the table `dependencias` */
+
+insert  into `dependencias`(`id_dependencias`,`nombre`) values (1,'laboratorio de ingles bachillerato');
 
 /*Table structure for table `familywithdisabilities` */
 
@@ -173,25 +177,27 @@ DROP TABLE IF EXISTS `personal`;
 
 CREATE TABLE `personal` (
   `id_personal` int(11) NOT NULL AUTO_INCREMENT,
-  `nameandlast` varchar(100) COLLATE utf8_spanish2_ci NOT NULL,
-  `placeofbirth` varchar(150) COLLATE utf8_spanish2_ci NOT NULL,
-  `identificationcard` varchar(11) COLLATE utf8_spanish2_ci NOT NULL,
-  `homeaddress` varchar(150) COLLATE utf8_spanish2_ci NOT NULL,
+  `nombres_apellidos` varchar(100) COLLATE utf8_spanish2_ci NOT NULL,
+  `cedula` varchar(11) COLLATE utf8_spanish2_ci NOT NULL,
+  `direccion` varchar(150) COLLATE utf8_spanish2_ci NOT NULL,
   `email` varchar(50) COLLATE utf8_spanish2_ci NOT NULL,
-  `institutionalemail` varchar(50) COLLATE utf8_spanish2_ci NOT NULL,
-  `phonenumber` varchar(11) COLLATE utf8_spanish2_ci NOT NULL,
-  `dateofadmission` date NOT NULL,
-  `spousename` varchar(100) COLLATE utf8_spanish2_ci DEFAULT NULL,
-  `numberofchildren` int(11) DEFAULT NULL,
-  `bloodtype` int(11) DEFAULT NULL,
-  `gender` int(11) DEFAULT NULL,
+  `correo_institucional` varchar(50) COLLATE utf8_spanish2_ci NOT NULL,
+  `telefono` varchar(11) COLLATE utf8_spanish2_ci NOT NULL,
+  `fecha_nacimiento` date NOT NULL,
+  `dia_admision` date NOT NULL,
+  `conyuge` varchar(100) COLLATE utf8_spanish2_ci DEFAULT NULL,
+  `numero_hijos` int(11) DEFAULT NULL,
+  `tipo_sangre` int(11) DEFAULT NULL,
+  `genero` int(11) DEFAULT NULL,
   `religion` int(11) DEFAULT NULL,
-  `civilstatus` int(11) DEFAULT NULL,
-  `academictitle` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id_personal`,`nameandlast`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
+  `estado_civil` int(11) DEFAULT NULL,
+  `titulo_academico` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id_personal`,`nombres_apellidos`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
 
 /*Data for the table `personal` */
+
+insert  into `personal`(`id_personal`,`nombres_apellidos`,`cedula`,`direccion`,`email`,`correo_institucional`,`telefono`,`fecha_nacimiento`,`dia_admision`,`conyuge`,`numero_hijos`,`tipo_sangre`,`genero`,`religion`,`estado_civil`,`titulo_academico`) values (1,'moran pineda lourde beatriz','0702681016','arenillas calle leonor roldan y 11 de noviembre','dlulymp@hotmail.com','mplbeatriz','0998359208','1973-04-15','2006-04-01',NULL,NULL,1,NULL,NULL,NULL,NULL);
 
 /*Table structure for table `roles` */
 
