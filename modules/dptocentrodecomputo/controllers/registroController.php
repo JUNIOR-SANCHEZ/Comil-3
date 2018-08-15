@@ -14,7 +14,8 @@ class registroController extends dptocentrodecomputoController
         $this->_view->assign("titulo","hoja de vida");
         $this->_view->assign("_dependencia",$this->_registro->getDependencia());
         $this->_view->assign("_personal",$this->_registro->getPersonal());
-        $this->_view->assign("_cargos_funciones",$this->_registro->getCargos_Funciones());
+        $this->_view->assign("_cargos_funciones",$this->_registro->getCargosFunciones());
+        $this->_view->assign("_marcas_equipo",$this->_registro->getMarcasEquipos());
         $this->_view->renderizar("index","dptoCentroDeComputo");
     }
     

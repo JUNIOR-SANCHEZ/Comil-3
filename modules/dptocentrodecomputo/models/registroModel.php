@@ -17,10 +17,16 @@ class registroModel extends Model
         $dato = $stmt->fetchAll(PDO::FETCH_ASSOC);
         return $dato;
     }
-    public function getCargos_Funciones(){
+    public function getCargosFunciones(){
         $stmt = $this->_db->query("SELECT * FROM cargos_funciones");
         $dato = $stmt->fetchAll(PDO::FETCH_ASSOC);
         return $dato;
     }
+    public function getMarcasEquipos(){
+        $stmt = $this->_db->query("SELECT * FROM marcas_equipos");
+        $dato = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $dato;
+    }
+
 
 }
