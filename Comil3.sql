@@ -30,19 +30,6 @@ CREATE TABLE `cargos_funciones` (
 
 insert  into `cargos_funciones`(`id_cargos_funciones`,`nombre`) values (1,'responsable de laboratorio de ingles');
 
-/*Table structure for table `contacincaseofemergency` */
-
-DROP TABLE IF EXISTS `contacincaseofemergency`;
-
-CREATE TABLE `contacincaseofemergency` (
-  `id_contacincaseofemergency` int(11) NOT NULL AUTO_INCREMENT,
-  `nameandlast` varchar(100) COLLATE utf8_spanish2_ci NOT NULL,
-  `phonenumber` varchar(11) COLLATE utf8_spanish2_ci NOT NULL,
-  PRIMARY KEY (`id_contacincaseofemergency`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
-
-/*Data for the table `contacincaseofemergency` */
-
 /*Table structure for table `dependencias` */
 
 DROP TABLE IF EXISTS `dependencias`;
@@ -57,18 +44,19 @@ CREATE TABLE `dependencias` (
 
 insert  into `dependencias`(`id_dependencias`,`nombre`) values (1,'laboratorio de ingles bachillerato');
 
-/*Table structure for table `familywithdisabilities` */
+/*Table structure for table `estados_civiles_persona` */
 
-DROP TABLE IF EXISTS `familywithdisabilities`;
+DROP TABLE IF EXISTS `estados_civiles_persona`;
 
-CREATE TABLE `familywithdisabilities` (
-  `id_familywithdisabilities` int(11) NOT NULL AUTO_INCREMENT,
-  `nameandlast` varchar(100) COLLATE utf8_spanish2_ci NOT NULL,
-  `disability` varchar(150) COLLATE utf8_spanish2_ci NOT NULL,
-  PRIMARY KEY (`id_familywithdisabilities`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
+CREATE TABLE `estados_civiles_persona` (
+  `id_estados_civiles_persona` int(11) NOT NULL AUTO_INCREMENT,
+  `estado_vivil` varchar(11) COLLATE utf8_spanish2_ci NOT NULL,
+  PRIMARY KEY (`id_estados_civiles_persona`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
 
-/*Data for the table `familywithdisabilities` */
+/*Data for the table `estados_civiles_persona` */
+
+insert  into `estados_civiles_persona`(`id_estados_civiles_persona`,`estado_vivil`) values (1,'soltero'),(2,'casado'),(3,'divorciado'),(4,'union/libre');
 
 /*Table structure for table `galeria` */
 
@@ -86,6 +74,20 @@ CREATE TABLE `galeria` (
 /*Data for the table `galeria` */
 
 insert  into `galeria`(`id`,`tema`,`descripcion`,`imagen`,`usuario`) values (19,'nmvc',' ,vcxmn,..x','upl_5acda54e93804.jpg',13);
+
+/*Table structure for table `generos` */
+
+DROP TABLE IF EXISTS `generos`;
+
+CREATE TABLE `generos` (
+  `id_genero` int(11) NOT NULL AUTO_INCREMENT,
+  `genero` varchar(10) COLLATE utf8_spanish2_ci NOT NULL,
+  PRIMARY KEY (`id_genero`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
+
+/*Data for the table `generos` */
+
+insert  into `generos`(`id_genero`,`genero`) values (1,'masculino'),(2,'femenino');
 
 /*Table structure for table `hoja_vida_equipos` */
 
@@ -105,6 +107,20 @@ CREATE TABLE `hoja_vida_equipos` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
 
 /*Data for the table `hoja_vida_equipos` */
+
+/*Table structure for table `marcas_equipos` */
+
+DROP TABLE IF EXISTS `marcas_equipos`;
+
+CREATE TABLE `marcas_equipos` (
+  `id_marca_cp` int(11) NOT NULL AUTO_INCREMENT,
+  `marca_nombre` varchar(50) COLLATE utf8_spanish2_ci NOT NULL,
+  PRIMARY KEY (`id_marca_cp`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
+
+/*Data for the table `marcas_equipos` */
+
+insert  into `marcas_equipos`(`id_marca_cp`,`marca_nombre`) values (1,'HP');
 
 /*Table structure for table `news` */
 
@@ -177,27 +193,24 @@ DROP TABLE IF EXISTS `personal`;
 
 CREATE TABLE `personal` (
   `id_personal` int(11) NOT NULL AUTO_INCREMENT,
-  `nombres_apellidos` varchar(100) COLLATE utf8_spanish2_ci NOT NULL,
+  `nombres` varchar(50) COLLATE utf8_spanish2_ci NOT NULL,
   `cedula` varchar(11) COLLATE utf8_spanish2_ci NOT NULL,
   `direccion` varchar(150) COLLATE utf8_spanish2_ci NOT NULL,
   `email` varchar(50) COLLATE utf8_spanish2_ci NOT NULL,
   `correo_institucional` varchar(50) COLLATE utf8_spanish2_ci NOT NULL,
   `telefono` varchar(11) COLLATE utf8_spanish2_ci NOT NULL,
   `fecha_nacimiento` date NOT NULL,
-  `dia_admision` date NOT NULL,
-  `conyuge` varchar(100) COLLATE utf8_spanish2_ci DEFAULT NULL,
-  `numero_hijos` int(11) DEFAULT NULL,
-  `tipo_sangre` int(11) DEFAULT NULL,
-  `genero` int(11) DEFAULT NULL,
-  `religion` int(11) DEFAULT NULL,
-  `estado_civil` int(11) DEFAULT NULL,
-  `titulo_academico` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id_personal`,`nombres_apellidos`)
+  `tipo_sangre` int(11) NOT NULL,
+  `genero` int(11) NOT NULL,
+  `estado_civil` int(11) NOT NULL,
+  `etado_laboral` int(1) NOT NULL,
+  `apellidos` varchar(50) COLLATE utf8_spanish2_ci DEFAULT NULL,
+  PRIMARY KEY (`id_personal`,`nombres`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
 
 /*Data for the table `personal` */
 
-insert  into `personal`(`id_personal`,`nombres_apellidos`,`cedula`,`direccion`,`email`,`correo_institucional`,`telefono`,`fecha_nacimiento`,`dia_admision`,`conyuge`,`numero_hijos`,`tipo_sangre`,`genero`,`religion`,`estado_civil`,`titulo_academico`) values (1,'moran pineda lourde beatriz','0702681016','arenillas calle leonor roldan y 11 de noviembre','dlulymp@hotmail.com','mplbeatriz','0998359208','1973-04-15','2006-04-01',NULL,NULL,1,NULL,NULL,NULL,NULL);
+insert  into `personal`(`id_personal`,`nombres`,`cedula`,`direccion`,`email`,`correo_institucional`,`telefono`,`fecha_nacimiento`,`tipo_sangre`,`genero`,`estado_civil`,`etado_laboral`,`apellidos`) values (1,'moran pineda lourde beatriz','0702681016','arenillas calle leonor roldan y 11 de noviembre','dlulymp@hotmail.com','mplbeatriz','0998359208','1973-04-15',1,0,0,0,NULL);
 
 /*Table structure for table `roles` */
 
@@ -212,6 +225,20 @@ CREATE TABLE `roles` (
 /*Data for the table `roles` */
 
 insert  into `roles`(`id_role`,`role`) values (1,'Administrador'),(2,'TalentoHumano'),(3,'CentroDeComputo'),(4,'Usuario');
+
+/*Table structure for table `tipos_sangre` */
+
+DROP TABLE IF EXISTS `tipos_sangre`;
+
+CREATE TABLE `tipos_sangre` (
+  `id_tipos_sangre` int(11) NOT NULL AUTO_INCREMENT,
+  `tipo_sangres` varchar(5) COLLATE utf8_spanish2_ci NOT NULL,
+  PRIMARY KEY (`id_tipos_sangre`)
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
+
+/*Data for the table `tipos_sangre` */
+
+insert  into `tipos_sangre`(`id_tipos_sangre`,`tipo_sangres`) values (1,'A-'),(2,'A+'),(3,'B-'),(4,'B+'),(5,'AB-'),(6,'AB+'),(7,'O+'),(8,'O-');
 
 /*Table structure for table `usuarios` */
 
