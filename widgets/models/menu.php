@@ -106,6 +106,36 @@ class menuModelWidget extends Model{
             )
     );
    }
+   if ($this->_acl->permiso("admin_dptoTalHum")) {
+    $menus["departamentos"]= array(
+        array(
+            'id' => 'th_personal',
+            'titulo' => 'Personal',
+            'icon'=>'fa-folder',
+            'sub'=>array(
+                array(
+                    'id' => 'thsub_nuevo',
+                    'titulo' => 'Nuevo',
+                    'enlace' => BASE_URL.'DptoTalentoHumano/registro/'
+                )
+            )
+                ),
+                array(
+                    'id' => 'cpreporte',
+                    'titulo' => 'Reportes',
+                    'icon'=>'fa-folder',
+                    'sub'=>array(
+                        array(
+                            'id' => 'cpsub_reporte_hoja_vida',
+                            'titulo' => 'Reporte HV CP',
+                            'icon'=>'fa-folder',
+                            'enlace' => BASE_URL.'noticias'
+                        )
+                    )
+                )
+        );
+       
+   }
         return $menus[$menu];
     }
 }

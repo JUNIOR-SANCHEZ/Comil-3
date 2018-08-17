@@ -1,4 +1,4 @@
-<div class="text-01 d-flex justify-content-center align-items-center text-center w-100">
+<div class="text-01 d-flex justify-content-center align-items-center text-center w-100 ">
     <h2 class="display">DEPARTAMENTO INFORMATICO DE LA U.E DE FF.AA COMIL-3
         <br>"HEROES DEL41"</h2>
 </div>
@@ -389,7 +389,9 @@
             <!-- fin caracteristicas de otros dispositivos -->
         </div>
     </div>
-    <div class="row">
+    <!-- fin row -->
+    <!-- row -->
+    <div class="row mr-3 ml-1">
         <div class="col-12 mt-4">
             <p class="lead">CONFIGURACION DE RES Y SISTEMA OPERATIVO</p>
         </div>
@@ -420,22 +422,74 @@
                     </div>
                 </div>
                 <div class="col-lg-3">
-                        <div class="form-group  row ">
-                            <div class="col-sm-12 col-md-12 col-lg-5">
-                                <label for="cp_marca_disco_duro">En red:</label>
-                            </div>
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="cp_red" id="cp_red_si" value="option1">
-                                <label class="form-check-label" for="cp_red_si">SI</label>
-                            </div>
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="cp_red" id="cp_red_no" value="option2">
-                                <label class="form-check-label" for="cp_red_no">NO</label>
-                            </div>
+                    <div class="form-group  row ">
+                        <div class="col-sm-12 col-md-12 col-lg-5">
+                            <label for="cp_red">En red:</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="cp_red" id="cp_red_si" value="option1">
+                            <label class="form-check-label" for="cp_red_si">SI</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="cp_red" id="cp_red_no" value="option2">
+                            <label class="form-check-label" for="cp_red_no">NO</label>
                         </div>
                     </div>
+                </div>
+                <div class="col-lg-6">
+                    <div class="form-group  row ">
+                        <div class="col-sm-12 col-md-12 col-lg-2">
+                            <label for="cp_sistema_operativo">SO:</label>
+                        </div>
+                        <select id="cp_sistema_operativo" class="custom-select custom-select-sm col-9 col-sm-10 col-md-9 col-lg-4">
+                            <option>Opciones:</option>
+                            {if isset($_marcas_equipo)} {foreach item=dato from=$_marcas_equipo }
+                            <option> {$dato.marca_nombre}</option>{/foreach} {/if}
+                        </select>
+                        <div class="col-3 col-sm-2 col-md-2 col-lg-2 px-0">
+                            <button class="btn btn-sm btn-success">Nueva</button>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="cp_so" id="cp_so_32" value="option1">
+                            <label class="form-check-label" for="cp_so_32">32-Bits</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="cp_so" id="cp_so_64" value="option2">
+                            <label class="form-check-label" for="cp_red_no">64-Bits</label>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
     </div>
+    <!-- fin row -->
+    <!-- row -->
+    <div class="row mr-3 ml-1">
+        <div class="col-lg-12 mt-4">
+            <p class="lead">TIPO SE ASQUISICION</p>
+        </div>
+        <div class="col-lg-3">
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="cp_adquisicion" id="cp_adquisicion_compra" value="option1">
+                <label class="form-check-label" for="cp_adquisicion_compra">Compra</label>
+            </div>
+        </div>
+        <div class="col-lg-3">
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="cp_adquisicion" id="cp_adquisicion_comondado" value="option1">
+                <label class="form-check-label" for="cp_adquisicion_comondado">Comodado</label>
+            </div>
+        </div>
+        <div class="col-lg-3">
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="cp_adquisicion" id="cp_adquisicion_donacion" value="option1">
+                <label class="form-check-label" for="cp_adquisicion_donacion">Donacion</label>
+            </div>
+        </div>
+        <div class="col-lg-3">
+                <button class="btn btn-sm btn-success btn-block">Otros</button>
+        </div>
     </div>
+    <!-- fin row -->
 </form>
