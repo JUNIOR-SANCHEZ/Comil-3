@@ -4,7 +4,7 @@
         <p class="lead d-none d-md-block">DIRECCIÓN GENERAL DE TALENTO HUMANO</p>
     </div>
     <hr>
-    <form action="">
+    <form action="" id="th_form">
         <!-- Datos de la  Persona -->
         <div class="col-lg-12 border mb-4">
             <div class="row">
@@ -33,21 +33,22 @@
                         <div class="col-lg-4 mr-2">
                             <label for="th_per_cargo">Cargo:</label>
                         </div>
-                        <select class="custom-select custom-select-sm col-lg-6" required>
-                            <option value="">Open this select menu</option>
-                            <option value="1">One</option>
-                            <option value="2">Two</option>
-                            <option value="3">Three</option>
+                        <select class="custom-select custom-select-sm col-10 col-sm-10 col-lg-6" id="th_per_cargo" name="th_per_cargo" required>
+                            <option value="0">Selecciona un elemento de la lista</option>
                         </select>
+                        <div class="col-sm-2 col-2 col-lg-1 pl-0 pl-sm-3 ">
+                            <button type="button" class="btn btn-success btn-sm" data-url="DptoTalentoHumano/registro/agregarCargo" id="th_per_cargo_btn" data-toggle="modal" data-target="#newModal">Nuevo</button>
+                        </div>
+
                     </div>
                     <div class="form-group row ">
                         <div class="col-lg-4 mr-2">
                             <label for="th_per_estado_laboral">Estado laboral:</label>
                         </div>
-                        <select class="custom-select custom-select-sm col-lg-6" required>
-                            <option value="">Open this select menu</option>
+                        <select class="custom-select custom-select-sm col-lg-6" id="th_per_estado_laboral" name="th_per_estado_laboral" required>
+                            <option value="0">Selecciona un elemento de la lista</option>
                             <option value="1">Activo</option>
-                            <option value="0">Inactivo</option>
+                            <option value="2">Inactivo</option>
                         </select>
                     </div>
                     <div class="form-group row ">
@@ -61,13 +62,10 @@
                             <label for="th_per_genero">Género:</label>
                         </div>
                         <select class="custom-select custom-select-sm col-lg-6" id="th_per_genero" required>
-                            <option value="">Open this select menu</option>
-                            <option value="1">Masculino</option>
-                            <option value="0">Femenino</option>
+                            <option value="0">Selecciona un elemento de la lista</option>
+
                         </select>
                     </div>
-
-
                 </div>
                 <div class="col-lg-6 d-none d-md-block">
                     <div class="text-center">
@@ -89,27 +87,22 @@
                                 <div class="col-lg-4 mr-2">
                                     <label for="th_per_estado_civil">Estado Civil:</label>
                                 </div>
-                                <select class="custom-select custom-select-sm col-lg-6" id="th_per_estado_civil" required>
-                                    <option value="">Open this select menu</option>
-                                    <option value="1">Casado(a)</option>
-                                    <option value="0">Soltero(a)</option>
-                                    <option value="0">Viudo(a)</option>
+                                <select class="custom-select custom-select-sm col-lg-6" name="th_per_estado_civil" id="th_per_estado_civil" required>
+                                    <option value="0">Seleccione un elemento de la lista</option>
+
                                 </select>
                             </div>
                         </div>
                         <div class="col-lg-6">
-                                <div class="form-group row ">
-                                    <div class="col-lg-4 mr-2">
-                                        <label for="th_per_tipo_sangre">Tipo/Sangre:</label>
-                                    </div>
-                                    <select class="custom-select custom-select-sm col-lg-6" id="th_per_tipo_sangre" required>
-                                        <option value="">Open this select menu</option>
-                                        <option value="1">Casado(a)</option>
-                                        <option value="0">Soltero(a)</option>
-                                        <option value="0">Viudo(a)</option>
-                                    </select>
+                            <div class="form-group row ">
+                                <div class="col-lg-4 mr-2">
+                                    <label for="th_per_tipo_sangre">Tipo/Sangre:</label>
                                 </div>
+                                <select class="custom-select custom-select-sm col-lg-6" id="th_per_tipo_sangre" name="th_per_tipo_sangre" required>
+                                    <option value="0">Selecciona un elemento de la lista</option>
+                                </select>
                             </div>
+                        </div>
                         <div class="col-lg-6">
                             <div class="form-group row ">
                                 <div class="col-lg-4 mr-2">
