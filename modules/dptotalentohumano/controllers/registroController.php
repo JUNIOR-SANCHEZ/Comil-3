@@ -39,4 +39,20 @@ class registroController extends dptotalentohumanoController
 
         // echo json_encode($this->getText("dato"));
     }
+    public function agregarPersonal(){
+        echo json_encode($this->_registro->addPersonal(
+            $this->getAlphaEspace("th_per_nombres"),
+            $this->getAlphaEspace("th_per_apellidos"),
+            $this->getText("th_per_cedula"),
+            $this->getText("th_per_direccion_domiciliaria"),
+            $this->getText("th_per_email"),
+            $this->getText("th_per_email_institucional"),
+            $this->getText("th_per_telefono"),
+            $this->getText("th_per_fecha_nacimiento"),
+            $this->getText("th_per_tipo_sangre"),
+            $this->getText("th_per_genero"),
+            $this->getText("th_per_estado_civil"),
+            $this->getText("th_per_estado_laboral")
+        ));
+    }
 }

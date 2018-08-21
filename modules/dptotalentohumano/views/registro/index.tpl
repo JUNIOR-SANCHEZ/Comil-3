@@ -4,7 +4,7 @@
         <p class="lead d-none d-md-block">DIRECCIÓN GENERAL DE TALENTO HUMANO</p>
     </div>
     <hr>
-    <form action="" id="th_form">
+    <form action="" id="th_form_persona">
         <!-- Datos de la  Persona -->
         <div class="col-lg-12 border mb-4">
             <div class="row">
@@ -61,7 +61,7 @@
                         <div class="col-lg-4 mr-2">
                             <label for="th_per_genero">Género:</label>
                         </div>
-                        <select class="custom-select custom-select-sm col-lg-6" id="th_per_genero" required>
+                        <select class="custom-select custom-select-sm col-lg-6" id="th_per_genero" name="th_per_genero" required>
                             <option value="0">Selecciona un elemento de la lista</option>
 
                         </select>
@@ -146,100 +146,115 @@
                     </div>
                 </div>
             </div>
-        </div>
-        <!-- Fin Datos de la  Persona -->
-
-        <!-- Datos del Conyuge de la persona -->
-        <div class="col-lg-12 border mb-4">
             <div class="row">
-                <div class="col-lg-12 mb-2 d-flex">
-                    <p class="lead">2.- Datos del conyuge</p>
-                    <div class="custom-control custom-checkbox ml-auto p-2">
-                        <input type="checkbox" class="custom-control-input" id="th_datos_conyuge">
-                        <label class="custom-control-label" for="th_datos_conyuge">Inactivo</label>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="form-group row px-2">
-                        <label for="th_conyuge_nombre">Nombres del conyuge</label>
-                        <input type="text" class="form-control form-control-sm" id="th_conyuge_nombre" name="th_conyuge_nombre" placeholder="" disabled>
-                    </div>
-                    <div class="form-group row px-2">
-                        <label for="th_conyuge_apellidos">Apellidos del conyuge</label>
-                        <input type="text" class="form-control form-control-sm" id="th_conyuge_apellidos" name="th_conyuge_apellidos" disabled/>
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="form-group row px-2">
-                        <label for="th_conyuge_cedula">Cédula</label>
-                        <input type="text" class="form-control form-control-sm" id="th_conyuge_cedula" name="th_conyuge_cedula" placeholder="" disabled>
-                    </div>
-                    <div class="form-group row px-2">
-                        <label for="th_conyuge_fecha_nacimiento">Fecha/Nacimieto:</label>
-                        <input type="text" class="form-control form-control-sm" id="th_conyuge_fecha_nacimiento" name="th_conyuge_fecha_nacimiento"
-                            disabled />
-                    </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="form-group row px-2">
-                        <label for="th_conyuge_email">Email</label>
-                        <input type="text" class="form-control form-control-sm" id="th_conyuge_email" name="th_conyuge_email" disabled/>
-                    </div>
-                    <div class="form-group row px-2">
-                        <label for="th_conyuge_ocupacion">Teléfono</label>
-                        <input type="text" class="form-control form-control-sm" id="th_conyuge_ocupacion" name="th_conyuge_ocupacion" placeholder=""
-                            disabled>
-                    </div>
+                <div class="col-12 my-4 d-flex justify-content-end">
+                    <button type="button" id="th_per_agregar" class="btn btn-success ">Guardar</button>
                 </div>
             </div>
         </div>
-        <!-- Fin Datos del Conyuge de la persona -->
 
-        <!-- Datos de los hijos de la persona -->
-        <div class="col-lg-12 border mb-4">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="row">
-                        <div class="col-lg-4 d-flex justify-content-center flex-column align-items-start">
-                            <p class="lead">3.- Datos de Hijos</p>
+    </form>
+    <!-- Fin Datos de la  Persona -->
+
+    <!-- Datos del Conyuge de la persona -->
+    <div class="col-lg-12 border mb-4">
+        <div class="row">
+            <div class="col-lg-12 mb-2 d-flex">
+                <p class="lead">2.- Datos del conyuge</p>
+                <div class="custom-control custom-checkbox ml-auto p-2">
+                    <input type="checkbox" class="custom-control-input" id="th_datos_conyuge_toggle">
+                    <label class="custom-control-label" for="th_datos_conyuge_toggle">Inactivo</label>
+                </div>
+            </div>
+            <form action="" class="col-lg-12" id="th_form_conyuge">
+                <div class="row">
+                    <div class="col-lg-4">
+                        <div class="form-group row px-2">
+                            <label for="th_conyuge_nombre">Nombres del conyuge</label>
+                            <input type="text" class="form-control form-control-sm" id="th_conyuge_nombre" name="th_conyuge_nombre" placeholder="" disabled>
                         </div>
-                        <div class="col-lg-4 d-flex justify-content-center flex-column align-items-center">
-                            <div class="from-group form-inline">
-                                <input type="text" class="form-control form-control-sm text-center" id="th_hijo_numero" placeholder="Nº" style="width: 50px">
-                            </div>
+                        <div class="form-group row px-2">
+                            <label for="th_conyuge_apellidos">Apellidos del conyuge</label>
+                            <input type="text" class="form-control form-control-sm" id="th_conyuge_apellidos" name="th_conyuge_apellidos" disabled/>
                         </div>
-                        <div class="col-lg-4 d-flex justify-content-center flex-column align-items-end">
-                            <div class="custom-control custom-checkbox">
-                                <input type="checkbox" class="custom-control-input" id="th_datos_hijos">
-                                <label class="custom-control-label" for="th_datos_hijos">Inactivo</label>
-                            </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="form-group row px-2">
+                            <label for="th_conyuge_cedula">Cédula</label>
+                            <input type="text" class="form-control form-control-sm" id="th_conyuge_cedula" name="th_conyuge_cedula" placeholder="" disabled>
+                        </div>
+                        <div class="form-group row px-2">
+                            <label for="th_conyuge_fecha_nacimiento">Fecha/Nacimieto:</label>
+                            <input type="text" class="form-control form-control-sm" id="th_conyuge_fecha_nacimiento" name="th_conyuge_fecha_nacimiento"
+                                disabled />
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="form-group row px-2">
+                            <label for="th_conyuge_email">Email</label>
+                            <input type="text" class="form-control form-control-sm" id="th_conyuge_email" name="th_conyuge_email" disabled/>
+                        </div>
+                        <div class="form-group row px-2">
+                            <label for="th_conyuge_ocupacion">Teléfono</label>
+                            <input type="text" class="form-control form-control-sm" id="th_conyuge_ocupacion" name="th_conyuge_ocupacion" placeholder=""
+                                disabled>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4">
-                    <div class="form-group row px-2">
-                        <label for="th_hijo_nombre">Nombres</label>
-                        <input type="text" class="form-control form-control-sm" id="th_hijo_nombre" name="th_hijo_nombre" placeholder="" disabled>
+            </form>
+        </div>
+    </div>
+    <!-- Fin Datos del Conyuge de la persona -->
+
+    <!-- Datos de los hijos de la persona -->
+    <div class="col-lg-12 border mb-4">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="row">
+                    <div class="col-lg-4 d-flex justify-content-center flex-column align-items-start">
+                        <p class="lead">3.- Datos de Hijos</p>
                     </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="form-group row px-2">
-                        <label for="th_hijo_apellido">Apellidos</label>
-                        <input type="text" class="form-control form-control-sm" id="th_hijo_apellido" name="th_hijo_apellido" placeholder="" disabled>
+                    <div class="col-lg-4 d-flex justify-content-center flex-column align-items-center">
+                        <div class="from-group form-inline">
+                            <input type="text" class="form-control form-control-sm text-center" id="th_hijo_numero" placeholder="Nº" style="width: 50px">
+                        </div>
                     </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="form-group row px-2">
-                        <label for="th_hijo_cedula">Cedula</label>
-                        <input type="text" class="form-control form-control-sm" id="th_hijo_cedula" name="th_hijo_cedula" placeholder="" disabled>
+                    <div class="col-lg-4 d-flex justify-content-center flex-column align-items-end">
+                        <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input" id="th_datos_hijos_toggle">
+                            <label class="custom-control-label" for="th_datos_hijos_toggle">Inactivo</label>
+                        </div>
                     </div>
                 </div>
             </div>
+            <form action="" id="th_form_hijo" class="col-lg-12">
+                <div class="row">
+                    <div class="col-lg-4">
+                        <div class="form-group row px-2">
+                            <label for="th_hijo_nombre">Nombres</label>
+                            <input type="text" class="form-control form-control-sm" id="th_hijo_nombre" name="th_hijo_nombre" placeholder="" disabled>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="form-group row px-2">
+                            <label for="th_hijo_apellido">Apellidos</label>
+                            <input type="text" class="form-control form-control-sm" id="th_hijo_apellido" name="th_hijo_apellido" placeholder="" disabled>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="form-group row px-2">
+                            <label for="th_hijo_cedula">Cedula</label>
+                            <input type="text" class="form-control form-control-sm" id="th_hijo_cedula" name="th_hijo_cedula" placeholder="" disabled>
+                        </div>
+                    </div>
+                </div>
+            </form>
         </div>
-        <!-- Fin Datos de los hijos de la persona -->
+    </div>
+    <!-- Fin Datos de los hijos de la persona -->
 </div>
 
-</form>
+
 </div>
 <!-- MODAL - INGRESAR NUEVO CARGO O FUNCION -->
 <div class="modal fade" tabindex="-1" id="th_per_cargo_modal" role="dialog" aria-labelledby="Label" aria-hidden="true">

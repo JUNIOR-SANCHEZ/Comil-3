@@ -97,7 +97,7 @@ abstract class Controller {
     }
 
     protected function getPostParam($clave) {
-        if (isset($_POST[$clave])) {
+        if (isset($_POST[$clave]) AND ! empty($_POST[$clave])) {
             return $_POST[$clave];
         }
     }
@@ -111,7 +111,13 @@ abstract class Controller {
 
     protected function getAlphaNum($clave) {
         if (isset($_POST[$clave]) AND ! empty($_POST[$clave])) {
-            $_POST[$clave] = (string) preg_replace('/[^A-Z0-9_]/i', '', $_POST[$clave]);
+            $_POST[$clave] = (string) preg_replace('/[^A-Z0-9._-]/i', '', $_POST[$clave]);
+            return trim($_POST[$clave]);
+        }
+    }
+    protected function getAlphaEspace($clave){
+        if (isset($_POST[$clave]) AND ! empty($_POST[$clave])) {
+            $_POST[$clave] = (string) preg_replace(array('/[^A-Z]/i','/\s\s+/'), ' ', $_POST[$clave]);
             return trim($_POST[$clave]);
         }
     }
