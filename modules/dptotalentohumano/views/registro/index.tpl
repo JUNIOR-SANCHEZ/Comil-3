@@ -37,7 +37,7 @@
                             <option value="0">Selecciona un elemento de la lista</option>
                         </select>
                         <div class="col-sm-2 col-2 col-lg-1 pl-0 pl-sm-3 ">
-                            <button type="button" class="btn btn-success btn-sm" data-url="DptoTalentoHumano/registro/agregarCargo" id="th_per_cargo_btn" data-toggle="modal" data-target="#newModal">Nuevo</button>
+                            <button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#th_per_cargo_modal">Nuevo</button>
                         </div>
 
                     </div>
@@ -119,7 +119,6 @@
                                 <input type="text" name="th_per_celular" id="th_per_celular" class="form-control col-lg-6 form-control-sm">
                             </div>
                         </div>
-
                         <div class="col-lg-6">
                             <div class="form-group row ">
                                 <div class="col-lg-4 mr-2">
@@ -242,3 +241,27 @@
 
 </form>
 </div>
+<!-- MODAL - INGRESAR NUEVO CARGO O FUNCION -->
+<div class="modal fade" tabindex="-1" id="th_per_cargo_modal" role="dialog" aria-labelledby="Label" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Nuevo cargo</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label>Cargo</label>
+                    <input type="text" class="form-control" id="th_per_cargo_data">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" id="th_per_cargo_add" class="btn btn-primary">Guardar cambios</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- FIN MODAL - INGRESAR NUEVO CARGO O FUNCION -->
