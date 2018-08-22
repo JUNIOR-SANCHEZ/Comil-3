@@ -109,17 +109,29 @@ class menuModelWidget extends Model{
    if ($this->_acl->permiso("admin_dptoTalHum")) {
     $menus["departamentos"]= array(
         array(
-            'id' => 'th_personal',
-            'titulo' => 'Personal',
+            'id' => 'th_persona',
+            'titulo' => 'Persona',
             'icon'=>'fa-folder',
             'sub'=>array(
                 array(
-                    'id' => 'thsub_nuevo',
-                    'titulo' => 'Nuevo',
+                    'id' => 'thsub-persona_nuevo',
+                    'titulo' => 'Registro persona',
                     'enlace' => BASE_URL.'DptoTalentoHumano/registro/'
                 )
             )
                 ),
+                array(
+                    'id' => 'th_permiso',
+                    'titulo' => 'Permiso',
+                    'icon'=>'fa-folder',
+                    'sub'=>array(
+                        array(
+                            'id' => 'thsub_permiso_por_dia',
+                            'titulo' => 'Por dias',
+                            'enlace' => BASE_URL.'DptoTalentoHumano/solicitud_de_permiso/dias'
+                        )
+                    )
+                        ),
                 array(
                     'id' => 'cpreporte',
                     'titulo' => 'Reportes',

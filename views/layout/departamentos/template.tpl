@@ -11,7 +11,6 @@
     <link rel="stylesheet" href="{$_layoutParams.ruta_icon}css/all.min.css">
     <link rel="stylesheet" href="{$_layoutParams.ruta_css}sb-admin.css">
     <link rel="stylesheet" href="{$_layoutParams.ruta_css}style.css">
-
 </head>
 
 <body>
@@ -27,7 +26,7 @@
         </div>
     </div>
 
-    
+
     <!-- VARIABLES GLOBALES -->
     <script type="text/javascript">
         var _root_ = '{$_layoutParams.root}';
@@ -36,6 +35,7 @@
     <script src="{$_layoutParams.ruta_js}bootstrap/bootstrap.bundle.min.js"></script>
     <script src="{$_layoutParams.ruta_js}jquery-easing/jquery.easing.min.js"></script>
     <script src="{$_layoutParams.ruta_js}sb-admin.min.js"></script>
+    <script src="{$_layoutParams.ruta_js}inicializar.js"></script>
     <!-- RUTAS AUTOMATICAS DE ARCHIVO JS CREADOS -->
     {if isset($_layoutParams.js) && count($_layoutParams.js)} {foreach item=js from=$_layoutParams.js}
     <script src="{$js}" type="text/javascript"></script> {/foreach} {/if}

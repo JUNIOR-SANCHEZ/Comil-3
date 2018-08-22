@@ -12,23 +12,23 @@ MySQL - 5.5.5-10.1.33-MariaDB : Database - comil3
 /*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
-CREATE DATABASE /*!32312 IF NOT EXISTS*/`comil3` /*!40100 DEFAULT CHARACTER SET utf8 COLLATE utf8_spanish2_ci */;
+CREATE DATABASE /*!32312 IF NOT EXISTS*/`comil3` /*!40100 DEFAULT CHARACTER SET latin1 */;
 
 USE `comil3`;
 
-/*Table structure for table `cargos_funciones` */
+/*Table structure for table `cargos_funciones_personal` */
 
-DROP TABLE IF EXISTS `cargos_funciones`;
+DROP TABLE IF EXISTS `cargos_funciones_personal`;
 
-CREATE TABLE `cargos_funciones` (
-  `id_cargos_funciones` int(11) NOT NULL AUTO_INCREMENT,
-  `nombre` varchar(100) COLLATE utf8_spanish2_ci NOT NULL,
-  PRIMARY KEY (`id_cargos_funciones`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
+CREATE TABLE `cargos_funciones_personal` (
+  `id_cargos_funciones_personal` int(11) NOT NULL AUTO_INCREMENT,
+  `cargo_funcion` varchar(100) COLLATE utf8_spanish2_ci NOT NULL,
+  PRIMARY KEY (`id_cargos_funciones_personal`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
 
-/*Data for the table `cargos_funciones` */
+/*Data for the table `cargos_funciones_personal` */
 
-insert  into `cargos_funciones`(`id_cargos_funciones`,`nombre`) values (1,'responsable de laboratorio de ingles');
+insert  into `cargos_funciones_personal`(`id_cargos_funciones_personal`,`cargo_funcion`) values (1,'Cargo 1'),(2,'Cargo 2');
 
 /*Table structure for table `dependencias` */
 
@@ -44,19 +44,19 @@ CREATE TABLE `dependencias` (
 
 insert  into `dependencias`(`id_dependencias`,`nombre`) values (1,'laboratorio de ingles bachillerato');
 
-/*Table structure for table `estados_civiles_persona` */
+/*Table structure for table `estados_civiles` */
 
-DROP TABLE IF EXISTS `estados_civiles_persona`;
+DROP TABLE IF EXISTS `estados_civiles`;
 
-CREATE TABLE `estados_civiles_persona` (
-  `id_estados_civiles_persona` int(11) NOT NULL AUTO_INCREMENT,
-  `estado_vivil` varchar(11) COLLATE utf8_spanish2_ci NOT NULL,
-  PRIMARY KEY (`id_estados_civiles_persona`)
+CREATE TABLE `estados_civiles` (
+  `id_estados_civiles` int(11) NOT NULL AUTO_INCREMENT,
+  `estado_civil` varchar(11) COLLATE utf8_spanish2_ci NOT NULL,
+  PRIMARY KEY (`id_estados_civiles`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
 
-/*Data for the table `estados_civiles_persona` */
+/*Data for the table `estados_civiles` */
 
-insert  into `estados_civiles_persona`(`id_estados_civiles_persona`,`estado_vivil`) values (1,'soltero'),(2,'casado'),(3,'divorciado'),(4,'union/libre');
+insert  into `estados_civiles`(`id_estados_civiles`,`estado_civil`) values (1,'soltero'),(2,'casado'),(3,'divorciado'),(4,'union/libre');
 
 /*Table structure for table `galeria` */
 
@@ -80,14 +80,14 @@ insert  into `galeria`(`id`,`tema`,`descripcion`,`imagen`,`usuario`) values (19,
 DROP TABLE IF EXISTS `generos`;
 
 CREATE TABLE `generos` (
-  `id_genero` int(11) NOT NULL AUTO_INCREMENT,
+  `id_generos` int(11) NOT NULL AUTO_INCREMENT,
   `genero` varchar(10) COLLATE utf8_spanish2_ci NOT NULL,
-  PRIMARY KEY (`id_genero`)
+  PRIMARY KEY (`id_generos`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
 
 /*Data for the table `generos` */
 
-insert  into `generos`(`id_genero`,`genero`) values (1,'masculino'),(2,'femenino');
+insert  into `generos`(`id_generos`,`genero`) values (1,'masculino'),(2,'femenino');
 
 /*Table structure for table `hoja_vida_equipos` */
 
@@ -121,6 +121,20 @@ CREATE TABLE `marcas_equipos` (
 /*Data for the table `marcas_equipos` */
 
 insert  into `marcas_equipos`(`id_marca_cp`,`marca_nombre`) values (1,'HP');
+
+/*Table structure for table `motivo_permisos` */
+
+DROP TABLE IF EXISTS `motivo_permisos`;
+
+CREATE TABLE `motivo_permisos` (
+  `id_motivo_permisos` int(11) NOT NULL AUTO_INCREMENT,
+  `motivo` varchar(25) COLLATE utf8_spanish2_ci NOT NULL,
+  PRIMARY KEY (`id_motivo_permisos`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
+
+/*Data for the table `motivo_permisos` */
+
+insert  into `motivo_permisos`(`id_motivo_permisos`,`motivo`) values (1,'asuntos personales'),(2,'enfermedad'),(3,'calamidad doméstica'),(4,'capacitación');
 
 /*Table structure for table `news` */
 
@@ -194,6 +208,7 @@ DROP TABLE IF EXISTS `personal`;
 CREATE TABLE `personal` (
   `id_personal` int(11) NOT NULL AUTO_INCREMENT,
   `nombres` varchar(50) COLLATE utf8_spanish2_ci NOT NULL,
+  `apellidos` varchar(50) COLLATE utf8_spanish2_ci NOT NULL,
   `cedula` varchar(11) COLLATE utf8_spanish2_ci NOT NULL,
   `direccion` varchar(150) COLLATE utf8_spanish2_ci NOT NULL,
   `email` varchar(50) COLLATE utf8_spanish2_ci NOT NULL,
@@ -203,14 +218,13 @@ CREATE TABLE `personal` (
   `tipo_sangre` int(11) NOT NULL,
   `genero` int(11) NOT NULL,
   `estado_civil` int(11) NOT NULL,
-  `etado_laboral` int(1) NOT NULL,
-  `apellidos` varchar(50) COLLATE utf8_spanish2_ci DEFAULT NULL,
-  PRIMARY KEY (`id_personal`,`nombres`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
+  `estado_laboral` int(1) NOT NULL,
+  PRIMARY KEY (`id_personal`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
 
 /*Data for the table `personal` */
 
-insert  into `personal`(`id_personal`,`nombres`,`cedula`,`direccion`,`email`,`correo_institucional`,`telefono`,`fecha_nacimiento`,`tipo_sangre`,`genero`,`estado_civil`,`etado_laboral`,`apellidos`) values (1,'moran pineda lourde beatriz','0702681016','arenillas calle leonor roldan y 11 de noviembre','dlulymp@hotmail.com','mplbeatriz','0998359208','1973-04-15',1,0,0,0,NULL);
+insert  into `personal`(`id_personal`,`nombres`,`apellidos`,`cedula`,`direccion`,`email`,`correo_institucional`,`telefono`,`fecha_nacimiento`,`tipo_sangre`,`genero`,`estado_civil`,`estado_laboral`) values (1,'moran pineda lourde beatriz','','0702681016','arenillas calle leonor roldan y 11 de noviembre','dlulymp@hotmail.com','mplbeatriz','0998359208','1973-04-15',1,0,0,0),(2,'th_per_nombres','th_per_apellidos','th_per_cedu','th_per_direccion_domiciliaria','th_per_email','th_per_email_institucional','th_per_tele','2018-06-15',0,0,0,0),(3,'N','A','IDE','D','E','EI','T','2018-08-17',3,1,0,1),(4,'N','A','IDE','D','E','EI','T','2018-08-17',3,1,0,1),(5,'Juan Diego','Leon Aguirre','070666666','direccion','email@email.com','correo@correo.com','258741','2018-08-23',4,1,1,1),(6,'Diego Armando','Mera hidalgo','0708888888','Direccion','email@email.com','Correo@correo.com','23355','2018-08-17',4,1,2,1);
 
 /*Table structure for table `roles` */
 
@@ -226,19 +240,34 @@ CREATE TABLE `roles` (
 
 insert  into `roles`(`id_role`,`role`) values (1,'Administrador'),(2,'TalentoHumano'),(3,'CentroDeComputo'),(4,'Usuario');
 
+/*Table structure for table `solicitud_permisos` */
+
+DROP TABLE IF EXISTS `solicitud_permisos`;
+
+CREATE TABLE `solicitud_permisos` (
+  `id_solicitud_permisos` int(11) NOT NULL AUTO_INCREMENT,
+  `fecha_inicio` date NOT NULL,
+  `fecha_final` date DEFAULT NULL,
+  `detalle` varchar(10) COLLATE utf8_spanish2_ci DEFAULT NULL,
+  `persona` int(11) NOT NULL,
+  PRIMARY KEY (`id_solicitud_permisos`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
+
+/*Data for the table `solicitud_permisos` */
+
 /*Table structure for table `tipos_sangre` */
 
 DROP TABLE IF EXISTS `tipos_sangre`;
 
 CREATE TABLE `tipos_sangre` (
   `id_tipos_sangre` int(11) NOT NULL AUTO_INCREMENT,
-  `tipo_sangres` varchar(5) COLLATE utf8_spanish2_ci NOT NULL,
+  `tipo_sangre` varchar(5) COLLATE utf8_spanish2_ci NOT NULL,
   PRIMARY KEY (`id_tipos_sangre`)
 ) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
 
 /*Data for the table `tipos_sangre` */
 
-insert  into `tipos_sangre`(`id_tipos_sangre`,`tipo_sangres`) values (1,'A-'),(2,'A+'),(3,'B-'),(4,'B+'),(5,'AB-'),(6,'AB+'),(7,'O+'),(8,'O-');
+insert  into `tipos_sangre`(`id_tipos_sangre`,`tipo_sangre`) values (1,'A-'),(2,'A+'),(3,'B-'),(4,'B+'),(5,'AB-'),(6,'AB+'),(7,'O+'),(8,'O-');
 
 /*Table structure for table `usuarios` */
 
@@ -265,19 +294,42 @@ CREATE TABLE `usuarios` (
 
 insert  into `usuarios`(`id`,`nombre`,`imagen`,`usuario`,`pass`,`email`,`phone`,`ocupacion`,`role`,`estado`,`fecha`,`codigo`) values (1,NULL,'user.png','SrtoLeon','5bae17944cfa8bd5587a430e4a48c9ec0ce68219','leon@leon.com',NULL,NULL,2,1,'2018-08-09',NULL),(2,NULL,'user.png','SartoSanchez','5bae17944cfa8bd5587a430e4a48c9ec0ce68219','sanchez@sanchez.com',NULL,NULL,3,1,'2018-08-09',NULL);
 
-/* Trigger structure for table `news` */
+/* Procedure structure for procedure `addPersonal` */
+
+/*!50003 DROP PROCEDURE IF EXISTS  `addPersonal` */;
 
 DELIMITER $$
 
-/*!50003 DROP TRIGGER*//*!50032 IF EXISTS */ /*!50003 `eliminarNoticia` */$$
-
-/*!50003 CREATE */ /*!50017 DEFINER = 'root'@'localhost' */ /*!50003 TRIGGER `eliminarNoticia` BEFORE DELETE ON `news` FOR EACH ROW BEGIN
-    
-	delete from comentarios where `comentarios`.`noticia` = old.id;
-	
+/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `addPersonal`(
+    nombres_personal varchar(50),
+    apellidos_personal varchar(50),
+    cedula_personal varchar(11),
+    direccion_personal varchar(150),
+    email_personal varchar(50),
+    correo_institucional_personal varchar(50),
+    telefono_personal varchar(11),
+    fecha_nacimiento_personal VARCHAR(20),
+    tipo_sangre_personal int,
+    genero_personal int,
+    estado_civil_personal int,
+    estado_laboral_personal int   
+    )
+BEGIN
+    
+    insert into personal 
+    (nombres,apellidos,cedula,direccion,
+     email,correo_institucional,telefono,
+     fecha_nacimiento,tipo_sangre,genero,
+     estado_civil,estado_laboral)
+     values
+     (nombres_personal,apellidos_personal,
+     cedula_personal,direccion_personal,
+     email_personal,correo_institucional_personal,
+     telefono_personal,fecha_nacimiento_personal,
+     tipo_sangre_personal,genero_personal,
+     estado_civil_personal,estado_laboral_personal
+     );
     END */$$
-
-
 DELIMITER ;
 
 /* Procedure structure for procedure `addUser` */
