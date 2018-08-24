@@ -21,9 +21,11 @@ class solicitud_de_permisoController extends dptotalentohumanoController
         echo json_encode($this->_datos->getPersonal());
     }
     public function datosPersonaAjax(){
+        $dato="";
         $pagina = $this->getInt('pagina');
-        $dato=$this->getText('buscar');
-        
+        if ($this->getText('buscar')) {
+            $dato=$this->getText('buscar');
+        }
         $this->_view->setJs(array('inicializador'));
         $paginador = new Paginador();
         $this->_view->assign('personal',$paginador->paginar($this->_datos->getPersonal($dato),$pagina,5));
@@ -34,7 +36,7 @@ class solicitud_de_permisoController extends dptotalentohumanoController
     public function agregarSolicitudPermiso(){
         echo json_encode($this->_datos->addSolicitudPermiso(
             $this->getText('th_permiso_fecha_inicio'),
-            $this->getInt('th_permiso_dias'),
+            $this->getText('th_permiso_fecha_fin'),
             $this->getInt('th_permiso_id_persona')
         ));
     }

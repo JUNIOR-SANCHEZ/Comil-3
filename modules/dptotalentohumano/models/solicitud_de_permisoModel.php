@@ -21,11 +21,11 @@ class solicitud_de_permisoModel extends Model
         $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
         return $data;
     }
-    public function addSolicitudPermiso($fecha,$dias,$persona){
-        $stmt = $this->_db->prepare('CALL addSolicitudPermiso(:fecha,:dias,:persona)');
+    public function addSolicitudPermiso($fecha,$th_permiso_fecha_fin,$persona){
+        $stmt = $this->_db->prepare('CALL addSolicitudPermiso(:fecha,:th_permiso_fecha_fin,:persona)');
         $stmt->bindParam(':fecha',$fecha,PDO::PARAM_STR);
-        $stmt->bindParam(':dias',$dias,PDO::PARAM_STR);
-        $stmt->bindParam(':persona',$persona,PDO::PARAM_STR);
+        $stmt->bindParam(':th_permiso_fecha_fin',$th_permiso_fecha_fin,PDO::PARAM_STR);
+        $stmt->bindParam(':persona',$persona,PDO::PARAM_INT);
         $file = $stmt->execute();
         return $file;
     }

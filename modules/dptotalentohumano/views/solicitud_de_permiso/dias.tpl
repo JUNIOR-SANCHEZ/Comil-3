@@ -6,7 +6,7 @@
         </div>
     </div>
     <div class="d-flex my-3 justify-content-end">
-            <button type="button" class="btn btn-success btn-sm " id="th_btn_lista_persona" data-toggle="modal" data-target="#th_permiso_lista_persona_modal">Lista</button>
+        <button type="button" class="btn btn-success btn-sm " id="th_btn_lista_persona" data-toggle="modal" data-target="#th_permiso_lista_persona_modal">Lista</button>
     </div>
     <form class="" id="th_permiso_form">
         <input type="hidden" name="th_permiso_id_persona" id="th_permiso_id_persona" value="0">
@@ -37,7 +37,7 @@
                             <div class="col-12 col-md-3">
                                 <label for="">Días</label>
                             </div>
-                            <input type="number" class="form-control col-12 col-md-7" name="th_permiso_dias" min="1">
+                            <input type="date" class="form-control col-12 col-md-7" name="th_permiso_fecha_fin" min="1">
                         </div>
                     </div>
                 </div>
@@ -55,7 +55,14 @@
                     <label for="th_permiso_motivo_radio_{$mt.id_motivo_permisos}" class="custom-control-label">{$mt.motivo}</label>
                 </div>
                 {/foreach} {/if}
-
+                <div class="custom-control custom-radio ">
+                    <input type="radio" class="custom-control-input" name="th_permiso_imputable_radio" id="th_permiso_motivo_radio_imputable"
+                        value="0">
+                    <label for="th_permiso_motivo_radio_imputable" class="custom-control-label">Imputable</label>
+                </div>
+            </div>
+            <div class="col-12 col-md-3">
+                
             </div>
             <div class="col-12 d-flex justify-content-start my-3">
                 <button type="button" id="th_permiso_guardar_btn" class="btn btn-sm btn-success">Guardar Cambios</button>
