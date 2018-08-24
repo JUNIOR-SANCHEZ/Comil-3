@@ -247,13 +247,14 @@ DROP TABLE IF EXISTS `solicitud_permisos`;
 CREATE TABLE `solicitud_permisos` (
   `id_solicitud_permisos` int(11) NOT NULL AUTO_INCREMENT,
   `fecha_inicio` date NOT NULL,
-  `fecha_final` date DEFAULT NULL,
-  `detalle` varchar(10) COLLATE utf8_spanish2_ci DEFAULT NULL,
+  `fecha_fin` date NOT NULL,
   `persona` int(11) NOT NULL,
   PRIMARY KEY (`id_solicitud_permisos`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
 
 /*Data for the table `solicitud_permisos` */
+
+insert  into `solicitud_permisos`(`id_solicitud_permisos`,`fecha_inicio`,`fecha_fin`,`persona`) values (1,'2018-08-09','0000-00-00',1),(2,'2018-08-16','0000-00-00',5),(3,'2018-08-18','0000-00-00',1),(4,'2018-08-23','2018-08-29',6);
 
 /*Table structure for table `tipos_sangre` */
 
@@ -332,6 +333,22 @@ BEGIN
     END */$$
 DELIMITER ;
 
+/* Procedure structure for procedure `addSolicitudPermiso` */
+
+/*!50003 DROP PROCEDURE IF EXISTS  `addSolicitudPermiso` */;
+
+DELIMITER $$
+
+/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `addSolicitudPermiso`(
+	fecha_inicio_permiso varchar(25),
+	fecha_fin_permiso varchar(25),
+	persona_permiso int
+    )
+BEGIN
+	insert into solicitud_permisos values (null,fecha_inicio_permiso,fecha_fin_permiso,persona_permiso);
+    END */$$
+DELIMITER ;
+
 /* Procedure structure for procedure `addUser` */
 
 /*!50003 DROP PROCEDURE IF EXISTS  `addUser` */;
@@ -349,6 +366,23 @@ BEGIN
     insert into usuarios 
     (usuarios.`usuario`,usuarios.`email`,usuarios.`pass`,usuarios.`fecha`,usuarios.`role`,usuarios.`imagen`,usuarios.`estado`)
      values (user_u,email_u,pass_u,now(),1,image_u,1);
+    END */$$
+DELIMITER ;
+
+/* Procedure structure for procedure `getPersonalDatosBasicos` */
+
+/*!50003 DROP PROCEDURE IF EXISTS  `getPersonalDatosBasicos` */;
+
+DELIMITER $$
+
+/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `getPersonalDatosBasicos`(
+dato varchar(50)
+)
+BEGIN
+	SELECT p.id_personal as id,CONCAT(p.nombres,' ',p.apellidos) AS nombres, p.direccion,p.`cedula`,p.`email`,p.`correo_institucional` 
+	FROM personal p
+	where CONCAT(p.nombres,' ',p.apellidos) like concat('%',dato,'%')
+	or p.cedula LIKE CONCAT('%',dato,'%');
     END */$$
 DELIMITER ;
 
