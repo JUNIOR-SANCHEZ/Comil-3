@@ -8,7 +8,7 @@
     <div class="d-flex my-3 justify-content-end">
             <button type="button" class="btn btn-success btn-sm " id="th_btn_lista_persona" data-toggle="modal" data-target="#th_permiso_lista_persona_modal">Lista</button>
     </div>
-    <form action="" class="" id="th_permiso_form">
+    <form class="" id="th_permiso_form">
         <input type="hidden" name="th_permiso_id_persona" id="th_permiso_id_persona" value="0">
         <div class="row  border">
             <div class="col-12 col-md-6">
@@ -58,7 +58,7 @@
 
             </div>
             <div class="col-12 d-flex justify-content-start my-3">
-                <button id="th_permiso_guardar_btn" class="btn btn-sm btn-success">Guardar Cambios</button>
+                <button type="button" id="th_permiso_guardar_btn" class="btn btn-sm btn-success">Guardar Cambios</button>
             </div>
         </div>
     </form>

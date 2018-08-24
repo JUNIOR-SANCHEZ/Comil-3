@@ -19,7 +19,6 @@
                 <td>{$ps.correo_institucional}</td>
                 <td>{$ps.cedula}</td>
             </tr>
-
             {/foreach} {/if}
         </tbody>
     </table>

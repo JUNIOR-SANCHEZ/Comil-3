@@ -8,8 +8,10 @@ function Permisos() {
       success: function(response) {
         _data.retorno(response);
       },
-      error: function() {
-        alert("ha ocurrido un error");
+      error: function(jqXHR, status, error) {
+        console.log(jqXHR);
+        console.log(status);
+        console.log(error);
       }
     });
   };
@@ -24,15 +26,8 @@ function Permisos() {
 
 permiso = new Permisos();
 
-$(document).on("click", function() {
-  $(".pagina").on("click", function() {
-    var paginaNum = "pagina=" + $(this).attr("pagina");
-    permiso.paginacion({
-      url: "DptoTalentoHumano/solicitud_de_permiso/datosPersonaAjax",
-      elem: "#th_btn_lista_persona_contenedor",
-      pagina: paginaNum
-    });
-  });
+$(document).ready(function() {
+
 
   $(".pagina").on("click", function() {
     var paginaNum = "pagina=" + $(this).attr("pagina");
@@ -42,6 +37,17 @@ $(document).on("click", function() {
       pagina: paginaNum
     });
   });
+
+  // $(".pagina").live(function() {
+  //   var paginaNum = "pagina=" + $(this).attr("pagina");
+  //   permiso.paginacion({
+  //     url: "DptoTalentoHumano/solicitud_de_permiso/datosPersonaAjax",
+  //     elem: "#th_btn_lista_persona_contenedor",
+  //     pagina: paginaNum
+  //   });
+  // });
+
+
 
   $(".th_dato_fila_persona").on("click", function() {
     $("#th_permiso_lista_persona_modal").modal("hide");
@@ -57,6 +63,8 @@ $(document).on("click", function() {
       });
   });
 
+
+
   $("#th_permiso_buscar_persona").on("keyup", function() {
     var paginaNum = { pagina: $(this).attr("pagina"), buscar: $(this).val() };
     permiso.paginacion({
@@ -66,22 +74,25 @@ $(document).on("click", function() {
     });
   });
 
+
+
   $("#th_permiso_guardar_btn").on("click", function(e) {
     e.preventDefault();
-    $dato = $("#th_permiso_form").serializeArray();
-    // console.log($dato);
-
+    var elem = document.getElementById("th_permiso_form");
+    form = new FormData(elem);
+    $data = $("#th_permiso_form").serializeArray()
     permiso.envioAjax({
-        url:'"DptoTalentoHumano/solicitud_de_permiso/agregarSolicitudPermiso',
-        data:$dato,
-        retorno:function(response){
-            if (response) {
-                alert('se registro con exito');
-            } else {
-                alert('ha ocurrido un error');
-            }
+      url: 'DptoTalentoHumano/solicitud_de_permiso/agregarSolicitudPermiso/',
+      data: $data,
+      retorno: function(response) {
+        if (response) {
+          console.log("se registro con exito");
+        } else {
+          console.log("ha ocurrido un error");
         }
-
+          
+      }
     });
+    
   });
 });

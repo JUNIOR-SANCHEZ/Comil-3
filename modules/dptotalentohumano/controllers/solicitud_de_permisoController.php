@@ -14,7 +14,6 @@ class solicitud_de_permisoController extends dptotalentohumanoController
         $this->_view->assign('paginacion',$paginador->getView('paginacion_ajax'));
         $this->_view->setJs(array('inicializador'));
         $this->_view->assign('titulo','Solicitud por dias');
-        
         $this->_view->assign('motivos',$this->_datos->getMotivoPermiso());
         $this->_view->renderizar('dias','dptoTalentoHumano');
     }
@@ -33,16 +32,10 @@ class solicitud_de_permisoController extends dptotalentohumanoController
     }
 
     public function agregarSolicitudPermiso(){
-        // echo json_encode($this->_datos->addSolicitudPermiso(
-        //     $this->getText('th_permiso_fecha_inicio'),
-        //     $this->getInt('th_permiso_dias'),
-        //     $this->getInt('th_permiso_id_persona')
-        // ));
-
-        echo json_encode(
+        echo json_encode($this->_datos->addSolicitudPermiso(
             $this->getText('th_permiso_fecha_inicio'),
             $this->getInt('th_permiso_dias'),
             $this->getInt('th_permiso_id_persona')
-        );
+        ));
     }
 }
