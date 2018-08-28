@@ -1,75 +1,110 @@
 <div class="container">
-    <div class="row">
-        <div class="col-12 text-center">
-            <h3 class="display ">SOLICITUD DE PERMISO POR DIAS</h3>
-            <p class="lead">PERSONAL DOCENTE, ADMINISTRATIVO Y SERVICIO</p>
+    <div class="card p-5 my-5">
+        <div class="card-body">
+            <h5 class="card-title text-center">SOLICITUD DE PERMISOS POR DÍA</h5>
+            <h6 class="card-subtitle  text-muted text-center mb-4 ">PERSONAL, DOCENTE, ADMINISTRATIVO Y SERVICIOS</h6>
+            <form class="row" id="th_permiso_form">
+                <input type="hidden" name="th_permiso_id_persona" id="th_permiso_id_persona" value="0">
+                <div class="col-12 mb-4">
+                    <div class="btn-group btn-group-toggle  " data-toggle="buttons">
+                        <label class="btn btn-success btn-sm active">
+                            <input type="radio" name="th_permiso_tipo_solicitud" value="d" id="th_permiso_dia" checked > Días
+                        </label>
+
+                        <label class="btn btn-success btn-sm">
+                            <input type="radio" name="th_permiso_tipo_solicitud" id="th_permiso_hora" value="h" > Horas
+                        </label>
+                    </div>
+                </div>
+                <div class="col-12 col-md-6">
+                    <!-- Fila 1 -->
+                    <div class="row">
+                        <!-- Nombres -->
+                        <div class="input-group col-12  mb-3">
+                            <div class="input-group-prepend ">
+                                <div class="input-group-text bg-dark text-white" id="">
+                                    <i class="fa fa-user"></i>
+                                </div>
+                            </div>
+                            <input type="text" class="form-control" id="th_permiso_nombres" disabled>
+                            <div class="input-group-prepend">
+                                <button class="btn btn-outline-success" type="button" id="th_btn_lista_persona" data-toggle="modal" data-target="#th_permiso_lista_persona_modal">Lista</button>
+                            </div>
+                        </div>
+                        <!-- Fin Nombres -->
+                        <!-- Fecha Inicio -->
+                        <div class="input-group col-12  mb-3">
+                            <div class="input-group-prepend ">
+                                <div class="input-group-text bg-dark text-white" id="">
+                                    <i class="fa fa-calendar-alt"></i>
+                                </div>
+                            </div>
+                            <input type="date" class="form-control fecha" name="th_permiso_fecha_inicio">
+                        </div>
+                        <!-- Fin Fecha Inicio -->
+                        <!-- Fecha Fin -->
+                        <div class="input-group col-12   mb-3">
+                            <div class="input-group-prepend ">
+                                <div class="input-group-text bg-dark text-white" id="">
+                                    <i class="fa fa-calendar-alt"></i>
+                                </div>
+                            </div>
+                            <input type="date" class="form-control fecha" name="th_permiso_fecha_fin">
+                        </div>
+                        <!-- Fin Fecha Fin -->
+                    </div>
+                    <!-- Fila 1 -->
+                </div>
+                <div class="col-12 col-md-6">
+                    <!-- Fila 2 -->
+                    <div class="row">
+
+                        <!-- Motivos de Salida -->
+                        <div class="input-group mb-3 col-12 ">
+                            <div class="input-group-prepend ">
+                                <label class="input-group-text bg-dark text-white" for="inputGroupSelect01">
+                                    <i class="fas fa-comment-dots"></i>
+                                </label>
+                            </div>
+                            <select class="custom-select" name="th_permiso_motivo">
+                                <option selected disabled text-muted>Motivo de salida</option>
+                                {if isset($motivos)} {foreach item=mt from=$motivos}
+                                <option value="{$mt.id_motivo_permisos}">{$mt.motivo}</option>
+                                {/foreach} {/if}
+
+                            </select>
+                        </div>
+                        <!-- FIn Motivos de Salida -->
+                        <!-- Imputable y no Imputable -->
+                        <div class="input-group mb-3 col-12">
+                            <div class="input-group-prepend ">
+                                <label class="input-group-text bg-dark text-white" for="inputGroupSelect01">
+                                    <i class="fa fa-money-bill-alt"></i>
+                                </label>
+                            </div>
+                            <select class="custom-select" name="th_permiso_tipo_permiso">
+                                <option value="0">Imputable</option>
+                                <option value="1">No imputable</option>
+                            </select>
+                        </div>
+                        <!-- Fin Imputable y no Imputable -->
+                    </div>
+                    <!-- Fin Fila 2 -->
+
+                </div>
+                <div class="col-12">
+                    <button type="button" id="th_permiso_guardar_btn" class="btn btn-sm btn-success">Guardar Cambios</button>
+                </div>
+            </form>
         </div>
     </div>
-    <div class="d-flex my-3 justify-content-end">
-        <button type="button" class="btn btn-success btn-sm " id="th_btn_lista_persona" data-toggle="modal" data-target="#th_permiso_lista_persona_modal">Lista</button>
-    </div>
-    <form class="" id="th_permiso_form">
-        <input type="hidden" name="th_permiso_id_persona" id="th_permiso_id_persona" value="0">
-        <div class="row  border">
-            <div class="col-12 col-md-6">
-                <div class="row">
-                    <div class="col-12">
-                        <p class="lead">Datos:</p>
-                    </div>
-                    <div class="col-12">
-                        <div class="form-group row">
-                            <div class="col-12 col-md-3 ">
-                                <label for="">Apellidos Nombres:</label>
-                            </div>
-                            <input type="text" id="th_permiso_nombres" class="form-control col-12 col-md-7" disabled>
-                        </div>
-                    </div>
-                    <div class="col-12 ">
-                        <div class="form-group row ">
-                            <div class="col-12 col-md-3">
-                                <label for="">Fecha/hora:</label>
-                            </div>
-                            <input type="date" class="form-control col-12 col-md-7" name="th_permiso_fecha_inicio">
-                        </div>
-                    </div>
-                    <div class="col-12">
-                        <div class="form-group row">
-                            <div class="col-12 col-md-3">
-                                <label for="">Días</label>
-                            </div>
-                            <input type="date" class="form-control col-12 col-md-7" name="th_permiso_fecha_fin" min="1">
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-12 col-md-3">
-                <div class="row">
-                    <div class="col-12">
-                        <P class="lead">Motivo de la salida</P>
-                    </div>
-                </div>
-                {if isset($motivos)} {foreach item=mt from=$motivos}
-                <div class="custom-control custom-radio row">
-                    <input type="radio" class="custom-control-input" name="th_permiso_motivo_radio" id="th_permiso_motivo_radio_{$mt.id_motivo_permisos}"
-                        value="{$mt.id_motivo_permisos}">
-                    <label for="th_permiso_motivo_radio_{$mt.id_motivo_permisos}" class="custom-control-label">{$mt.motivo}</label>
-                </div>
-                {/foreach} {/if}
-                <div class="custom-control custom-radio ">
-                    <input type="radio" class="custom-control-input" name="th_permiso_imputable_radio" id="th_permiso_motivo_radio_imputable"
-                        value="0">
-                    <label for="th_permiso_motivo_radio_imputable" class="custom-control-label">Imputable</label>
-                </div>
-            </div>
-            <div class="col-12 col-md-3">
-                
-            </div>
-            <div class="col-12 d-flex justify-content-start my-3">
-                <button type="button" id="th_permiso_guardar_btn" class="btn btn-sm btn-success">Guardar Cambios</button>
-            </div>
-        </div>
-    </form>
 </div>
+
+
+
+
+
+
 <div class="modal fade" id="th_permiso_lista_persona_modal" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
     aria-hidden="true">
     <div class="modal-dialog  modal-dialog-centered modal-lg">

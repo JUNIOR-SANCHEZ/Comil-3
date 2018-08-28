@@ -21,11 +21,14 @@ class solicitud_de_permisoModel extends Model
         $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
         return $data;
     }
-    public function addSolicitudPermiso($fecha,$th_permiso_fecha_fin,$persona){
-        $stmt = $this->_db->prepare('CALL addSolicitudPermiso(:fecha,:th_permiso_fecha_fin,:persona)');
+    public function addSolicitudPermiso($fecha,$th_permiso_fecha_fin,$persona,$motivo,$tipo_solicitud,$tipo_permiso){
+        $stmt = $this->_db->prepare('CALL addSolicitudPermiso(:fecha,:th_permiso_fecha_fin,:persona,:motivo,:tipo_solicitud,:tipo_permiso)');
         $stmt->bindParam(':fecha',$fecha,PDO::PARAM_STR);
         $stmt->bindParam(':th_permiso_fecha_fin',$th_permiso_fecha_fin,PDO::PARAM_STR);
         $stmt->bindParam(':persona',$persona,PDO::PARAM_INT);
+        $stmt->bindParam(':motivo',$motivo,PDO::PARAM_INT);
+        $stmt->bindParam(':tipo_solicitud',$tipo_solicitud,PDO::PARAM_STR);
+        $stmt->bindParam(':tipo_permiso',$tipo_permiso,PDO::PARAM_INT);
         $file = $stmt->execute();
         return $file;
     }

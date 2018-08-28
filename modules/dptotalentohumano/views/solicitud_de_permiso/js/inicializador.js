@@ -12,6 +12,14 @@ $(document).ready(function() {
       }
     );
   };
+  $("#th_permiso_hora").on("change", function() {
+    $("input.fecha").removeAttr("type");
+    $("input.fecha").prop("type", "time");
+  });
+  $("#th_permiso_dia").on("change", function() {
+    $("input.fecha").removeAttr("type");
+    $("input.fecha").prop("type", "date");
+  });
   /**
    * funcion buscar
    */
@@ -43,7 +51,7 @@ $(document).ready(function() {
   /**
    * Seleccionar fila de la tabla
    */
-  $(document).delegate(".th_dato_fila_persona","click",function() {
+  $(document).delegate(".th_dato_fila_persona", "click", function() {
     $("#th_permiso_lista_persona_modal").modal("hide");
     $(this)
       .find(".th_nombre_persona")

@@ -106,6 +106,7 @@ class menuModelWidget extends Model{
             )
     );
    }
+
    if ($this->_acl->permiso("admin_dptoTalHum")) {
     $menus["departamentos"]= array(
         array(
@@ -127,7 +128,7 @@ class menuModelWidget extends Model{
                     'sub'=>array(
                         array(
                             'id' => 'thsub_permiso_por_dia',
-                            'titulo' => 'Por dias',
+                            'titulo' => 'Generar Permisos',
                             'enlace' => BASE_URL.'DptoTalentoHumano/solicitud_de_permiso/dias'
                         )
                     )
@@ -139,9 +140,9 @@ class menuModelWidget extends Model{
                     'sub'=>array(
                         array(
                             'id' => 'cpsub_reporte_hoja_vida',
-                            'titulo' => 'Reporte HV CP',
+                            'titulo' => 'Reporte Permisos',
                             'icon'=>'fa-folder',
-                            'enlace' => BASE_URL.'noticias'
+                            'enlace' => BASE_URL.'DptoTalentoHumano/reportes/permisos/'
                         )
                     )
                 )
