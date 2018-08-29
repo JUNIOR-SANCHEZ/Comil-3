@@ -34,13 +34,20 @@ class solicitud_de_permisoController extends dptotalentohumanoController
     }
 
     public function agregarSolicitudPermiso(){
+            $th_permiso_num_d_h = $this->getText('th_permiso_num_d');
+        if($this->getText('th_permiso_tipo_solicitud') == "h"){
+            $th_permiso_num_d_h = $this->getText('th_permiso_num_h_a').'/'.$this->getText('th_permiso_num_h_d');
+        }
+
+
         echo json_encode($this->_datos->addSolicitudPermiso(
-            $this->getText('th_permiso_fecha_inicio'),
-            $this->getText('th_permiso_fecha_fin'),
+            $this->getText('th_permiso_fecha_permiso'),
+            $th_permiso_num_d_h,
             $this->getInt('th_permiso_id_persona'),
             $this->getInt('th_permiso_motivo'),
             $this->getText('th_permiso_tipo_solicitud'),
             $this->getInt('th_permiso_tipo_permiso')
         ));
+        
     }
 }

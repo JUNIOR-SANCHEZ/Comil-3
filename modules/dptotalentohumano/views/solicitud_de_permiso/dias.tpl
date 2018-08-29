@@ -18,7 +18,7 @@
                 </div>
                 <div class="col-12 col-md-6">
                     <!-- Fila 1 -->
-                    <div class="row">
+                    <div class="row" id="">
                         <!-- Nombres -->
                         <div class="input-group col-12  mb-3">
                             <div class="input-group-prepend ">
@@ -32,26 +32,28 @@
                             </div>
                         </div>
                         <!-- Fin Nombres -->
-                        <!-- Fecha Inicio -->
+                        <!-- Fecha Permiso -->
                         <div class="input-group col-12  mb-3">
                             <div class="input-group-prepend ">
                                 <div class="input-group-text bg-dark text-white" id="">
                                     <i class="fa fa-calendar-alt"></i>
                                 </div>
                             </div>
-                            <input type="date" class="form-control fecha" name="th_permiso_fecha_inicio">
+                            <input type="date" class="form-control" name="th_permiso_fecha_permiso">
                         </div>
-                        <!-- Fin Fecha Inicio -->
-                        <!-- Fecha Fin -->
-                        <div class="input-group col-12   mb-3">
+                        <!-- Fin Fecha Permiso -->
+                        <!-- Numero de horas o Fecha -->
+                        <!-- <div   col-12 mb-3"> -->
+                        <div class="input-group  col-12 mb-3" id="remove">
                             <div class="input-group-prepend ">
                                 <div class="input-group-text bg-dark text-white" id="">
                                     <i class="fa fa-calendar-alt"></i>
                                 </div>
                             </div>
-                            <input type="date" class="form-control fecha" name="th_permiso_fecha_fin">
+                            <input type="number" class="form-control" name="th_permiso_num_d" min="1">
                         </div>
-                        <!-- Fin Fecha Fin -->
+                    <!-- </div> -->
+                        <!-- Fin Numero de horas o Fecha -->
                     </div>
                     <!-- Fila 1 -->
                 </div>

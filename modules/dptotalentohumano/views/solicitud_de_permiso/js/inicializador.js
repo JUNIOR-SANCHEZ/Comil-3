@@ -12,13 +12,41 @@ $(document).ready(function() {
       }
     );
   };
+  /**
+   * cambiar input
+   */
   $("#th_permiso_hora").on("change", function() {
-    $("input.fecha").removeAttr("type");
-    $("input.fecha").prop("type", "time");
+    $("#remove")
+      .children()
+      .remove();
+    $("#remove").append(
+      `
+      <div class="input-group-prepend ">
+        <div class="input-group-text bg-dark text-white" id="">
+          <i class="fa fa-calendar-alt"></i>
+        </div>
+      </div>
+      <input type="time" class="form-control" name="th_permiso_num_h_a" min="1">
+      <input type="time" class="form-control" name="th_permiso_num_h_d" min="1">
+      `
+    );
   });
   $("#th_permiso_dia").on("change", function() {
-    $("input.fecha").removeAttr("type");
-    $("input.fecha").prop("type", "date");
+    $("#remove")
+      .children()
+      .remove();
+    $("#remove").append(
+      `
+        <div class="input-group-prepend ">
+          <div class="input-group-text bg-dark text-white" id="">
+            <i class="fa fa-calendar-alt"></i>
+          </div>
+        </div>
+        <input type="number" class="form-control" name="th_permiso_num_d" min="1">
+        
+        
+        `
+    );
   });
   /**
    * funcion buscar
@@ -79,9 +107,9 @@ $(document).ready(function() {
       dataType: "json",
       success: function(response) {
         if (response) {
-          console.log("se registro con exito");
+          alert("se registro con exito");
         } else {
-          console.log("ha ocurrido un error");
+          alert("ha ocurrido un error");
         }
       },
       error: function(jqXHR, status, error) {

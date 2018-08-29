@@ -24,11 +24,11 @@ CREATE TABLE `cargos_funciones_personal` (
   `id_cargos_funciones_personal` int(11) NOT NULL AUTO_INCREMENT,
   `cargo_funcion` varchar(100) COLLATE utf8_spanish2_ci NOT NULL,
   PRIMARY KEY (`id_cargos_funciones_personal`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
 
 /*Data for the table `cargos_funciones_personal` */
 
-insert  into `cargos_funciones_personal`(`id_cargos_funciones_personal`,`cargo_funcion`) values (1,'Cargo 1'),(2,'Cargo 2');
+insert  into `cargos_funciones_personal`(`id_cargos_funciones_personal`,`cargo_funcion`) values (1,'Cargo 1'),(2,'Cargo 2'),(3,'cargo 3');
 
 /*Table structure for table `dependencias` */
 
@@ -57,23 +57,6 @@ CREATE TABLE `estados_civiles` (
 /*Data for the table `estados_civiles` */
 
 insert  into `estados_civiles`(`id_estados_civiles`,`estado_civil`) values (1,'soltero'),(2,'casado'),(3,'divorciado'),(4,'union/libre');
-
-/*Table structure for table `galeria` */
-
-DROP TABLE IF EXISTS `galeria`;
-
-CREATE TABLE `galeria` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `tema` varchar(100) COLLATE utf8_spanish2_ci NOT NULL,
-  `descripcion` varchar(200) COLLATE utf8_spanish2_ci NOT NULL,
-  `imagen` varchar(100) COLLATE utf8_spanish2_ci NOT NULL,
-  `usuario` int(11) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
-
-/*Data for the table `galeria` */
-
-insert  into `galeria`(`id`,`tema`,`descripcion`,`imagen`,`usuario`) values (19,'nmvc',' ,vcxmn,..x','upl_5acda54e93804.jpg',13);
 
 /*Table structure for table `generos` */
 
@@ -134,25 +117,7 @@ CREATE TABLE `motivo_permisos` (
 
 /*Data for the table `motivo_permisos` */
 
-insert  into `motivo_permisos`(`id_motivo_permisos`,`motivo`) values (1,'asuntos personales'),(2,'enfermedad'),(3,'calamidad doméstica'),(4,'capacitación');
-
-/*Table structure for table `news` */
-
-DROP TABLE IF EXISTS `news`;
-
-CREATE TABLE `news` (
-  `id_n` int(11) NOT NULL AUTO_INCREMENT,
-  `theme_n` varchar(200) COLLATE utf8_spanish2_ci NOT NULL,
-  `body_n` blob NOT NULL,
-  `image_n` int(11) NOT NULL,
-  `date_n` datetime NOT NULL,
-  `id_user` int(11) NOT NULL,
-  PRIMARY KEY (`id_n`)
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
-
-/*Data for the table `news` */
-
-insert  into `news`(`id_n`,`theme_n`,`body_n`,`image_n`,`date_n`,`id_user`) values (6,'Manualidades','Destrezas manuales en nuestros usuarios Adultos Mayores de la unidad de atención “El Placer-La Loma” #FundacionSanJuanBautista #MiesMachala #ElGuabo.',0,'2018-03-24 14:14:27',1),(7,'Actividades Recreativas','Actividades Recreativas y Bailoterapia con los Adultos Mayores usuarios de la unidad de atención “18 de Octubre” de la ciudad de Machala. #FundacionSanJuanBautista #MiesMachala\r\n',0,'2018-03-25 10:52:12',1),(8,'Huertos','Plantando semillas para realizar Huertos Familiares en la unidad de atención “Tendales-La Maravilla” y realizando minga de limpieza en la sede 10 de Agosto. #FundacionSanJuanBautista #MiesMachala #ElGuabo ',0,'2018-03-25 10:58:32',1);
+insert  into `motivo_permisos`(`id_motivo_permisos`,`motivo`) values (1,'asuntos personales'),(2,'enfermedad'),(3,'calamidad domestica'),(4,'capacitacion');
 
 /*Table structure for table `permisos` */
 
@@ -224,7 +189,7 @@ CREATE TABLE `personal` (
 
 /*Data for the table `personal` */
 
-insert  into `personal`(`id_personal`,`nombres`,`apellidos`,`cedula`,`direccion`,`email`,`correo_institucional`,`telefono`,`fecha_nacimiento`,`tipo_sangre`,`genero`,`estado_civil`,`estado_laboral`) values (1,'moran pineda lourde beatriz','','0702681016','arenillas calle leonor roldan y 11 de noviembre','dlulymp@hotmail.com','mplbeatriz','0998359208','1973-04-15',1,0,0,0),(2,'th_per_nombres','th_per_apellidos','th_per_cedu','th_per_direccion_domiciliaria','th_per_email','th_per_email_institucional','th_per_tele','2018-06-15',0,0,0,0),(3,'N','A','IDE','D','E','EI','T','2018-08-17',3,1,0,1),(4,'N','A','IDE','D','E','EI','T','2018-08-17',3,1,0,1),(5,'Juan Diego','Leon Aguirre','070666666','direccion','email@email.com','correo@correo.com','258741','2018-08-23',4,1,1,1),(6,'Diego Armando','Mera hidalgo','0708888888','Direccion','email@email.com','Correo@correo.com','23355','2018-08-17',4,1,2,1);
+insert  into `personal`(`id_personal`,`nombres`,`apellidos`,`cedula`,`direccion`,`email`,`correo_institucional`,`telefono`,`fecha_nacimiento`,`tipo_sangre`,`genero`,`estado_civil`,`estado_laboral`) values (1,'moran pineda lourde beatriz','','0702681016','arenillas calle leonor roldan y 11 de noviembre','dlulymp@hotmail.com','mplbeatriz','0998359208','1973-04-15',1,0,0,0),(5,'Juan Diego','Leon Aguirre','070666666','direccion','email@email.com','correo@correo.com','258741','2018-08-23',4,1,1,1),(6,'Diego Armando','Mera hidalgo','0708888888','Direccion','email@email.com','Correo@correo.com','23355','2018-08-17',4,1,2,1);
 
 /*Table structure for table `roles` */
 
@@ -246,15 +211,18 @@ DROP TABLE IF EXISTS `solicitud_permisos`;
 
 CREATE TABLE `solicitud_permisos` (
   `id_solicitud_permisos` int(11) NOT NULL AUTO_INCREMENT,
-  `fecha_inicio` date NOT NULL,
-  `fecha_fin` date NOT NULL,
+  `fecha_permiso` date NOT NULL,
+  `num_h_d` varchar(25) COLLATE utf8_spanish2_ci NOT NULL,
   `persona` int(11) NOT NULL,
+  `motivo` int(11) NOT NULL,
+  `tipo_solicitud` char(2) COLLATE utf8_spanish2_ci NOT NULL,
+  `tipo_permiso` tinyint(4) NOT NULL,
   PRIMARY KEY (`id_solicitud_permisos`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
 
 /*Data for the table `solicitud_permisos` */
 
-insert  into `solicitud_permisos`(`id_solicitud_permisos`,`fecha_inicio`,`fecha_fin`,`persona`) values (1,'2018-08-09','0000-00-00',1),(2,'2018-08-16','0000-00-00',5),(3,'2018-08-18','0000-00-00',1),(4,'2018-08-23','2018-08-29',6);
+insert  into `solicitud_permisos`(`id_solicitud_permisos`,`fecha_permiso`,`num_h_d`,`persona`,`motivo`,`tipo_solicitud`,`tipo_permiso`) values (1,'2018-08-31','4',5,2,'d',0),(3,'2018-08-16','07:30/12:30',5,4,'h',1),(4,'2018-08-29','4',6,1,'d',0),(5,'2018-08-29','07:30/09:00',5,1,'h',0);
 
 /*Table structure for table `tipos_sangre` */
 
@@ -340,12 +308,19 @@ DELIMITER ;
 DELIMITER $$
 
 /*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `addSolicitudPermiso`(
-	fecha_inicio_permiso varchar(25),
-	fecha_fin_permiso varchar(25),
-	persona_permiso int
+	fecha_permiso_permiso varchar(25),
+	num_h_d_permiso varchar(25),
+	persona_permiso int,
+	motivo_permiso int,
+	tipo_solicitud_permiso char,
+	tipo_permiso_permiso tinyint
     )
 BEGIN
-	insert into solicitud_permisos values (null,fecha_inicio_permiso,fecha_fin_permiso,persona_permiso);
+	insert into solicitud_permisos 
+	values 
+	(null,fecha_permiso_permiso,num_h_d_permiso,
+	 persona_permiso,motivo_permiso,tipo_solicitud_permiso,
+	 tipo_permiso_permiso);
     END */$$
 DELIMITER ;
 
@@ -383,6 +358,44 @@ BEGIN
 	FROM personal p
 	where CONCAT(p.nombres,' ',p.apellidos) like concat('%',dato,'%')
 	or p.cedula LIKE CONCAT('%',dato,'%');
+    END */$$
+DELIMITER ;
+
+/* Procedure structure for procedure `solicitudesIngresadas` */
+
+/*!50003 DROP PROCEDURE IF EXISTS  `solicitudesIngresadas` */;
+
+DELIMITER $$
+
+/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `solicitudesIngresadas`()
+BEGIN
+	select 
+	s.`id_solicitud_permisos` as id, concat(p.`nombres`,' ',p.`apellidos`) as nombres,
+	m.`motivo`, s.`fecha_permiso`, s.`num_h_d`,p.`cedula`
+	from solicitud_permisos s, personal p, motivo_permisos m
+	where s.`persona`= p.`id_personal`
+	and s.`motivo`=m.`id_motivo_permisos`;
+    END */$$
+DELIMITER ;
+
+/* Procedure structure for procedure `solicitudesIngresadasId` */
+
+/*!50003 DROP PROCEDURE IF EXISTS  `solicitudesIngresadasId` */;
+
+DELIMITER $$
+
+/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `solicitudesIngresadasId`(
+    id_solicitud int
+    )
+BEGIN
+    
+    SELECT 
+	s.`id_solicitud_permisos` AS id, s.`fecha_permiso` AS fecha , CONCAT(p.`apellidos`,' ',p.`nombres`) AS nombres,
+	m.`motivo`, s.`num_h_d`,s.`tipo_permiso` AS tipo_p, s.`tipo_solicitud` AS tipo_s
+	FROM solicitud_permisos s, personal p, motivo_permisos m
+	WHERE s.`persona`= p.`id_personal`
+	AND s.`motivo`=m.`id_motivo_permisos`
+	and s.`id_solicitud_permisos`= id_solicitud;
     END */$$
 DELIMITER ;
 
