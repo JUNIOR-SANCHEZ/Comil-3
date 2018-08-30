@@ -26,8 +26,8 @@ $(document).ready(function() {
           <i class="fa fa-calendar-alt"></i>
         </div>
       </div>
-      <input type="time" class="form-control" name="th_permiso_num_h_a" min="1">
-      <input type="time" class="form-control" name="th_permiso_num_h_d" min="1">
+      <input type="time" class="form-control" name="th_permiso_num_h_s" min="1">
+      <input type="time" class="form-control" name="th_permiso_num_h_e" min="1">
       `
     );
   });

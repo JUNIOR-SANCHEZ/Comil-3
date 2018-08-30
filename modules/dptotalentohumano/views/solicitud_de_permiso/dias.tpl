@@ -8,11 +8,11 @@
                 <div class="col-12 mb-4">
                     <div class="btn-group btn-group-toggle  " data-toggle="buttons">
                         <label class="btn btn-success btn-sm active">
-                            <input type="radio" name="th_permiso_tipo_solicitud" value="d" id="th_permiso_dia" checked > Días
+                            <input type="radio" name="th_permiso_tipo_solicitud" value="dias" id="th_permiso_dia" checked > Días
                         </label>
 
                         <label class="btn btn-success btn-sm">
-                            <input type="radio" name="th_permiso_tipo_solicitud" id="th_permiso_hora" value="h" > Horas
+                            <input type="radio" name="th_permiso_tipo_solicitud" id="th_permiso_hora" value="horas" > Horas
                         </label>
                     </div>
                 </div>
@@ -50,7 +50,7 @@
                                     <i class="fa fa-calendar-alt"></i>
                                 </div>
                             </div>
-                            <input type="number" class="form-control" name="th_permiso_num_d" min="1">
+                            <input type="number" class="form-control" name="th_permiso_num_dias" min="1">
                         </div>
                     <!-- </div> -->
                         <!-- Fin Numero de horas o Fecha -->
@@ -69,7 +69,7 @@
                                 </label>
                             </div>
                             <select class="custom-select" name="th_permiso_motivo">
-                                <option selected disabled text-muted>Motivo de salida</option>
+                                <option selected disabled class="text-muted" >Motivo de salida</option>
                                 {if isset($motivos)} {foreach item=mt from=$motivos}
                                 <option value="{$mt.id_motivo_permisos}">{$mt.motivo}</option>
                                 {/foreach} {/if}
@@ -85,8 +85,10 @@
                                 </label>
                             </div>
                             <select class="custom-select" name="th_permiso_tipo_permiso">
-                                <option value="0">Imputable</option>
-                                <option value="1">No imputable</option>
+                                <option value="0" disabled selected class="text-muted">Tipo de permiso</option>
+                                {foreach item=list from=$tipo_permiso}
+                                <option value="{$list.id_tipo_permisos}">{$list.tipo_permiso}</option>
+                                {/foreach}
                             </select>
                         </div>
                         <!-- Fin Imputable y no Imputable -->

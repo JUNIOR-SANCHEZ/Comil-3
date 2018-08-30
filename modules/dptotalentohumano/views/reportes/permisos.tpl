@@ -34,22 +34,24 @@
                                         <table class="table table-hover table-bordered">
                                             <thead>
                                                 <tr>
+                                                    <th>#</th>
                                                     <th scope="col">CEDULA</th>
                                                     <th scope="col">NOMBRES COMPLETOS</th>
                                                     <th></th>
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                {foreach item=list from=$lista}
+                                                {$con=1} {foreach item=list from=$lista}
                                                 <tr>
+                                                    <td>{$con}</td>
                                                     <td>{$list.cedula}</td>
                                                     <td>{$list.nombres}</td>
                                                     <td class="text-center">
-                                                        <a target="_blank" data-num="{$list.id}" class="btn btn-outline-info btn-sm embed">
+                                                        <a target="_blank" data-num="{$list.id_p}" class="btn btn-outline-info btn-sm embed">
                                                             <i class="fa fa-clipboard"></i> Reporte</a>
                                                     </td>
                                                 </tr>
-                                                {/foreach}
+                                                {$con=$con+1} {/foreach}
                                             </tbody>
                                         </table>
                                     </div>

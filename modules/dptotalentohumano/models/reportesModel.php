@@ -12,11 +12,18 @@ class reportesModel extends Model{
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
         return $result;
     }
-    public function listaReportesId($id){
-        $stmt = $this->_db->prepare('CALL solicitudesIngresadasId(:id)');
+    public function listaReportesIdFecha($id){
+        $stmt = $this->_db->prepare('CALL solicitudesIngresadasIdFecha(:id)');
         $stmt->bindParam(':id',$id,PDO::PARAM_INT);
         $stmt->execute();
-        $result = $stmt->fetch(PDO::FETCH_ASSOC);
+        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $result;
+    }  
+    public function listaReportesIdHora($id){
+        $stmt = $this->_db->prepare('CALL solicitudesIngresadasIdHora(:id)');
+        $stmt->bindParam(':id',$id,PDO::PARAM_INT);
+        $stmt->execute();
+        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
         return $result;
     }  
 }

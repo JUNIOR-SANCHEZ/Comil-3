@@ -18,40 +18,25 @@ class reportesController extends dptotalentohumanoController
     }
 
     public function persmisoReporte($id){
-        $res = $this->_solicitud->listaReportesId($id);
+        $fecha = $this->_solicitud->listaReportesIdFecha($id);
+        $hora = $this->_solicitud->listaReportesIdHora($id);
         $tipoPermiso="";
         $tipoSolicitud = "";
-        ($res['tipo_s'] == "d")? $tipoPermiso="DIAS PERMISO" : $tipoPermiso="HORAS PERMISO";
-        list($anio,$mes,$dia) = preg_split('/[-^\/]/i','2018/08/29',-1,PREG_SPLIT_NO_EMPTY );
-        ($res['tipo_p'] == 0 )? $tipoSolicitud="IMPUTABLE" : $tipoSolicitud="NO IMPUTABLE";
+        
+        
         $pdf = new FPDF('P','mm','A5');
         $pdf->AddPage();
         $this->headerpersmisoReporte($pdf);
         $pdf->SetFont('Times','B',8);
         $pdf->cell(48,3,utf8_decode('APELLIDOS Y NOMBRES:'),0,0,'R');
         $pdf->SetTextColor(0, 0, 0);
-        $pdf->cell(80,3,utf8_decode(strtoupper($res['nombres'])),0,0,'C',false);
+        $pdf->cell(80,3,utf8_decode(strtoupper($fecha[0]['nombres'])),0,0,'C',false);
+        $pdf->Ln(8);
+        $this->bodypersmisoReporte($pdf,$fecha,"registro por dias");
         $pdf->Ln(5);
-        $pdf->SetTextColor(0, 0, 128);
-        $pdf->cell(22,5,utf8_decode('AÑO'),1,0,'C');
-        $pdf->cell(22,5,utf8_decode('MES'),1,0,'C');
-        $pdf->cell(22,5,utf8_decode('DIA'),1,0,'C');
-        $pdf->cell(62,5,utf8_decode($tipoPermiso),1,0,'C');
-        $pdf->Ln();
-        $pdf->SetTextColor(0, 0, 0);
+        $this->bodypersmisoReporte($pdf,$hora,"registro por horas");
 
-        $pdf->cell(22,10,utf8_decode($anio),'LRB',0,'C');
-        $pdf->cell(22,10,utf8_decode($mes),'LRB',0,'C');
-        $pdf->cell(22,10,utf8_decode($dia),'LRB',0,'C');
-        $pdf->cell(62,10,utf8_decode($res['num_h_d']),'LRB',0,'C');
-        $pdf->Ln(15);
-
-        $pdf->SetTextColor(0, 0, 128);
-        $pdf->cell(35,5,utf8_decode('MOTIVO DE LA SALIDA:'),0,0,'L');
-        $pdf->SetTextColor(0, 0, 0);
-        $pdf->cell(30,5,utf8_decode(strtoupper($res['motivo'])),0,0,'L');
-        $pdf->SetTextColor(0, 0, 128);
-        $pdf->cell(63,5,$tipoSolicitud,0,0,'C');
+        
         $pdf->Ln();
        
         $pdf->Output();
@@ -75,8 +60,41 @@ class reportesController extends dptotalentohumanoController
         $pdf->cell(128,3,utf8_decode('PERSONAL, DOCENTE, ADMINISTRATIVO Y SERVICIO'),0,0,'C');
         $pdf->Ln(10);
     }
-    private function bodypersmisoReporte(FPDF $pdf){
+    private function bodypersmisoReporte(FPDF $pdf,$res,$title){
         
+       
+        $pdf->SetTextColor(0, 0, 128);
+        $pdf->SetFont('Times','B',10);
+        $pdf->Cell(128,3,utf8_decode(strtoupper($title)),0,0,'L');
+        $pdf->Ln(5);
+        $pdf->SetTextColor(0, 0, 128);
+        $pdf->SetFont('Times','B',8);
+        $pdf->cell(12,5,utf8_decode('AÑO'),1,0,'C');
+        $pdf->cell(12,5,utf8_decode('MES'),1,0,'C');
+        $pdf->cell(12,5,utf8_decode('DIA'),1,0,'C');
+        $pdf->cell(40,5,utf8_decode('MOTIVO'),1,0,'C');
+        $pdf->cell(25,5,utf8_decode('TIPO PERMISO'),1,0,'C');
+        $pdf->cell(25,5,utf8_decode('Nº'),1,0,'C');
+        $pdf->Ln();
+        
+        $pdf->SetTextColor(0, 0, 0);
+        foreach($res as $list){
+        list($anio,$mes,$dia) = preg_split('/[-^\/]/i',$list['fecha'],-1,PREG_SPLIT_NO_EMPTY );
+        $pdf->cell(12,10,utf8_decode($anio),'LRB',0,'C');
+        $pdf->cell(12,10,utf8_decode($mes),'LRB',0,'C');
+        $pdf->cell(12,10,utf8_decode($dia),'LRB',0,'C');
+        $pdf->cell(40,10,utf8_decode(strtoupper($list['motivo'])),'LRB',0,'C');
+        $pdf->cell(25,10,utf8_decode(strtoupper($list['tipo_permiso'])),'LRB',0,'C');
+        if (isset($list['numero'])) {
+            $pdf->cell(25,10,utf8_decode(strtoupper($list['numero'])),'LRB',0,'C');
+        } else if (isset($list['hora_salida']) AND isset($list['hora_entrada']) ){
+            $pdf->cell(25,10,utf8_decode(strtoupper($list['hora_salida']).'-'.$list['hora_entrada']),'LRB',0,'C');
+        }
+        
+       
+
+        $pdf->Ln();
+        }
     }
 
 }

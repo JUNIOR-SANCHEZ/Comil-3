@@ -58,6 +58,24 @@ CREATE TABLE `estados_civiles` (
 
 insert  into `estados_civiles`(`id_estados_civiles`,`estado_civil`) values (1,'soltero'),(2,'casado'),(3,'divorciado'),(4,'union/libre');
 
+/*Table structure for table `fecha_permisos` */
+
+DROP TABLE IF EXISTS `fecha_permisos`;
+
+CREATE TABLE `fecha_permisos` (
+  `id_fecha_permisos` int(11) NOT NULL AUTO_INCREMENT,
+  `fecha` date NOT NULL,
+  `numero` int(11) NOT NULL,
+  `solicitud_permiso` int(11) NOT NULL,
+  PRIMARY KEY (`id_fecha_permisos`),
+  KEY `s_p_f` (`solicitud_permiso`),
+  CONSTRAINT `s_p_f` FOREIGN KEY (`solicitud_permiso`) REFERENCES `solicitud_permisos` (`id_solicitud_permisos`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
+
+/*Data for the table `fecha_permisos` */
+
+insert  into `fecha_permisos`(`id_fecha_permisos`,`fecha`,`numero`,`solicitud_permiso`) values (1,'2018-08-31',3,13),(2,'2018-09-04',0,15),(3,'2018-09-05',3,16);
+
 /*Table structure for table `generos` */
 
 DROP TABLE IF EXISTS `generos`;
@@ -90,6 +108,25 @@ CREATE TABLE `hoja_vida_equipos` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
 
 /*Data for the table `hoja_vida_equipos` */
+
+/*Table structure for table `horas_permiso` */
+
+DROP TABLE IF EXISTS `horas_permiso`;
+
+CREATE TABLE `horas_permiso` (
+  `id_horas_permiso` int(11) NOT NULL AUTO_INCREMENT,
+  `fecha` date NOT NULL,
+  `hora_salida` time NOT NULL,
+  `hora_entrada` time NOT NULL,
+  `solicitud_permiso` int(11) NOT NULL,
+  PRIMARY KEY (`id_horas_permiso`),
+  KEY `s_p_h` (`solicitud_permiso`),
+  CONSTRAINT `s_p_h` FOREIGN KEY (`solicitud_permiso`) REFERENCES `solicitud_permisos` (`id_solicitud_permisos`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
+
+/*Data for the table `horas_permiso` */
+
+insert  into `horas_permiso`(`id_horas_permiso`,`fecha`,`hora_salida`,`hora_entrada`,`solicitud_permiso`) values (1,'2018-09-04','07:30:00','09:00:00',14),(2,'0000-00-00','07:50:00','10:00:00',17),(3,'2018-08-31','12:00:00','14:00:00',18);
 
 /*Table structure for table `marcas_equipos` */
 
@@ -211,18 +248,33 @@ DROP TABLE IF EXISTS `solicitud_permisos`;
 
 CREATE TABLE `solicitud_permisos` (
   `id_solicitud_permisos` int(11) NOT NULL AUTO_INCREMENT,
-  `fecha_permiso` date NOT NULL,
-  `num_h_d` varchar(25) COLLATE utf8_spanish2_ci NOT NULL,
   `persona` int(11) NOT NULL,
   `motivo` int(11) NOT NULL,
-  `tipo_solicitud` char(2) COLLATE utf8_spanish2_ci NOT NULL,
-  `tipo_permiso` tinyint(4) NOT NULL,
-  PRIMARY KEY (`id_solicitud_permisos`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
+  `tipo_permiso` int(11) NOT NULL,
+  PRIMARY KEY (`id_solicitud_permisos`),
+  KEY `s_p_m` (`motivo`),
+  KEY `s_p_t` (`tipo_permiso`),
+  CONSTRAINT `s_p_m` FOREIGN KEY (`motivo`) REFERENCES `motivo_permisos` (`id_motivo_permisos`),
+  CONSTRAINT `s_p_t` FOREIGN KEY (`tipo_permiso`) REFERENCES `tipo_permisos` (`id_tipo_permisos`)
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
 
 /*Data for the table `solicitud_permisos` */
 
-insert  into `solicitud_permisos`(`id_solicitud_permisos`,`fecha_permiso`,`num_h_d`,`persona`,`motivo`,`tipo_solicitud`,`tipo_permiso`) values (1,'2018-08-31','4',5,2,'d',0),(3,'2018-08-16','07:30/12:30',5,4,'h',1),(4,'2018-08-29','4',6,1,'d',0),(5,'2018-08-29','07:30/09:00',5,1,'h',0);
+insert  into `solicitud_permisos`(`id_solicitud_permisos`,`persona`,`motivo`,`tipo_permiso`) values (13,6,1,1),(14,1,3,2),(15,1,3,2),(16,1,4,1),(17,1,4,2),(18,1,2,1);
+
+/*Table structure for table `tipo_permisos` */
+
+DROP TABLE IF EXISTS `tipo_permisos`;
+
+CREATE TABLE `tipo_permisos` (
+  `id_tipo_permisos` int(11) NOT NULL AUTO_INCREMENT,
+  `tipo_permiso` varchar(50) COLLATE utf8_spanish2_ci NOT NULL,
+  PRIMARY KEY (`id_tipo_permisos`)
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
+
+/*Data for the table `tipo_permisos` */
+
+insert  into `tipo_permisos`(`id_tipo_permisos`,`tipo_permiso`) values (1,'inputable'),(2,'no imputable');
 
 /*Table structure for table `tipos_sangre` */
 
@@ -301,26 +353,67 @@ BEGIN
     END */$$
 DELIMITER ;
 
-/* Procedure structure for procedure `addSolicitudPermiso` */
+/* Procedure structure for procedure `addSolicitudPermisoFecha` */
 
-/*!50003 DROP PROCEDURE IF EXISTS  `addSolicitudPermiso` */;
+/*!50003 DROP PROCEDURE IF EXISTS  `addSolicitudPermisoFecha` */;
 
 DELIMITER $$
 
-/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `addSolicitudPermiso`(
-	fecha_permiso_permiso varchar(25),
-	num_h_d_permiso varchar(25),
+/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `addSolicitudPermisoFecha`(
 	persona_permiso int,
 	motivo_permiso int,
-	tipo_solicitud_permiso char,
-	tipo_permiso_permiso tinyint
-    )
+	tipo_permiso_permiso tinyint,
+	fecha_p varchar(25),
+	numero int
+)
 BEGIN
+	declare id_a int;
+	declare id_d int;
+	SELECT id_solicitud_permisos INTO id_a FROM solicitud_permisos ORDER BY id_solicitud_permisos DESC LIMIT 1;
 	insert into solicitud_permisos 
 	values 
-	(null,fecha_permiso_permiso,num_h_d_permiso,
-	 persona_permiso,motivo_permiso,tipo_solicitud_permiso,
+	(null,persona_permiso,motivo_permiso,
 	 tipo_permiso_permiso);
+	 
+	select id_solicitud_permisos into id_d from solicitud_permisos ORDER BY id_solicitud_permisos DESC LIMIT 1;
+	
+	if id_d > id_a then
+	insert into fecha_permisos values (null,fecha_p,numero,id_d);
+	end if;
+	
+    END */$$
+DELIMITER ;
+
+/* Procedure structure for procedure `addSolicitudPermisoHora` */
+
+/*!50003 DROP PROCEDURE IF EXISTS  `addSolicitudPermisoHora` */;
+
+DELIMITER $$
+
+/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `addSolicitudPermisoHora`(
+	persona_permiso INT,
+	motivo_permiso INT,
+	tipo_permiso_permiso TINYINT,
+	fecha_p VARCHAR(25),
+	hora_salida_p varchar(25),
+	hora_entrada_p varchar(25)
+    )
+BEGIN
+    
+    
+	DECLARE id_a INT DEFAULT 0;
+	DECLARE id_d INT DEFAULT 0;
+	SELECT id_solicitud_permisos INTO id_a FROM solicitud_permisos ORDER BY id_solicitud_permisos DESC LIMIT 1;
+	INSERT INTO solicitud_permisos 
+	VALUES 
+	(NULL,persona_permiso,motivo_permiso,
+	 tipo_permiso_permiso);
+	 
+	SELECT id_solicitud_permisos INTO id_d FROM solicitud_permisos ORDER BY id_solicitud_permisos DESC LIMIT 1;
+	
+	IF id_d > id_a THEN
+	INSERT INTO horas_permiso VALUES (NULL,fecha_p,hora_salida_p,hora_entrada_p,id_d);
+	END IF;
     END */$$
 DELIMITER ;
 
@@ -370,32 +463,57 @@ DELIMITER $$
 /*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `solicitudesIngresadas`()
 BEGIN
 	select 
-	s.`id_solicitud_permisos` as id, concat(p.`nombres`,' ',p.`apellidos`) as nombres,
-	m.`motivo`, s.`fecha_permiso`, s.`num_h_d`,p.`cedula`
+	s.`id_solicitud_permisos` as id, p.`id_personal` as id_p ,concat(p.`nombres`,' ',p.`apellidos`) as nombres,
+	m.`motivo`,p.`cedula`
 	from solicitud_permisos s, personal p, motivo_permisos m
 	where s.`persona`= p.`id_personal`
-	and s.`motivo`=m.`id_motivo_permisos`;
+	group by p.nombres;
     END */$$
 DELIMITER ;
 
-/* Procedure structure for procedure `solicitudesIngresadasId` */
+/* Procedure structure for procedure `solicitudesIngresadasIdFecha` */
 
-/*!50003 DROP PROCEDURE IF EXISTS  `solicitudesIngresadasId` */;
+/*!50003 DROP PROCEDURE IF EXISTS  `solicitudesIngresadasIdFecha` */;
 
 DELIMITER $$
 
-/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `solicitudesIngresadasId`(
-    id_solicitud int
+/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `solicitudesIngresadasIdFecha`(
+    id_personal_v int
     )
 BEGIN
     
     SELECT 
-	s.`id_solicitud_permisos` AS id, s.`fecha_permiso` AS fecha , CONCAT(p.`apellidos`,' ',p.`nombres`) AS nombres,
-	m.`motivo`, s.`num_h_d`,s.`tipo_permiso` AS tipo_p, s.`tipo_solicitud` AS tipo_s
-	FROM solicitud_permisos s, personal p, motivo_permisos m
+	CONCAT(p.`apellidos`,' ',p.`nombres`) AS nombres,
+	m.`motivo`,t.`tipo_permiso`,f.`fecha`,f.`numero`
+	FROM solicitud_permisos s, personal p, motivo_permisos m,tipo_permisos t,fecha_permisos f
 	WHERE s.`persona`= p.`id_personal`
 	AND s.`motivo`=m.`id_motivo_permisos`
-	and s.`id_solicitud_permisos`= id_solicitud;
+	and s.`tipo_permiso` = t.`id_tipo_permisos`
+	and f.`solicitud_permiso` = s.`id_solicitud_permisos`
+	and p.id_personal = id_personal_v;
+    END */$$
+DELIMITER ;
+
+/* Procedure structure for procedure `solicitudesIngresadasIdHora` */
+
+/*!50003 DROP PROCEDURE IF EXISTS  `solicitudesIngresadasIdHora` */;
+
+DELIMITER $$
+
+/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `solicitudesIngresadasIdHora`(
+    id_personal_v int
+    )
+BEGIN
+    
+    SELECT 
+	CONCAT(p.`apellidos`,' ',p.`nombres`) AS nombres,
+	m.`motivo`,t.`tipo_permiso`,h.`fecha`,h.`hora_salida`,h.`hora_entrada`
+	FROM solicitud_permisos s, personal p, motivo_permisos m,tipo_permisos t,horas_permiso h
+	WHERE s.`persona`= p.`id_personal`
+	AND s.`motivo`=m.`id_motivo_permisos`
+	and s.`tipo_permiso` = t.`id_tipo_permisos`
+	and h.`solicitud_permiso` = s.`id_solicitud_permisos`
+	and p.id_personal = id_personal_v;
     END */$$
 DELIMITER ;
 
