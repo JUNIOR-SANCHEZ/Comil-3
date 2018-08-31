@@ -140,9 +140,15 @@ class menuModelWidget extends Model{
                     'sub'=>array(
                         array(
                             'id' => 'cpsub_reporte_hoja_vida',
-                            'titulo' => 'Reporte Permisos',
+                            'titulo' => 'Individual',
                             'icon'=>'fa-folder',
-                            'enlace' => BASE_URL.'DptoTalentoHumano/reportes/permisos/'
+                            'enlace' => BASE_URL.'DptoTalentoHumano/reportes/individual/'
+                        ),
+                        array(
+                            'id' => 'cpsub_reporte_hoja_vida',
+                            'titulo' => 'General',
+                            'icon'=>'fa-folder',
+                            'enlace' => BASE_URL.'DptoTalentoHumano/reportes/general/'
                         )
                     )
                 )

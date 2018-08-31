@@ -70,11 +70,11 @@ CREATE TABLE `fecha_permisos` (
   PRIMARY KEY (`id_fecha_permisos`),
   KEY `s_p_f` (`solicitud_permiso`),
   CONSTRAINT `s_p_f` FOREIGN KEY (`solicitud_permiso`) REFERENCES `solicitud_permisos` (`id_solicitud_permisos`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
 
 /*Data for the table `fecha_permisos` */
 
-insert  into `fecha_permisos`(`id_fecha_permisos`,`fecha`,`numero`,`solicitud_permiso`) values (1,'2018-08-31',3,13),(2,'2018-09-04',0,15),(3,'2018-09-05',3,16);
+insert  into `fecha_permisos`(`id_fecha_permisos`,`fecha`,`numero`,`solicitud_permiso`) values (6,'2018-09-01',8,31),(7,'2018-08-31',2,33);
 
 /*Table structure for table `generos` */
 
@@ -122,11 +122,11 @@ CREATE TABLE `horas_permiso` (
   PRIMARY KEY (`id_horas_permiso`),
   KEY `s_p_h` (`solicitud_permiso`),
   CONSTRAINT `s_p_h` FOREIGN KEY (`solicitud_permiso`) REFERENCES `solicitud_permisos` (`id_solicitud_permisos`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
 
 /*Data for the table `horas_permiso` */
 
-insert  into `horas_permiso`(`id_horas_permiso`,`fecha`,`hora_salida`,`hora_entrada`,`solicitud_permiso`) values (1,'2018-09-04','07:30:00','09:00:00',14),(2,'0000-00-00','07:50:00','10:00:00',17),(3,'2018-08-31','12:00:00','14:00:00',18);
+insert  into `horas_permiso`(`id_horas_permiso`,`fecha`,`hora_salida`,`hora_entrada`,`solicitud_permiso`) values (6,'2018-08-31','09:00:00','10:00:00',32);
 
 /*Table structure for table `marcas_equipos` */
 
@@ -226,7 +226,7 @@ CREATE TABLE `personal` (
 
 /*Data for the table `personal` */
 
-insert  into `personal`(`id_personal`,`nombres`,`apellidos`,`cedula`,`direccion`,`email`,`correo_institucional`,`telefono`,`fecha_nacimiento`,`tipo_sangre`,`genero`,`estado_civil`,`estado_laboral`) values (1,'moran pineda lourde beatriz','','0702681016','arenillas calle leonor roldan y 11 de noviembre','dlulymp@hotmail.com','mplbeatriz','0998359208','1973-04-15',1,0,0,0),(5,'Juan Diego','Leon Aguirre','070666666','direccion','email@email.com','correo@correo.com','258741','2018-08-23',4,1,1,1),(6,'Diego Armando','Mera hidalgo','0708888888','Direccion','email@email.com','Correo@correo.com','23355','2018-08-17',4,1,2,1);
+insert  into `personal`(`id_personal`,`nombres`,`apellidos`,`cedula`,`direccion`,`email`,`correo_institucional`,`telefono`,`fecha_nacimiento`,`tipo_sangre`,`genero`,`estado_civil`,`estado_laboral`) values (1,'lourde beatriz','moran pineda','0702681016','arenillas calle leonor roldan y 11 de noviembre','dlulymp@hotmail.com','mplbeatriz','0998359208','1973-04-15',1,0,0,0),(5,'Juan Diego','Leon Aguirre','070666666','direccion','email@email.com','correo@correo.com','258741','2018-08-23',4,1,1,1),(6,'Diego Armando','Mera hidalgo','0708888888','Direccion','email@email.com','Correo@correo.com','23355','2018-08-17',4,1,2,1);
 
 /*Table structure for table `roles` */
 
@@ -256,11 +256,11 @@ CREATE TABLE `solicitud_permisos` (
   KEY `s_p_t` (`tipo_permiso`),
   CONSTRAINT `s_p_m` FOREIGN KEY (`motivo`) REFERENCES `motivo_permisos` (`id_motivo_permisos`),
   CONSTRAINT `s_p_t` FOREIGN KEY (`tipo_permiso`) REFERENCES `tipo_permisos` (`id_tipo_permisos`)
-) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=34 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
 
 /*Data for the table `solicitud_permisos` */
 
-insert  into `solicitud_permisos`(`id_solicitud_permisos`,`persona`,`motivo`,`tipo_permiso`) values (13,6,1,1),(14,1,3,2),(15,1,3,2),(16,1,4,1),(17,1,4,2),(18,1,2,1);
+insert  into `solicitud_permisos`(`id_solicitud_permisos`,`persona`,`motivo`,`tipo_permiso`) values (29,1,2,1),(31,1,3,1),(32,1,1,2),(33,5,1,1);
 
 /*Table structure for table `tipo_permisos` */
 
@@ -274,7 +274,7 @@ CREATE TABLE `tipo_permisos` (
 
 /*Data for the table `tipo_permisos` */
 
-insert  into `tipo_permisos`(`id_tipo_permisos`,`tipo_permiso`) values (1,'inputable'),(2,'no imputable');
+insert  into `tipo_permisos`(`id_tipo_permisos`,`tipo_permiso`) values (1,'inputable'),(2,'no inputable');
 
 /*Table structure for table `tipos_sangre` */
 
@@ -314,6 +314,133 @@ CREATE TABLE `usuarios` (
 /*Data for the table `usuarios` */
 
 insert  into `usuarios`(`id`,`nombre`,`imagen`,`usuario`,`pass`,`email`,`phone`,`ocupacion`,`role`,`estado`,`fecha`,`codigo`) values (1,NULL,'user.png','SrtoLeon','5bae17944cfa8bd5587a430e4a48c9ec0ce68219','leon@leon.com',NULL,NULL,2,1,'2018-08-09',NULL),(2,NULL,'user.png','SartoSanchez','5bae17944cfa8bd5587a430e4a48c9ec0ce68219','sanchez@sanchez.com',NULL,NULL,3,1,'2018-08-09',NULL);
+
+/* Function  structure for function  `solicitudDiasImputable_F` */
+
+/*!50003 DROP FUNCTION IF EXISTS `solicitudDiasImputable_F` */;
+DELIMITER $$
+
+/*!50003 CREATE DEFINER=`root`@`localhost` FUNCTION `solicitudDiasImputable_F`(
+	id int
+    ) RETURNS int(11)
+BEGIN
+    declare dias int;
+    select sum(f.`numero`) into dias 
+    from solicitud_permisos s, personal p,`fecha_permisos` f, `tipo_permisos` t
+    where s.`persona` = p.`id_personal`
+    and f.`solicitud_permiso` = s.`id_solicitud_permisos`
+    and s.`tipo_permiso` = t.`id_tipo_permisos`
+    AND t.`tipo_permiso` = 'inputable'
+    and p.id_personal = id;
+    
+    return dias;
+    END */$$
+DELIMITER ;
+
+/* Function  structure for function  `solicitudDiasNoImputable_F` */
+
+/*!50003 DROP FUNCTION IF EXISTS `solicitudDiasNoImputable_F` */;
+DELIMITER $$
+
+/*!50003 CREATE DEFINER=`root`@`localhost` FUNCTION `solicitudDiasNoImputable_F`(
+	id int
+    ) RETURNS int(11)
+BEGIN
+    declare dias int;
+    select sum(f.`numero`) into dias 
+    from solicitud_permisos s, personal p,`fecha_permisos` f, `tipo_permisos` t
+    where s.`persona` = p.`id_personal`
+    and f.`solicitud_permiso` = s.`id_solicitud_permisos`
+    and s.`tipo_permiso` = t.`id_tipo_permisos`
+    AND t.`tipo_permiso` = 'no inputable'
+    and p.id_personal = id;
+    
+    return dias;
+    END */$$
+DELIMITER ;
+
+/* Function  structure for function  `solicitudDiasTotal_F` */
+
+/*!50003 DROP FUNCTION IF EXISTS `solicitudDiasTotal_F` */;
+DELIMITER $$
+
+/*!50003 CREATE DEFINER=`root`@`localhost` FUNCTION `solicitudDiasTotal_F`(
+	id int
+    ) RETURNS int(11)
+BEGIN
+    declare dias int;
+    select sum(f.`numero`) into dias 
+    from solicitud_permisos s, personal p,`fecha_permisos` f, `tipo_permisos` t
+    where s.`persona` = p.`id_personal`
+    and f.`solicitud_permiso` = s.`id_solicitud_permisos`
+    and s.`tipo_permiso` = t.`id_tipo_permisos`
+    and p.id_personal = id;
+    
+    return dias;
+    END */$$
+DELIMITER ;
+
+/* Function  structure for function  `solicitudHoraImputable_F` */
+
+/*!50003 DROP FUNCTION IF EXISTS `solicitudHoraImputable_F` */;
+DELIMITER $$
+
+/*!50003 CREATE DEFINER=`root`@`localhost` FUNCTION `solicitudHoraImputable_F`(
+	id int
+    ) RETURNS time
+BEGIN
+    declare horas int;
+    select SEC_TO_TIME(SUM(TIME_TO_SEC(timediff(h.`hora_entrada`,h.`hora_salida`)))) AS imputables_horas into horas 
+    from solicitud_permisos s, personal p,`horas_permiso` h, `tipo_permisos` t
+    where s.`persona` = p.`id_personal`
+    and h.`solicitud_permiso` = s.`id_solicitud_permisos`
+    and s.`tipo_permiso` = t.`id_tipo_permisos`
+    and t.`tipo_permiso` = 'inputable'
+    AND p.id_personal = id;
+    return horas;
+    END */$$
+DELIMITER ;
+
+/* Function  structure for function  `solicitudHoraNoImputable_F` */
+
+/*!50003 DROP FUNCTION IF EXISTS `solicitudHoraNoImputable_F` */;
+DELIMITER $$
+
+/*!50003 CREATE DEFINER=`root`@`localhost` FUNCTION `solicitudHoraNoImputable_F`(
+	id int
+    ) RETURNS time
+BEGIN
+    declare horas int;
+    select SEC_TO_TIME(SUM(TIME_TO_SEC(timediff(h.`hora_entrada`,h.`hora_salida`)))) AS imputables_horas into horas 
+    from solicitud_permisos s, personal p,`horas_permiso` h, `tipo_permisos` t
+    where s.`persona` = p.`id_personal`
+    and h.`solicitud_permiso` = s.`id_solicitud_permisos`
+    and s.`tipo_permiso` = t.`id_tipo_permisos`
+    and t.`tipo_permiso` = 'no inputable'
+    AND p.id_personal = id;
+    return horas;
+    END */$$
+DELIMITER ;
+
+/* Function  structure for function  `solicitudHoraTotal_F` */
+
+/*!50003 DROP FUNCTION IF EXISTS `solicitudHoraTotal_F` */;
+DELIMITER $$
+
+/*!50003 CREATE DEFINER=`root`@`localhost` FUNCTION `solicitudHoraTotal_F`(
+	id int
+    ) RETURNS time
+BEGIN
+    declare horas int;
+    select SEC_TO_TIME(SUM(TIME_TO_SEC(timediff(h.`hora_entrada`,h.`hora_salida`)))) AS imputables_horas into horas 
+    from solicitud_permisos s, personal p,`horas_permiso` h, `tipo_permisos` t
+    where s.`persona` = p.`id_personal`
+    and h.`solicitud_permiso` = s.`id_solicitud_permisos`
+    and s.`tipo_permiso` = t.`id_tipo_permisos`
+    AND p.id_personal = id;
+    return horas;
+    END */$$
+DELIMITER ;
 
 /* Procedure structure for procedure `addPersonal` */
 
@@ -507,7 +634,7 @@ BEGIN
     
     SELECT 
 	CONCAT(p.`apellidos`,' ',p.`nombres`) AS nombres,
-	m.`motivo`,t.`tipo_permiso`,h.`fecha`,h.`hora_salida`,h.`hora_entrada`
+	m.`motivo`,t.`tipo_permiso`,h.`fecha`,h.`hora_salida`,h.`hora_entrada`,TIMEDIFF(h.`hora_entrada`,h.`hora_salida`) as hora_total
 	FROM solicitud_permisos s, personal p, motivo_permisos m,tipo_permisos t,horas_permiso h
 	WHERE s.`persona`= p.`id_personal`
 	AND s.`motivo`=m.`id_motivo_permisos`
@@ -535,6 +662,30 @@ AND usuario = user_login
 AND pass = pass_login;
     END */$$
 DELIMITER ;
+
+/*Table structure for table `reportegeneral` */
+
+DROP TABLE IF EXISTS `reportegeneral`;
+
+/*!50001 DROP VIEW IF EXISTS `reportegeneral` */;
+/*!50001 DROP TABLE IF EXISTS `reportegeneral` */;
+
+/*!50001 CREATE TABLE  `reportegeneral`(
+ `nombres` varchar(101) ,
+ `dias_imputable` int(11) ,
+ `dias_no_imputable` int(11) ,
+ `dias_total` int(11) ,
+ `hora_imputable` time ,
+ `hora_no_imputable` time ,
+ `horas_total` time 
+)*/;
+
+/*View structure for view reportegeneral */
+
+/*!50001 DROP TABLE IF EXISTS `reportegeneral` */;
+/*!50001 DROP VIEW IF EXISTS `reportegeneral` */;
+
+/*!50001 CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `reportegeneral` AS select concat(`p`.`apellidos`,' ',`p`.`nombres`) AS `nombres`,`solicitudDiasImputable_F`(`p`.`id_personal`) AS `dias_imputable`,`solicitudDiasNoImputable_F`(`p`.`id_personal`) AS `dias_no_imputable`,`solicitudDiasTotal_F`(`p`.`id_personal`) AS `dias_total`,`solicitudHoraImputable_F`(`p`.`id_personal`) AS `hora_imputable`,`solicitudHoraNoImputable_F`(`p`.`id_personal`) AS `hora_no_imputable`,`solicitudHoraTotal_F`(`p`.`id_personal`) AS `horas_total` from (((`solicitud_permisos` `s` join `fecha_permisos` `f`) join `personal` `p`) join `tipo_permisos` `t`) where ((`s`.`id_solicitud_permisos` = `f`.`solicitud_permiso`) and (`s`.`persona` = `p`.`id_personal`) and (`s`.`tipo_permiso` = `t`.`id_tipo_permisos`)) group by `p`.`id_personal` */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
 /*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;

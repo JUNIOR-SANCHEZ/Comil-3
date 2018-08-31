@@ -25,5 +25,10 @@ class reportesModel extends Model{
         $stmt->execute();
         $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
         return $result;
+    } 
+    public function listaReportesGeneral(){
+        $stmt = $this->_db->query('SELECT * FROM reportegeneral');
+        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $result;
     }  
 }

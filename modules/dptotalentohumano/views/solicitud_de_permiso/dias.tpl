@@ -26,7 +26,7 @@
                                     <i class="fa fa-user"></i>
                                 </div>
                             </div>
-                            <input type="text" class="form-control" id="th_permiso_nombres" disabled>
+                            <input type="text" class="form-control" id="th_permiso_nombres" disabled >
                             <div class="input-group-prepend">
                                 <button class="btn btn-outline-success" type="button" id="th_btn_lista_persona" data-toggle="modal" data-target="#th_permiso_lista_persona_modal">Lista</button>
                             </div>
@@ -39,7 +39,7 @@
                                     <i class="fa fa-calendar-alt"></i>
                                 </div>
                             </div>
-                            <input type="date" class="form-control" name="th_permiso_fecha_permiso">
+                            <input type="date" class="form-control" name="th_permiso_fecha_permiso" required >
                         </div>
                         <!-- Fin Fecha Permiso -->
                         <!-- Numero de horas o Fecha -->
@@ -50,7 +50,7 @@
                                     <i class="fa fa-calendar-alt"></i>
                                 </div>
                             </div>
-                            <input type="number" class="form-control" name="th_permiso_num_dias" min="1">
+                            <input type="number" class="form-control" name="th_permiso_num_dias" min="1" required >
                         </div>
                     <!-- </div> -->
                         <!-- Fin Numero de horas o Fecha -->
@@ -68,7 +68,7 @@
                                     <i class="fas fa-comment-dots"></i>
                                 </label>
                             </div>
-                            <select class="custom-select" name="th_permiso_motivo">
+                            <select class="custom-select" name="th_permiso_motivo" required >
                                 <option selected disabled class="text-muted" >Motivo de salida</option>
                                 {if isset($motivos)} {foreach item=mt from=$motivos}
                                 <option value="{$mt.id_motivo_permisos}">{$mt.motivo}</option>
@@ -84,7 +84,7 @@
                                     <i class="fa fa-money-bill-alt"></i>
                                 </label>
                             </div>
-                            <select class="custom-select" name="th_permiso_tipo_permiso">
+                            <select class="custom-select" name="th_permiso_tipo_permiso" required >
                                 <option value="0" disabled selected class="text-muted">Tipo de permiso</option>
                                 {foreach item=list from=$tipo_permiso}
                                 <option value="{$list.id_tipo_permisos}">{$list.tipo_permiso}</option>
