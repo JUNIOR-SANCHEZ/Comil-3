@@ -88,6 +88,16 @@ class menuModelWidget extends Model{
                 'id' => 'cpsub_nuevo',
                 'titulo' => 'Nuevo',
                 'enlace' => BASE_URL.'DptoCentroDeComputo/registro/'
+            ),
+            array(
+                'id' => 'cpsub_config',
+                'titulo' => 'Responsables',
+                'enlace' => BASE_URL.'DptoCentroDeComputo/Responsables/'
+            ),
+            array(
+                'id' => 'cpsub_config',
+                'titulo' => 'Otros',
+                'enlace' => BASE_URL.'DptoCentroDeComputo/Otros/'
             )
         )
             ),
@@ -103,7 +113,21 @@ class menuModelWidget extends Model{
                         'enlace' => BASE_URL.'noticias'
                     )
                 )
-            )
+                    ),
+                    array(
+                        'id' => 'cpreporte',
+                        'titulo' => 'Solicitudes',
+                        'icon'=>'fa-folder',
+                        'sub'=>array(
+                            array(
+                                'id' => 'cpsub_reporte_hoja_vida',
+                                'titulo' => 'SST',
+                                'icon'=>'fa-folder',
+                                'enlace' => BASE_URL.'DptoCentroDeComputo/SST/'
+                            ),
+                            
+                        )
+                    )
     );
    }
 

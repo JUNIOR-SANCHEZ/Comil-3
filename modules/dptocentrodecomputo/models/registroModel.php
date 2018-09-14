@@ -18,14 +18,20 @@ class registroModel extends Model
         return $dato;
     }
     public function getCargosFunciones(){
-        $stmt = $this->_db->query("SELECT * FROM cargos_funciones");
+        $stmt = $this->_db->query("SELECT * FROM cargos_funciones_personal");
         $dato = $stmt->fetchAll(PDO::FETCH_ASSOC);
         return $dato;
     }
     public function getMarcasEquipos(){
-        $stmt = $this->_db->query("SELECT * FROM marcas_equipos");
+        $stmt = $this->_db->query("SELECT * FROM marcas");
         $dato = $stmt->fetchAll(PDO::FETCH_ASSOC);
         return $dato;
+    }
+    
+    public function getResponsables(){
+        $stmt = $this->_db->query("SELECT * FROM responsables_ccp");
+        $resp = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $resp;
     }
 
 

@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schemadesigner version="6.5">
+<source>
+<database charset="latin1" collation="latin1_swedish_ci">comil3</database>
+</source>
+<canvas zoom="100">
+<tables>
+<table name="disco_duro" view="standard">
+<left>54</left>
+<top>285</top>
+<width>202</width>
+<height>180</height>
+<sql_create_table>CREATE TABLE `disco_duro` (
+  `id_disco` int(11) NOT NULL,
+  `serie` varchar(50) COLLATE utf8_spanish2_ci NOT NULL,
+  `marca` int(11) NOT NULL,
+  `capacidad` int(11) NOT NULL,
+  `tecnologia` int(11) NOT NULL,
+  `pc` int(11) NOT NULL,
+  PRIMARY KEY (`id_disco`),
+  KEY `D_C` (`capacidad`),
+  KEY `D_T` (`tecnologia`),
+  KEY `D_M` (`marca`),
+  KEY `D_P` (`pc`),
+  CONSTRAINT `D_C` FOREIGN KEY (`capacidad`) REFERENCES `capacidad` (`id_capacidad`),
+  CONSTRAINT `D_M` FOREIGN KEY (`marca`) REFERENCES `marcas_discos` (`id_marca`),
+  CONSTRAINT `D_P` FOREIGN KEY (`pc`) REFERENCES `pc` (`id_pc`),
+  CONSTRAINT `D_T` FOREIGN KEY (`tecnologia`) REFERENCES `tecnologia` (`id_tecnologia`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci</sql_create_table>
+</table>
+<table name="pc" view="standard">
+<left>335</left>
+<top>56</top>
+<width>188</width>
+<height>163</height>
+<sql_create_table>CREATE TABLE `pc` (
+  `id_pc` int(11) NOT NULL AUTO_INCREMENT,
+  `nombre` varchar(50) NOT NULL,
+  `serie` varchar(50) DEFAULT NULL,
+  `marcas` int(11) NOT NULL,
+  `modelo` int(11) NOT NULL,
+  PRIMARY KEY (`id_pc`),
+  KEY `P_MA` (`marcas`),
+  KEY `P_MO` (`modelo`),
+  CONSTRAINT `P_MA` FOREIGN KEY (`marcas`) REFERENCES `marcas_pc` (`id_marcas`),
+  CONSTRAINT `P_MO` FOREIGN KEY (`modelo`) REFERENCES `modelo_pc` (`id_modelo`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1</sql_create_table>
+</table>
+<table name="procesador" view="standard">
+<left>610</left>
+<top>297</top>
+<width>225</width>
+<height>163</height>
+<sql_create_table>CREATE TABLE `procesador` (
+  `id_procesador` int(11) NOT NULL AUTO_INCREMENT,
+  `marca` int(11) NOT NULL,
+  `modelo` varchar(50) COLLATE utf8_spanish2_ci NOT NULL,
+  `velocidad` int(11) NOT NULL,
+  `pc` int(11) NOT NULL,
+  PRIMARY KEY (`id_procesador`),
+  KEY `P_M` (`marca`),
+  KEY `P_MO` (`modelo`),
+  KEY `P_P` (`pc`),
+  KEY `P_V` (`velocidad`),
+  CONSTRAINT `P_M` FOREIGN KEY (`marca`) REFERENCES `marcas_procesador` (`id_marca`),
+  CONSTRAINT `P_P` FOREIGN KEY (`pc`) REFERENCES `pc` (`id_pc`),
+  CONSTRAINT `P_V` FOREIGN KEY (`velocidad`) REFERENCES `velocidad_procesador` (`id_velocidad`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci</sql_create_table>
+</table>
+<table name="marcas_pc" view="standard">
+<left>650</left>
+<top>45</top>
+<width>203</width>
+<height>112</height>
+<sql_create_table>CREATE TABLE `marcas_pc` (
+  `id_marcas` int(11) NOT NULL AUTO_INCREMENT,
+  `marca` varchar(50) COLLATE utf8_spanish2_ci NOT NULL,
+  PRIMARY KEY (`id_marcas`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci</sql_create_table>
+</table>
+<table name="modelo_pc" view="standard">
+<left>28</left>
+<top>55</top>
+<width>203</width>
+<height>112</height>
+<sql_create_table>CREATE TABLE `modelo_pc` (
+  `id_modelo` int(11) NOT NULL,
+  `modelo` varchar(50) COLLATE utf8_spanish2_ci NOT NULL,
+  PRIMARY KEY (`id_modelo`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci</sql_create_table>
+</table>
+</tables>
+</canvas>
+</schemadesigner>
