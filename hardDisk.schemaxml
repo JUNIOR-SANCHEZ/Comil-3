@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schemadesigner version="6.5">
+<source>
+<database charset="latin1" collation="latin1_swedish_ci">comil3</database>
+</source>
+<canvas zoom="100">
+<tables>
+<table name="capacidad" view="colnames">
+<left>121</left>
+<top>389</top>
+<width>120</width>
+<height>112</height>
+<sql_create_table>CREATE TABLE `capacidad` (
+  `id_capacidad` int(11) NOT NULL,
+  `volumen` int(11) NOT NULL,
+  PRIMARY KEY (`id_capacidad`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci</sql_create_table>
+</table>
+<table name="disco_duro" view="colnames">
+<left>396</left>
+<top>144</top>
+<width>104</width>
+<height>180</height>
+<sql_create_table>CREATE TABLE `disco_duro` (
+  `id_disco` int(11) NOT NULL,
+  `serie` varchar(50) COLLATE utf8_spanish2_ci NOT NULL,
+  `marca` int(11) NOT NULL,
+  `capacidad` int(11) NOT NULL,
+  `tecnologia` int(11) NOT NULL,
+  `pc` int(11) NOT NULL,
+  PRIMARY KEY (`id_disco`),
+  KEY `D_C` (`capacidad`),
+  KEY `D_T` (`tecnologia`),
+  KEY `D_M` (`marca`),
+  KEY `D_P` (`pc`),
+  CONSTRAINT `D_C` FOREIGN KEY (`capacidad`) REFERENCES `capacidad` (`id_capacidad`),
+  CONSTRAINT `D_M` FOREIGN KEY (`marca`) REFERENCES `marcas_discos` (`id_marca`),
+  CONSTRAINT `D_P` FOREIGN KEY (`pc`) REFERENCES `pc` (`id_pc`),
+  CONSTRAINT `D_T` FOREIGN KEY (`tecnologia`) REFERENCES `tecnologia` (`id_tecnologia`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci</sql_create_table>
+</table>
+<table name="marcas_discos" view="colnames">
+<left>684</left>
+<top>97</top>
+<width>99</width>
+<height>112</height>
+<sql_create_table>CREATE TABLE `marcas_discos` (
+  `id_marca` int(11) NOT NULL AUTO_INCREMENT,
+  `marca` varchar(50) NOT NULL,
+  PRIMARY KEY (`id_marca`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1</sql_create_table>
+</table>
+<table name="pc" view="colnames">
+<left>125</left>
+<top>60</top>
+<width>90</width>
+<height>146</height>
+<sql_create_table>CREATE TABLE `pc` (
+  `id_pc` int(11) NOT NULL AUTO_INCREMENT,
+  `nombre` varchar(50) NOT NULL,
+  `serie` varchar(50) DEFAULT NULL,
+  `marcas` int(11) NOT NULL,
+  `modelo` int(11) NOT NULL,
+  PRIMARY KEY (`id_pc`),
+  KEY `P_MA` (`marcas`),
+  KEY `P_MO` (`modelo`),
+  CONSTRAINT `P_MA` FOREIGN KEY (`marcas`) REFERENCES `marcas_pc` (`id_marcas`),
+  CONSTRAINT `P_MO` FOREIGN KEY (`modelo`) REFERENCES `modelo_pc` (`id_modelo`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1</sql_create_table>
+</table>
+<table name="tecnologia" view="colnames">
+<left>615</left>
+<top>350</top>
+<width>121</width>
+<height>112</height>
+<sql_create_table>CREATE TABLE `tecnologia` (
+  `id_tecnologia` int(11) NOT NULL AUTO_INCREMENT,
+  `tipo` varchar(5) COLLATE utf8_spanish2_ci NOT NULL,
+  PRIMARY KEY (`id_tecnologia`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci</sql_create_table>
+</table>
+</tables>
+</canvas>
+</schemadesigner>

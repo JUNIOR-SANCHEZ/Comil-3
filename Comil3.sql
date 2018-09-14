@@ -16,6 +16,18 @@ CREATE DATABASE /*!32312 IF NOT EXISTS*/`comil3` /*!40100 DEFAULT CHARACTER SET 
 
 USE `comil3`;
 
+/*Table structure for table `capacidad` */
+
+DROP TABLE IF EXISTS `capacidad`;
+
+CREATE TABLE `capacidad` (
+  `id_capacidad` int(11) NOT NULL,
+  `volumen` int(11) NOT NULL,
+  PRIMARY KEY (`id_capacidad`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
+
+/*Data for the table `capacidad` */
+
 /*Table structure for table `cargos_funciones_personal` */
 
 DROP TABLE IF EXISTS `cargos_funciones_personal`;
@@ -43,6 +55,30 @@ CREATE TABLE `dependencias` (
 /*Data for the table `dependencias` */
 
 insert  into `dependencias`(`id_dependencias`,`nombre`) values (1,'laboratorio de ingles bachillerato');
+
+/*Table structure for table `disco_duro` */
+
+DROP TABLE IF EXISTS `disco_duro`;
+
+CREATE TABLE `disco_duro` (
+  `id_disco` int(11) NOT NULL,
+  `serie` varchar(50) COLLATE utf8_spanish2_ci NOT NULL,
+  `marca` int(11) NOT NULL,
+  `capacidad` int(11) NOT NULL,
+  `tecnologia` int(11) NOT NULL,
+  `pc` int(11) NOT NULL,
+  PRIMARY KEY (`id_disco`),
+  KEY `D_C` (`capacidad`),
+  KEY `D_T` (`tecnologia`),
+  KEY `D_M` (`marca`),
+  KEY `D_P` (`pc`),
+  CONSTRAINT `D_C` FOREIGN KEY (`capacidad`) REFERENCES `capacidad` (`id_capacidad`),
+  CONSTRAINT `D_M` FOREIGN KEY (`marca`) REFERENCES `marcas_discos` (`id_marca`),
+  CONSTRAINT `D_P` FOREIGN KEY (`pc`) REFERENCES `pc` (`id_pc`),
+  CONSTRAINT `D_T` FOREIGN KEY (`tecnologia`) REFERENCES `tecnologia` (`id_tecnologia`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
+
+/*Data for the table `disco_duro` */
 
 /*Table structure for table `estados_civiles` */
 
@@ -98,13 +134,10 @@ CREATE TABLE `hoja_vida_equipos` (
   `id_hoja_vida_equipos` int(11) NOT NULL AUTO_INCREMENT,
   `fecha_emision` datetime NOT NULL,
   `codigo` varchar(50) COLLATE utf8_spanish2_ci NOT NULL,
-  `responsable_f` int(11) NOT NULL,
-  `cargo_funcion_f` int(11) NOT NULL,
-  `dependencia_f` int(50) NOT NULL,
+  `responsables` int(11) NOT NULL,
   PRIMARY KEY (`id_hoja_vida_equipos`),
-  KEY `cargos_funciones` (`cargo_funcion_f`),
-  KEY `dependencias` (`dependencia_f`),
-  KEY `responsable` (`responsable_f`)
+  KEY `HVE_R` (`responsables`),
+  CONSTRAINT `HVE_R` FOREIGN KEY (`responsables`) REFERENCES `responsables_ccp` (`id_responsables_ccp`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
 
 /*Data for the table `hoja_vida_equipos` */
@@ -128,19 +161,57 @@ CREATE TABLE `horas_permiso` (
 
 insert  into `horas_permiso`(`id_horas_permiso`,`fecha`,`hora_salida`,`hora_entrada`,`solicitud_permiso`) values (6,'2018-08-31','09:00:00','10:00:00',32);
 
-/*Table structure for table `marcas_equipos` */
+/*Table structure for table `marcas_discos` */
 
-DROP TABLE IF EXISTS `marcas_equipos`;
+DROP TABLE IF EXISTS `marcas_discos`;
 
-CREATE TABLE `marcas_equipos` (
-  `id_marca_cp` int(11) NOT NULL AUTO_INCREMENT,
-  `marca_nombre` varchar(50) COLLATE utf8_spanish2_ci NOT NULL,
-  PRIMARY KEY (`id_marca_cp`)
+CREATE TABLE `marcas_discos` (
+  `id_marca` int(11) NOT NULL AUTO_INCREMENT,
+  `marca` varchar(50) NOT NULL,
+  PRIMARY KEY (`id_marca`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+/*Data for the table `marcas_discos` */
+
+/*Table structure for table `marcas_pc` */
+
+DROP TABLE IF EXISTS `marcas_pc`;
+
+CREATE TABLE `marcas_pc` (
+  `id_marcas` int(11) NOT NULL AUTO_INCREMENT,
+  `marca` varchar(50) COLLATE utf8_spanish2_ci NOT NULL,
+  PRIMARY KEY (`id_marcas`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
 
-/*Data for the table `marcas_equipos` */
+/*Data for the table `marcas_pc` */
 
-insert  into `marcas_equipos`(`id_marca_cp`,`marca_nombre`) values (1,'HP');
+insert  into `marcas_pc`(`id_marcas`,`marca`) values (1,'HP');
+
+/*Table structure for table `marcas_procesador` */
+
+DROP TABLE IF EXISTS `marcas_procesador`;
+
+CREATE TABLE `marcas_procesador` (
+  `id_marca` int(11) NOT NULL AUTO_INCREMENT,
+  `marca` varchar(50) COLLATE utf8_spanish2_ci NOT NULL,
+  PRIMARY KEY (`id_marca`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
+
+/*Data for the table `marcas_procesador` */
+
+insert  into `marcas_procesador`(`id_marca`,`marca`) values (1,'AMD');
+
+/*Table structure for table `modelo_pc` */
+
+DROP TABLE IF EXISTS `modelo_pc`;
+
+CREATE TABLE `modelo_pc` (
+  `id_modelo` int(11) NOT NULL,
+  `modelo` varchar(50) COLLATE utf8_spanish2_ci NOT NULL,
+  PRIMARY KEY (`id_modelo`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
+
+/*Data for the table `modelo_pc` */
 
 /*Table structure for table `motivo_permisos` */
 
@@ -155,6 +226,25 @@ CREATE TABLE `motivo_permisos` (
 /*Data for the table `motivo_permisos` */
 
 insert  into `motivo_permisos`(`id_motivo_permisos`,`motivo`) values (1,'asuntos personales'),(2,'enfermedad'),(3,'calamidad domestica'),(4,'capacitacion');
+
+/*Table structure for table `pc` */
+
+DROP TABLE IF EXISTS `pc`;
+
+CREATE TABLE `pc` (
+  `id_pc` int(11) NOT NULL AUTO_INCREMENT,
+  `nombre` varchar(50) NOT NULL,
+  `serie` varchar(50) DEFAULT NULL,
+  `marcas` int(11) NOT NULL,
+  `modelo` int(11) NOT NULL,
+  PRIMARY KEY (`id_pc`),
+  KEY `P_MA` (`marcas`),
+  KEY `P_MO` (`modelo`),
+  CONSTRAINT `P_MA` FOREIGN KEY (`marcas`) REFERENCES `marcas_pc` (`id_marcas`),
+  CONSTRAINT `P_MO` FOREIGN KEY (`modelo`) REFERENCES `modelo_pc` (`id_modelo`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+/*Data for the table `pc` */
 
 /*Table structure for table `permisos` */
 
@@ -228,6 +318,45 @@ CREATE TABLE `personal` (
 
 insert  into `personal`(`id_personal`,`nombres`,`apellidos`,`cedula`,`direccion`,`email`,`correo_institucional`,`telefono`,`fecha_nacimiento`,`tipo_sangre`,`genero`,`estado_civil`,`estado_laboral`) values (1,'lourde beatriz','moran pineda','0702681016','arenillas calle leonor roldan y 11 de noviembre','dlulymp@hotmail.com','mplbeatriz','0998359208','1973-04-15',1,0,0,0),(5,'Juan Diego','Leon Aguirre','070666666','direccion','email@email.com','correo@correo.com','258741','2018-08-23',4,1,1,1),(6,'Diego Armando','Mera hidalgo','0708888888','Direccion','email@email.com','Correo@correo.com','23355','2018-08-17',4,1,2,1);
 
+/*Table structure for table `procesador` */
+
+DROP TABLE IF EXISTS `procesador`;
+
+CREATE TABLE `procesador` (
+  `id_procesador` int(11) NOT NULL AUTO_INCREMENT,
+  `marca` int(11) NOT NULL,
+  `modelo` varchar(50) COLLATE utf8_spanish2_ci NOT NULL,
+  `velocidad` int(11) NOT NULL,
+  `pc` int(11) NOT NULL,
+  PRIMARY KEY (`id_procesador`),
+  KEY `P_M` (`marca`),
+  KEY `P_MO` (`modelo`),
+  KEY `P_P` (`pc`),
+  KEY `P_V` (`velocidad`),
+  CONSTRAINT `P_M` FOREIGN KEY (`marca`) REFERENCES `marcas_procesador` (`id_marca`),
+  CONSTRAINT `P_P` FOREIGN KEY (`pc`) REFERENCES `pc` (`id_pc`),
+  CONSTRAINT `P_V` FOREIGN KEY (`velocidad`) REFERENCES `velocidad_procesador` (`id_velocidad`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
+
+/*Data for the table `procesador` */
+
+/*Table structure for table `responsables_ccp` */
+
+DROP TABLE IF EXISTS `responsables_ccp`;
+
+CREATE TABLE `responsables_ccp` (
+  `id_responsables_ccp` int(11) NOT NULL AUTO_INCREMENT,
+  `nombres` varchar(50) NOT NULL,
+  `apellidos` varchar(50) NOT NULL,
+  `dependencias` varchar(100) NOT NULL,
+  `cargos` varchar(100) NOT NULL,
+  PRIMARY KEY (`id_responsables_ccp`)
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
+
+/*Data for the table `responsables_ccp` */
+
+insert  into `responsables_ccp`(`id_responsables_ccp`,`nombres`,`apellidos`,`dependencias`,`cargos`) values (6,'EDISON','FLORES','LABORATORIO DE COMPUTACION DE LA ESCUELA','RESPONSABLE DEL LABORATORIO DE COMPUTO'),(7,'SOLANGE','QUISHPE','LABORATORIO DE COMPUTACION BACHILLERATO Nª 2','RESPONSABLE DE LABORATORIO DE COMPUTO');
+
 /*Table structure for table `roles` */
 
 DROP TABLE IF EXISTS `roles`;
@@ -261,6 +390,18 @@ CREATE TABLE `solicitud_permisos` (
 /*Data for the table `solicitud_permisos` */
 
 insert  into `solicitud_permisos`(`id_solicitud_permisos`,`persona`,`motivo`,`tipo_permiso`) values (29,1,2,1),(31,1,3,1),(32,1,1,2),(33,5,1,1);
+
+/*Table structure for table `tecnologia` */
+
+DROP TABLE IF EXISTS `tecnologia`;
+
+CREATE TABLE `tecnologia` (
+  `id_tecnologia` int(11) NOT NULL AUTO_INCREMENT,
+  `tipo` varchar(5) COLLATE utf8_spanish2_ci NOT NULL,
+  PRIMARY KEY (`id_tecnologia`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
+
+/*Data for the table `tecnologia` */
 
 /*Table structure for table `tipo_permisos` */
 
@@ -314,6 +455,18 @@ CREATE TABLE `usuarios` (
 /*Data for the table `usuarios` */
 
 insert  into `usuarios`(`id`,`nombre`,`imagen`,`usuario`,`pass`,`email`,`phone`,`ocupacion`,`role`,`estado`,`fecha`,`codigo`) values (1,NULL,'user.png','SrtoLeon','5bae17944cfa8bd5587a430e4a48c9ec0ce68219','leon@leon.com',NULL,NULL,2,1,'2018-08-09',NULL),(2,NULL,'user.png','SartoSanchez','5bae17944cfa8bd5587a430e4a48c9ec0ce68219','sanchez@sanchez.com',NULL,NULL,3,1,'2018-08-09',NULL);
+
+/*Table structure for table `velocidad_procesador` */
+
+DROP TABLE IF EXISTS `velocidad_procesador`;
+
+CREATE TABLE `velocidad_procesador` (
+  `id_velocidad` int(11) NOT NULL AUTO_INCREMENT,
+  `velocidad` int(11) NOT NULL,
+  PRIMARY KEY (`id_velocidad`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
+
+/*Data for the table `velocidad_procesador` */
 
 /* Function  structure for function  `solicitudDiasImputable_F` */
 
@@ -442,6 +595,23 @@ BEGIN
     END */$$
 DELIMITER ;
 
+/* Procedure structure for procedure `addPc` */
+
+/*!50003 DROP PROCEDURE IF EXISTS  `addPc` */;
+
+DELIMITER $$
+
+/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `addPc`(
+	nombre_pc varchar(25),
+	serie_pc varchar(50),
+	marca_pc int,
+	modelo_pc int
+    )
+BEGIN
+	insert into pc values (null,nombre_pc,serie_pc,marca_pc,modelo_pc);
+    END */$$
+DELIMITER ;
+
 /* Procedure structure for procedure `addPersonal` */
 
 /*!50003 DROP PROCEDURE IF EXISTS  `addPersonal` */;
@@ -477,6 +647,46 @@ BEGIN
      tipo_sangre_personal,genero_personal,
      estado_civil_personal,estado_laboral_personal
      );
+    END */$$
+DELIMITER ;
+
+/* Procedure structure for procedure `addProcesador` */
+
+/*!50003 DROP PROCEDURE IF EXISTS  `addProcesador` */;
+
+DELIMITER $$
+
+/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `addProcesador`(
+	marca_p int,
+	modelo_p varchar(50),
+	velocidad_p double(4,2)
+    )
+BEGIN
+	INSERT INTO procesador VALUES (NULL,marca_p,modelo_p,velocidad_p);
+    END */$$
+DELIMITER ;
+
+/* Procedure structure for procedure `addResponsables` */
+
+/*!50003 DROP PROCEDURE IF EXISTS  `addResponsables` */;
+
+DELIMITER $$
+
+/*!50003 CREATE DEFINER=`root`@`localhost` PROCEDURE `addResponsables`(
+	nombres_r varchar(50),
+	apellidos_r varchar(50),
+	dependencias_r varchar(50),
+	cargos_r varchar(50)
+    )
+BEGIN
+    
+    insert into responsables_ccp values (
+    null,
+    nombres_r,
+    apellidos_r,
+    dependencias_r,
+    cargos_r
+    );
     END */$$
 DELIMITER ;
 

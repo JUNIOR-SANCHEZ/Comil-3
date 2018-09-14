@@ -9,48 +9,39 @@
         <div class="col-12 mt-4">
             <h3 class="display text-center">HOJA DE VIDA DE EQUIPOS INFORMATICOS</h3>
         </div>
-        <div class="col-sm-12 col-md-6">
-            <div class="form-group row">
-                <div class="col-sm-12 col-md-12 col-lg-3">
-                    <label for="cp_dependencia">Dependencia:</label>
-                </div>
-                <select id="cp_dependencia" class="custom-select custom-select-sm col-9 col-sm-10 col-md-10 col-lg-5">
-                    <option>Opciones:</option>
-                    {if isset($_dependencia)} {foreach item=dato from=$_dependencia }
-                    <option> {$dato.nombre}</option>{/foreach} {/if}
-                </select>
-                <div class="col-3 col-sm-2 col-md-2 col-lg-2 px-0 ">
-                    <button class="btn btn-sm btn-success">Nueva</button>
-                </div>
-            </div>
-            <div class="form-group row ">
-                <div class="col-sm-12 col-md-12 col-lg-3">
-                    <label for="cp_responsable">Responsable:</label>
-                </div>
-                <select id="cp_responsable" class="custom-select custom-select-sm col-9 col-sm-10 col-md-10 col-lg-5">
-                    <option>Opciones:</option>
-                    {if isset($_personal)} {foreach item=dato from=$_personal }
-                    <option> {$dato.nombres_apellidos}</option>{/foreach} {/if}
-                </select>
-                <div class="col-3 col-sm-2 col-md-2 col-lg-2 px-0 ">
-                    <button class="btn btn-sm btn-success">Nueva</button>
-                </div>
-            </div>
-            <div class="form-group row ">
-                <div class="col-sm-12 col-md-12 col-lg-3">
-                    <label for="cp_cargo_funcion">Cargo/funcion:</label>
-                </div>
-                <select id="cp_cargo_funcion" class="custom-select custom-select-sm col-9 col-sm-10 col-md-10 col-lg-5 ">
-                    <option>Opciones:</option>
-                    {if isset($_cargos_funciones)} {foreach item=dato from=$_cargos_funciones }
-                    <option> {$dato.nombre}</option>{/foreach} {/if}
-                </select>
-                <div class="col-3 col-sm-2 col-md-2 col-lg-2 px-0 ">
-                    <button class="btn btn-sm btn-success">Nueva</button>
+        <div class="col-12">
+            <div class="row my-2">
+                <div class="col-6">
+                    <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#modal_responsables_view">
+                        Responsable
+                    </button>
                 </div>
             </div>
         </div>
+        <div class="col-sm-12 col-md-6">
 
+            <div class="form-group  row ">
+                <div class="col-sm-12 col-md-12 col-lg-3">
+                    <label for="cp_fecha_emision">Dependencia:</label>
+                </div>
+                <input type="text" id="cp_dependencia_v" class="form-control form-control-sm col-sm-12 col-md-12 col-lg-5 "
+                    disabled>
+            </div>
+            <div class="form-group row">
+                <div class="col-sm-12 col-md-12 col-lg-3">
+                    <label for="cp_codigo">Responsable:</label>
+                </div>
+                <input type="text" id="cp_responsable_v" class="form-control form-control-sm col-sm-12 col-md-12 col-lg-5"
+                    disabled>
+            </div>
+            <div class="form-group row">
+                <div class="col-sm-12 col-md-12 col-lg-3">
+                    <label for="cp_codigo">Cargo/Funcion:</label>
+                </div>
+                <input type="text" id="cp_cargo_funcion_v" class="form-control form-control-sm col-sm-12 col-md-12 col-lg-5"
+                    disabled>
+            </div>
+        </div>
         <div class="col-sm-12 col-md-6">
             <div class="form-group  row ">
                 <div class="col-sm-12 col-md-12 col-lg-3">
@@ -200,11 +191,13 @@
                             <label for="cp_marca_disco_duro">Tecnologia:</label>
                         </div>
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="cp_tecnoligia_disco_duro" id="cp_tecnoligia_disco_duro_ide" value="option1">
+                            <input class="form-check-input" type="radio" name="cp_tecnoligia_disco_duro" id="cp_tecnoligia_disco_duro_ide"
+                                value="option1">
                             <label class="form-check-label" for="cp_tecnoligia_disco_duro_ide">IDE</label>
                         </div>
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="cp_tecnoligia_disco_duro" id="cp_tecnoligia_disco_duro_sata" value="option2">
+                            <input class="form-check-input" type="radio" name="cp_tecnoligia_disco_duro" id="cp_tecnoligia_disco_duro_sata"
+                                value="option2">
                             <label class="form-check-label" for="cp_tecnoligia_disco_duro_sata">SATA</label>
                         </div>
                     </div>
@@ -488,8 +481,63 @@
             </div>
         </div>
         <div class="col-lg-3">
-                <button class="btn btn-sm btn-success btn-block">Otros</button>
+            <button class="btn btn-sm btn-success btn-block">Otros</button>
         </div>
     </div>
     <!-- fin row -->
 </form>
+
+<!-- Button trigger modal -->
+
+
+<!-- Modal -->
+<div class="modal fade" id="modal_responsables" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">REGISTRO</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="modal_responsables_view" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">RESPONSABLES</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <table class="table table-responsive">
+                    <thead>
+                        <tr>
+                            <th>DEPENDENCIA</th>
+                            <th>RESPONSABLES</th>
+                            <th>CARGO/FUNCION</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody id="lista-table-responsable">
+                        {foreach item=list from=$_responsables}
+                        <tr>
+                            <td>{$list['apellidos']} {$list['nombres']}</td>
+                            <td>{$list['dependencias']}</td>
+                            <td>{$list['cargos']}</td>
+                            <td><button class="btn btn-success btn-sm id-resp" data-id="{$list['id_responsables_ccp']}">Seleccionar</button></td>
+                        </tr>
+                        {/foreach}
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+    </div>
+</div>
